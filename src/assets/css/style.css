@@ -717,10 +717,12 @@ input[type="submit"], button[type=submit] {
     color: #fff;
     padding: 11px 20px;
     text-transform: uppercase;
+    font-size: 15px;
 }
 input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
 .single-sidebar input[type="text"] {
     margin-bottom: 10px;
+    font-size: 15px;
     width: 100%;
 }
 .thubmnail-recent {
@@ -742,7 +744,8 @@ input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
 }
 .product-sidebar-price > ins {
     color: #5a88ca;
-    font-weight: 700;
+    font-weight: 800;
+    font-size: medium;
     margin-right: 10px;
     text-decoration: none;
 }
@@ -754,12 +757,14 @@ input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
 .single-sidebar li {
     border-bottom: 1px solid #f1f1f1;
     padding: 10px 0;
+    font-size: 15px;
 }
 .single-sidebar a {
     display: block;
 }
 .product-breadcroumb {
     margin-bottom: 20px;
+    font-size: 15px;
 }
 .product-breadcroumb > a {
     margin-right: 31px;
@@ -821,6 +826,8 @@ form.cart {
 }
 .product-inner-category {
     margin-bottom: 30px;
+    font-size: 15px;
+   
 }
 .product-tab {
     border-bottom: 1px solid #ddd;

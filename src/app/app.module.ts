@@ -57,7 +57,8 @@ import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
     AppRoutingModule,
     HeaderRoutingModule,
     NgbModule,
-    NgxUsefulSwiperModule
+    NgxUsefulSwiperModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

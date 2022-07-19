@@ -1,0 +1,13 @@
+del,ins{
+    font-size: medium;
+}
+.input-text {
+    font-size: small;
+ }
+ a{
+    text-decoration: none;
+ }
+ a:hover, a:focus{
+color: #17a78b;
+text-decoration: underline;
+ }
