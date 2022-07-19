@@ -28,6 +28,8 @@ h6 {
 }
 body { 
     /* font-family:Arial, Helvetica, sans-serif; */
+    font-family:  Arial, Helvetica, sans-serif;;
+    /* font-family: "Times New Roman", Times, serif; */
     font-size: 14px;
    
  }
@@ -778,21 +780,28 @@ input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
 .product-sidebar-price > ins {
     color: #5a88ca;
     font-weight: 700;
+    font-size: 14px;
     margin-right: 10px;
     text-decoration: none;
+}
+.product-sidebar-price > del {
+    font-size: 14px;
 }
 .single-sidebar > ul {
     list-style: outside none none;
     margin: 0;
     padding: 0;
+    font-size: 14px;
 }
 .single-sidebar li {
     border-bottom: 1px solid #f1f1f1;
     padding: 10px 0;
+    font-size: 14px;
 }
 .single-sidebar a {
     text-decoration-line:none !important;
     display: block;
+    font-size: 14px;
 }
 .product-breadcroumb {
     margin-bottom: 20px;
@@ -957,6 +966,12 @@ td.product-thumbnail img {
 td.product-name {
     font-size: 18px;
 }
+td.product-price {
+    font-size: 14px;
+}
+td.product-subtotal {
+    font-size: 14px;
+}
 div.quantity input.plus, div.quantity input.minus {
     background: none repeat scroll 0 0 #5a88ca;
     border: medium none;
@@ -968,9 +983,14 @@ div.quantity input.plus, div.quantity input.minus {
 td.product-quantity div.quantity {
     float: none;
     margin: 0;
+    font-size: 14px;
 }
-td.actions div.coupon {
+td.actions div.coupon  {
     float: left;
+    font-size: 14px;
+}
+td.actions .button {
+    font-size: 14px;
 }
 .cart-collaterals {
     overflow: hidden;
@@ -979,11 +999,13 @@ td.actions div.coupon {
     float: left;
     margin-right: 3%;
     width: 57%;
+    font-size: 14px;
 }
 .cart_totals {
     float: right;
     margin-bottom: 50px;
     width: 40%;
+    font-size: 14px;
 }
 .cart-collaterals h2 {
     color: #5a88ca;
