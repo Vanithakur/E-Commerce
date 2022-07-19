@@ -24,7 +24,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { OrdersComponent } from './profile/orders/orders.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { LoginComponent } from './login/login.component';
-
+ 
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 
 
 
@@ -55,7 +56,8 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     HeaderRoutingModule,
-    NgbModule
+    NgbModule,
+    NgxUsefulSwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
