@@ -1,0 +1,7 @@
+.swiper-slide{
+    text-align: center;
+}
+.swiper-slide image{
+    width: 140%;
+    max-width: 150%;
+}
