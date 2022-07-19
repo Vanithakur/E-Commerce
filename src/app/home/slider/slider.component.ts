@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SwiperOptions } from 'swiper';
+import { SliderService } from './slider.service';
 
 @Component({
   selector: 'app-slider',
@@ -19,10 +20,16 @@ export class SliderComponent implements OnInit {
     },
     spaceBetween: 30
   };  
-
-  constructor() { }
+images: any = [];
+promos:any = [];
+  constructor(private sliderService: SliderService) { }
 
   ngOnInit(): void {
+   this.images = this.sliderService.getImages();   
+   this.promos = this.sliderService.getPromo();
+   console.log(this.promos);
+   
+   
   }
 
 }
