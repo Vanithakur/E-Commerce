@@ -29,21 +29,19 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-<<<<<<< HEAD
-              "./node_modules/swiper/swiper-bundle.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
-=======
-              "./src/assets/css/style.css",
-              "./src/styles.css",
+            "styles": [         
+              "src/styles.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/swiper/swiper-bundle.css"
+              "./node_modules/font-awesome/css/font-awesome.min.css",
+              "src/assets/css/style.css",
+              "src/assets/css/responsive.css"        
              
->>>>>>> a232d4fd05491b408a384564df31ba0a0f14294a
             ],
             "scripts": [
-              "src/assets/js/main.js"
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"        
+
             ]
           },
           "configurations": {
@@ -109,9 +107,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "./node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/font-awesome/css/font-awesome.min.css",
+              "src/assets/css/style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           }
         }
       }

@@ -29,6 +29,7 @@ import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './login/loading-spinner/loading-spinner.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -61,8 +62,8 @@ import { LoadingSpinnerComponent } from './login/loading-spinner/loading-spinner
     NgbModule,
     NgxUsefulSwiperModule,
     FormsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    CarouselModule
 
   ],
   providers: [],
