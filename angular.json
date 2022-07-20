@@ -30,17 +30,9 @@
               "src/assets"
             ],
             "styles": [
-<<<<<<< HEAD
               "./node_modules/swiper/swiper-bundle.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
-=======
-              "./src/assets/css/style.css",
-              "./src/styles.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/swiper/swiper-bundle.css"
-             
->>>>>>> a232d4fd05491b408a384564df31ba0a0f14294a
             ],
             "scripts": [
               "src/assets/js/main.js"
