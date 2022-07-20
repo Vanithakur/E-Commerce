@@ -1,95 +1,331 @@
-jQuery(document).ready(function($){
-    
-    // jQuery sticky Menu
-    
-	$(".mainmenu-area").sticky({topSpacing:0});
-    
-    
-    $('.product-carousel').owlCarousel({
-        loop:true,
-        nav:true,
-        margin:20,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:1,
-            },
-            600:{
-                items:3,
-            },
-            1000:{
-                items:5,
-            }
-        }
-    });  
-    
-    $('.related-products-carousel').owlCarousel({
-        loop:true,
-        nav:true,
-        margin:20,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:1,
-            },
-            600:{
-                items:2,
-            },
-            1000:{
-                items:2,
-            },
-            1200:{
-                items:3,
-            }
-        }
-    });  
-    
-    $('.brand-list').owlCarousel({
-        loop:true,
-        nav:true,
-        margin:20,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:1,
-            },
-            600:{
-                items:3,
-            },
-            1000:{
-                items:4,
-            }
-        }
-    });    
-    
-    
-    // Bootstrap Mobile Menu fix
-    $(".navbar-nav li a").click(function(){
-        $(".navbar-collapse").removeClass('in');
-    });    
-    
-    // jQuery Scroll effect
-    $('.navbar-nav li a, .scroll-to-up').bind('click', function(event) {
-        var $anchor = $(this);
-        var headerH = $('.header-area').outerHeight();
-        $('html, body').stop().animate({
-            scrollTop : $($anchor.attr('href')).offset().top - headerH + "px"
-        }, 1200, 'easeInOutExpo');
+/**
+* Template Name: Eterna - v2.2.0
+* Template URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+!(function($) {
+  "use strict";
 
-        event.preventDefault();
-    });    
-    
-    // Bootstrap ScrollPSY
-    $('body').scrollspy({ 
-        target: '.navbar-collapse',
-        offset: 95
-    })      
-});
+  // Smooth scroll for the navigation menu and links with .scrollto classes
+  var scrolltoOffset = $('#header').outerHeight() - 1;
+  $(document).on('click', '.nav-menu a, .mobile-nav a, .scrollto', function(e) {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      if (target.length) {
+        e.preventDefault();
 
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        var scrollto = target.offset().top - scrolltoOffset;
 
-  ga('create', 'UA-10146041-21', 'auto');
-  ga('send', 'pageview');
+        if ($(this).attr("href") == '#header') {
+          scrollto = 0;
+        }
+
+        $('html, body').animate({
+          scrollTop: scrollto
+        }, 1500, 'easeInOutExpo');
+
+        if ($(this).parents('.nav-menu, .mobile-nav').length) {
+          $('.nav-menu .active, .mobile-nav .active').removeClass('active');
+          $(this).closest('li').addClass('active');
+        }
+
+        if ($('body').hasClass('mobile-nav-active')) {
+          $('body').removeClass('mobile-nav-active');
+          $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
+          $('.mobile-nav-overly').fadeOut();
+        }
+        return false;
+      }
+    }
+  });
+
+  // Activate smooth scroll on page load with hash links in the url
+  $(document).ready(function() {
+    if (window.location.hash) {
+      var initial_nav = window.location.hash;
+      if ($(initial_nav).length) {
+        var scrollto = $(initial_nav).offset().top - scrolltoOffset;
+        $('html, body').animate({
+          scrollTop: scrollto
+        }, 1500, 'easeInOutExpo');
+      }
+    }
+  });
+
+  // Mobile Navigation
+  if ($('.nav-menu').length) {
+    var $mobile_nav = $('.nav-menu').clone().prop({
+      class: 'mobile-nav d-lg-none'
+    });
+    $('body').append($mobile_nav);
+    $('body').prepend('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>');
+    $('body').append('<div class="mobile-nav-overly"></div>');
+
+    $(document).on('click', '.mobile-nav-toggle', function(e) {
+      $('body').toggleClass('mobile-nav-active');
+      $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
+      $('.mobile-nav-overly').toggle();
+    });
+
+    $(document).on('click', '.mobile-nav .drop-down > a', function(e) {
+      e.preventDefault();
+      $(this).next().slideToggle(300);
+      $(this).parent().toggleClass('active');
+    });
+
+    $(document).click(function(e) {
+      var container = $(".mobile-nav, .mobile-nav-toggle");
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        if ($('body').hasClass('mobile-nav-active')) {
+          $('body').removeClass('mobile-nav-active');
+          $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
+          $('.mobile-nav-overly').fadeOut();
+        }
+      }
+    });
+  } else if ($(".mobile-nav, .mobile-nav-toggle").length) {
+    $(".mobile-nav, .mobile-nav-toggle").hide();
+  }
+
+  // Stick the header at top on scroll
+  // $("#header").sticky({
+  //   topSpacing: 0,
+  //   zIndex: '50'
+  // });
+
+  // Real view height for mobile devices
+  if (window.matchMedia("(max-width: 767px)").matches) {
+    $('#hero').css({
+      height: $(window).height()
+    });
+  }
+
+  // Intro carousel
+  var heroCarousel = $("#heroCarousel");
+  var heroCarouselIndicators = $("#hero-carousel-indicators");
+  heroCarousel.find(".carousel-inner").children(".carousel-item").each(function(index) {
+    (index === 0) ?
+    heroCarouselIndicators.append("<li data-target='#heroCarousel' data-slide-to='" + index + "' class='active'></li>"):
+      heroCarouselIndicators.append("<li data-target='#heroCarousel' data-slide-to='" + index + "'></li>");
+
+  });
+
+  heroCarousel.on('slid.bs.carousel', function(e) {
+    $(this).find('h2').addClass('animate__animated animate__fadeInDown');
+    $(this).find('p, .btn-get-started').addClass('animate__animated animate__adeInUp');
+  });
+
+  // Back to top button
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('.back-to-top').fadeIn('slow');
+    } else {
+      $('.back-to-top').fadeOut('slow');
+    }
+  });
+
+  $('.back-to-top').click(function() {
+    $('html, body').animate({
+      scrollTop: 0
+    }, 1500, 'easeInOutExpo');
+    return false;
+  });
+
+  // Clients carousel (uses the Owl Carousel library)
+  // $(".category-carousel").owlCarousel({
+  //   autoplay: false,
+  //   dots: false,
+  //   loop: true,
+  //   nav:true,
+  //   margin: 25,
+  //   responsive: {
+  //     0: {
+  //       items: 2
+  //     },
+  //     768: {
+  //       items: 4
+  //     },
+  //     1229: {
+  //       items: 4
+  //     },
+  //     1230: {
+  //       items: 6
+  //     }
+  //   }
+  // });
+// ad banner carousel (uses the Owl Carousel library)
+  // $(".ad-banner").owlCarousel({
+  //   autoplay: true,
+  //   dots: true,
+  //   loop: true,
+  //   nav:true,
+  //   margin: 25,
+  //   responsive: {
+  //     0: {
+  //       items: 1
+  //     },
+  //     768: {
+  //       items: 3
+  //     },
+  //     1229: {
+  //       items: 3
+  //     },
+  //     1230: {
+  //       items: 3
+  //     }
+  //   }
+  // });
+  // Event category carousel (uses the Owl Carousel library)
+  // $(".event_cat_carousel").owlCarousel({
+  //   autoplay: true,
+  //   autoplayTimeout:2000,
+  //   dots: false,
+  //   loop: true,
+  //   nav:true,
+  //   margin: 25,
+  //   responsive: {
+  //     0: {
+  //       items: 1
+  //     },
+  //     768: {
+  //       items: 3
+  //     },
+  //     1229: {
+  //       items: 4
+  //     },
+  //     1230: {
+  //       items: 4
+  //     }
+  //   }
+  // });
+// First Events carousel (uses the Owl Carousel library)
+  // $(".first_event_carousel").owlCarousel({
+  //   dots: false,
+  //   loop: true,
+  //   nav:true,
+  //   margin: 25,
+  //   responsive: {
+  //     0: {
+  //       items: 1
+  //     },
+  //     768: {
+  //       items: 3
+  //     },
+  //     1229: {
+  //       items: 4
+  //     },
+  //     1230: {
+  //       items: 4
+  //     }
+  //   }
+  // });
+  // second Events carousel (uses the Owl Carousel library)
+  // $(".sec_event_carousel").owlCarousel({
+  //   dots: false,
+  //   loop: true,
+  //   nav:true,
+  //   margin: 25,
+  //   responsive: {
+  //     0: {
+  //       items: 1
+  //     },
+  //     768: {
+  //       items: 3
+  //     },
+  //     1229: {
+  //       items: 4
+  //     },
+  //     1230: {
+  //       items: 4
+  //     }
+  //   }
+  // });
+  // Third Events carousel (uses the Owl Carousel library)
+  // $(".third_event_carousel").owlCarousel({
+  //   dots: false,
+  //   loop: true,
+  //   nav:true,
+  //   margin: 25,
+  //   responsive: {
+  //     0: {
+  //       items: 1
+  //     },
+  //     768: {
+  //       items: 3
+  //     },
+  //     1229: {
+  //       items: 4
+  //     },
+  //     1230: {
+  //       items: 4
+  //     }
+  //   }
+  // });
+   // Third Events carousel (uses the Owl Carousel library)
+  // $(".browse_cat_carousel").owlCarousel({
+  //   dots: false,
+  //   loop: true,
+  //   nav:true,
+  //   margin: 25,
+  //   responsive: {
+  //     0: {
+  //       items: 1
+  //     },
+  //     768: {
+  //       items: 3
+  //     },
+  //     1229: {
+  //       items: 4
+  //     },
+  //     1230: {
+  //       items: 4
+  //     }
+  //   }
+  // });
+  // jQuery counterUp
+  // $('[data-toggle="counter-up"]').counterUp({
+  //   delay: 10,
+  //   time: 1000
+  // });
+
+  // Skills section
+  // $('.skills-content').waypoint(function() {
+  //   $('.progress .progress-bar').each(function() {
+  //     $(this).css("width", $(this).attr("aria-valuenow") + '%');
+  //   });
+  // }, {
+  //   offset: '80%'
+  // });
+
+  // Porfolio isotope and filter
+  // $(window).on('load', function() {
+  //   var portfolioIsotope = $('.portfolio-container').isotope({
+  //     itemSelector: '.portfolio-item',
+  //     layoutMode: 'fitRows'
+  //   });
+
+  //   $('#portfolio-flters li').on('click', function() {
+  //     $("#portfolio-flters li").removeClass('filter-active');
+  //     $(this).addClass('filter-active');
+
+  //     portfolioIsotope.isotope({
+  //       filter: $(this).data('filter')
+  //     });
+  //   });
+
+  //   // Initiate venobox (lightbox feature used in portofilo)
+  //   $(document).ready(function() {
+  //     $('.venobox').venobox();
+  //   });
+  // });
+
+  // Portfolio details carousel
+  // $(".portfolio-details-carousel").owlCarousel({
+  //   autoplay: true,
+  //   dots: true,
+  //   loop: true,
+  //   items: 1
+  // });
+
+})(jQuery);

@@ -466,6 +466,8 @@ z-index: 999;}
 
 .single-product {
   overflow: hidden;
+  padding-right: 20px;
+  
 }
 .single-product:hover {}
 .single-product:hover .product-hover a.add-to-cart-link {top: 32%; text-decoration-line:none !important;}
@@ -1190,3 +1192,4 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
   color: #5a88ca;
   text-decoration-line:none !important;
 }
+

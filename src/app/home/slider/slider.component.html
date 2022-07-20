@@ -1,33 +1,54 @@
-<div class="slider-area">
-    <swiper [config]="config">
-        <div class="swiper-wrapper" *ngFor="let image of images">
-          <div class="swiper-slide">
-            <img [src]="image.image1" alt=" {{ image.image1 }} ">
-          </div>
-          <div class="swiper-slide">
-            <img [src]="image.image2" alt=" {{ image.image2 }} ">
-        </div>
-          <div class="swiper-slide">
-            <img [src]="image.image3" alt=" {{ image.image3 }} ">
-        </div>
-          <div class="swiper-slide">
-            <img [src]="image.image4" alt=" {{ image.image4 }} ">
-        </div>
-          
-        </div>
-       
-        <div class="swiper-pagination"></div>
-       
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-      </swiper>
-<<<<<<< HEAD
-
-
-    <!-- ./Slider -->
-=======
->>>>>>> a232d4fd05491b408a384564df31ba0a0f14294a
-</div>
+ <div class="block-slider block-slider4">
+        <ul class="" id="bxslider-home4" *ngFor="let image of images">
+            <owl-carousel-o [options]="customOptions">
+                <ng-template carouselSlide>   
+            <li>
+                <img [src]="image.image1" alt=" {{ image.image1 }} ">
+                <div class="caption-group">
+                    <h2 class="caption title">
+                        iPhone <span class="primary">6 <strong>Plus</strong></span>
+                    </h2>
+                    <h4 class="caption subtitle">Dual SIM</h4>
+                    <a class="caption button-radius"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+            </ng-template>
+            <ng-template carouselSlide>   
+            <li>  <img [src]="image.image2" alt=" {{ image.image2 }} ">
+                <div class="caption-group">
+                    <h2 class="caption title">
+                        by one, get one <span class="primary">50% <strong>off</strong></span>
+                    </h2>
+                    <h4 class="caption subtitle">school supplies & backpacks.*</h4>
+                    <a class="caption button-radius"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+            </ng-template>
+            <ng-template carouselSlide>   
+            <li> <img [src]="image.image3" alt=" {{ image.image3 }} ">
+                <div class="caption-group">
+                    <h2 class="caption title">
+                        Apple <span class="primary">Store <strong>Ipod</strong></span>
+                    </h2>
+                    <h4 class="caption subtitle">Select Item</h4>
+                    <a class="caption button-radius" ><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+            </ng-template>
+            <ng-template carouselSlide>   
+            <li>  <img [src]="image.image4" alt=" {{ image.image4 }} ">
+                <div class="caption-group">
+                  <h2 class="caption title">
+                        Apple <span class="primary">Store <strong>Ipod</strong></span>
+                    </h2>
+                    <h4 class="caption subtitle">& Phone</h4>
+                    <a class="caption button-radius"><span class="icon"></span>Shop now</a>
+                </div>
+            </li>
+            </ng-template>
+        </owl-carousel-o>
+        </ul>
+</div> 
     <div class="promo-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
