@@ -1,0 +1,20 @@
+del,ins{
+    font-size: medium;
+}
+.input-text {
+    font-size: small;
+ }
+ a{
+    text-decoration: none;
+ }
+ a:hover, a:focus{
+color: #17a78b;
+text-decoration: underline;
+ }
+
+ product-tab ,a:hover, a:focus{
+    color: #222;
+    display: block;
+    font-size: 16px;
+    padding: 10px 30px;
+ }
