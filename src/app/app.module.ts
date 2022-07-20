@@ -30,7 +30,7 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './login/loading-spinner/loading-spinner.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +63,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NgxUsefulSwiperModule,
     FormsModule,
     HttpClientModule,
-    CarouselModule
+    CarouselModule,
+    BrowserAnimationsModule
 
   ],
   providers: [],
