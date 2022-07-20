@@ -24,11 +24,13 @@ export class AuthService {
 
     constructor(private http: HttpClient, private router: Router) { }
 
-    signup(email: string, password: string) {
+    signup(first_name: string, last_name: string, email: string, password: string) {
 
         return this.http.post<AuthResponseData>(
-            'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCZWQaY2Q8hJOkUXmkRCcC2UfywTJT8t-g',
+            'http://95.111.202.157/mangoproject/public/api/signup',
             {
+                first_name: first_name,
+                last_name: last_name,
                 email: email,
                 password: password,
                 returnSecureToken: true
@@ -49,7 +51,8 @@ export class AuthService {
     }
 
     login(email: string, password: string) {
-        return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCZWQaY2Q8hJOkUXmkRCcC2UfywTJT8t-g ',
+        return this.http.post<AuthResponseData>(
+            'http://95.111.202.157/mangoproject/public/api/login',
             {
                 email: email,
                 password: password,

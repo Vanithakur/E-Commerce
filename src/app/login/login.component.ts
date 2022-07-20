@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
 		if (!form.valid) {
 			return;
 		}
-
+        const first_name = form.value.first_name;
+		const last_name = form.value.last_name;
 		const email = form.value.email;
 		const password = form.value.password;
 
@@ -40,7 +41,7 @@ export class LoginComponent implements OnInit {
 			authObs = this.authService.login(email,password)
 			
 		} else {
-			authObs = this.authService.signup(email, password)
+			authObs = this.authService.signup(first_name, last_name, email, password)
 		}
 
 		authObs.subscribe(
