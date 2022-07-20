@@ -46,24 +46,5 @@ promos:any = [];
     nav: true
   }
 
-  // dynamicSlides=[
-  //   {
-  //     image:'http://localhost:4200/assets/img/banner-ad/image_01.jpg',
-  //     header1: 'What we learn from cooking together with children'
-  //   },
-  //   {
-  //     image: 'http://localhost:4200/assets/img/banner-ad/image_02.jpg',
-  //     header2:'Kidzania Back to school offer In Dubai'
-  //   },
-  //   {
-  //     image: 'http://localhost:4200/assets/img/banner-ad/image_03.jpg',
-  //     header3:'Dubai events in july: DSS D3 Restaurant'
-  //   },
-  //   {
-  //     image: 'http://localhost:4200/assets/img/banner-ad/image_04.jpg',
-  //     header4: 'Pumpkin cooking party with children'
-
-  //   }
-  // ]
 
 }
