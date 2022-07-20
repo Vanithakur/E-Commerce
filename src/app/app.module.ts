@@ -25,8 +25,10 @@ import { OrdersComponent } from './profile/orders/orders.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { LoginComponent } from './login/login.component';
 
-
-
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { FormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { LoadingSpinnerComponent } from './login/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -50,12 +52,18 @@ import { LoginComponent } from './login/login.component';
     OrdersComponent,
     WishlistComponent,
     LoginComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HeaderRoutingModule,
-    NgbModule
+    NgbModule,
+    NgxUsefulSwiperModule,
+    FormsModule,
+    HttpClientModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
