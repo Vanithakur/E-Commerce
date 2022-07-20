@@ -29,6 +29,12 @@
               "src/favicon.ico",
               "src/assets"
             ],
+<<<<<<< HEAD
+            "styles": [
+              "./node_modules/swiper/swiper-bundle.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+=======
             "styles": [         
               "src/styles.css",
               "src/assets/css/style.css",
@@ -40,6 +46,7 @@
             
               
              
+>>>>>>> bd604afaff1746c7cc3dfe7dc29a4ea7281e47fa
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
