@@ -12,11 +12,12 @@
             </div> 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li routerLinkActive="active"><a routerLink="" >Home</a></li>
-                    <li><a routerLink="products" >Products</a></li>
-                    <li><a routerLink="product_details" routerLinkActive="active">Product Details</a></li>
-                    <li><a routerLink="cart" routerLinkActive="active">Cart</a></li>
-                    <li><a routerLink="checkout" routerLinkActive="active">Checkout</a></li>
+                   
+                    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="" >Home</a></li>
+                    <li routerLinkActive="active"><a routerLink="products" >Products</a></li>
+                    <li routerLinkActive="active"><a routerLink="product_details" routerLinkActive="active">Product Details</a></li>
+                    <li routerLinkActive="active"><a routerLink="cart" routerLinkActive="active">Cart</a></li>
+                    <li routerLinkActive="active"><a routerLink="checkout" routerLinkActive="active">Checkout</a></li>
                     <li><a>Category</a></li>
                     <li><a>Others</a></li>
                     <li><a>Contact</a></li>
