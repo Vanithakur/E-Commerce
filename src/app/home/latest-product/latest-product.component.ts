@@ -16,7 +16,7 @@ export class LatestProductComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
-    dots: true,
+    dots: false,
     navSpeed: 300,
     navText: ['&#8249', '&#8250;'],
     responsive: {
