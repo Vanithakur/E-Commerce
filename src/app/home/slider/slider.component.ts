@@ -12,7 +12,15 @@ promos:any = [];
 
   constructor(private sliderService: SliderService) { }
   ngOnInit(): void {
-   this.images = this.sliderService.getImages();   
+   this.images = this.sliderService.getImages().subscribe(
+    imagesData => {
+      console.log(imagesData);   
+     this.images = imagesData.data;    
+      
+    });
+    
+   console.log(this.images);
+     
    this.promos = this.sliderService.getPromo();
    console.log(this.promos);
   
