@@ -38,8 +38,7 @@
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
               "./node_modules/font-awesome/css/font-awesome.min.css",
               "src/assets/css/responsive.css" 
-            
-              
+
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",

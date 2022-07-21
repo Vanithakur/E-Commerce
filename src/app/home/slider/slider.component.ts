@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SwiperOptions } from 'swiper';
 import { SliderService } from './slider.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
@@ -34,7 +33,7 @@ promos:any = [];
     pullDrag: false,
     dots: true,
     navSpeed: 300,
-    navText: ['&#8249', '&#8250;'],
+    navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
     responsive: {
       0: {
         items: 1 

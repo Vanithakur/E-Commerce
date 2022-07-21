@@ -19,7 +19,7 @@ export class ProductDetailComponent implements OnInit {
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
-    dots: true,
+    dots: false,
     navSpeed: 300,
     navText: ['&#8249', '&#8250;'],
     responsive: {
