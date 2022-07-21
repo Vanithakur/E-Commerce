@@ -1,20 +1,24 @@
+ <div class="container">
  <div class="block-slider block-slider4">
-        <ul class="" id="bxslider-home4" *ngFor="let image of images">
+        <ul class="" id="bxslider-home4">
+           
             <owl-carousel-o [options]="customOptions">
+                <ng-container  *ngFor="let image of images" >
                 <ng-template carouselSlide>   
             <li>
-                <img [src]="image.image1" alt=" {{ image.image1 }} ">
+                <img [src]="image.banner" alt=" {{ image.banner }} " style="height: 400px; width:400px">
                 <div class="caption-group">
                     <h2 class="caption title">
-                        iPhone <span class="primary">6 <strong>Plus</strong></span>
+                        {{image.title}} <span class="primary">6 <strong>Plus</strong></span>
                     </h2>
                     <h4 class="caption subtitle">Dual SIM</h4>
                     <a class="caption button-radius"><span class="icon"></span>Shop now</a>
                 </div>
             </li>
             </ng-template>
-            <ng-template carouselSlide>   
-            <li>  <img [src]="image.image2" alt=" {{ image.image2 }} ">
+        </ng-container>
+            <!-- <ng-template carouselSlide>   
+            <li>  <img [src]="image.image2" alt=" {{ image.banner }} ">
                 <div class="caption-group">
                     <h2 class="caption title">
                         by one, get one <span class="primary">50% <strong>off</strong></span>
@@ -25,7 +29,7 @@
             </li>
             </ng-template>
             <ng-template carouselSlide>   
-            <li> <img [src]="image.image3" alt=" {{ image.image3 }} ">
+            <li> <img [src]="image.image3" alt=" {{ image.banner }} ">
                 <div class="caption-group">
                     <h2 class="caption title">
                         Apple <span class="primary">Store <strong>Ipod</strong></span>
@@ -36,7 +40,7 @@
             </li>
             </ng-template>
             <ng-template carouselSlide>   
-            <li>  <img [src]="image.image4" alt=" {{ image.image4 }} ">
+            <li>  <img [src]="image.image4" alt=" {{ image.banner }} ">
                 <div class="caption-group">
                   <h2 class="caption title">
                         Apple <span class="primary">Store <strong>Ipod</strong></span>
@@ -45,7 +49,7 @@
                     <a class="caption button-radius"><span class="icon"></span>Shop now</a>
                 </div>
             </li>
-            </ng-template>
+            </ng-template> -->
         </owl-carousel-o>
         </ul>
 </div> 
@@ -80,3 +84,4 @@
             </div>
         </div>
     </div>
+</div>
