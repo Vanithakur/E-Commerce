@@ -1,4 +1,6 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Injectable(
     {
@@ -9,7 +11,7 @@ export class SliderService {
     Images: any =[];
     promo: any = [];
 
-    constructor(){
+    constructor(private http:HttpClient, private router: Router){
 
     }
    getImages(){
@@ -22,6 +24,7 @@ export class SliderService {
         }
     ];
    }
+
    getPromo(){
     return this.promo = [
         {

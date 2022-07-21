@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, tap } from "rxjs/operators";
+import { catchError, map, tap } from "rxjs/operators";
 import { Subject, throwError } from "rxjs";
 import { User } from "./user.model";
 import { Router } from "@angular/router";
@@ -56,7 +56,7 @@ export class AuthService {
             {
                 email: email,
                 password: password,
-                returnSecureToken: true
+                // returnSecureToken: true
             }
         )
             .pipe
@@ -103,11 +103,12 @@ export class AuthService {
     logout() {
         this.user.next(null);
         this.router.navigate(['/login']);
-        localStorage.removeItem('userData');
+        // localStorage.removeItem('userData');
         if(this.tokenExpirationTimer){
             clearTimeout(this.tokenExpirationTimer);
         }
         this.tokenExpirationTimer = null;
+         localStorage.removeItem('currentUser');
     }
 
     autoLogout(expirationDuration: number) {

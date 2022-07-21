@@ -14,10 +14,11 @@ export class LoginComponent implements OnInit {
 	isLoginMode = true;
 	isLoading = false;
 	error: string | undefined;
-	
+    dataSource:any = '';
 	constructor(private authService: AuthService, private router: Router ) { }
 
 	ngOnInit(): void {
+	
 	}
 
 	onSwitchMode() {
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
 
 		if (this.isLoginMode) {
 			authObs = this.authService.login(email,password)
+		
 			
 		} else {
 			authObs = this.authService.signup(first_name, last_name, email, password)
@@ -49,6 +51,7 @@ export class LoginComponent implements OnInit {
 				console.log(resData);
 				this.isLoading = false;
 				this.router.navigate(['']);
+	
 
 			},
 			errorMessage => {
@@ -58,6 +61,7 @@ export class LoginComponent implements OnInit {
 			}
 		);
 		form.reset();
+		
 	}
 
 
