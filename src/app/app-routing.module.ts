@@ -9,13 +9,24 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductsComponent } from './products/products.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {path: 'home', component: HomeComponent},
   {path:'products', component: ProductsComponent },
   {path:'product_details', component: ProductDetailComponent },
   {path:'cart',component: CartComponent},
-  {path:'checkout', component: CheckoutComponent },
-  {path:'login', component: LoginComponent }
+  {path:'checkout', component: CheckoutComponent},
+  {path:'login', component: LoginComponent},
+  {
+    
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
 
+    children: [
+      { path: 'cart', component: CartComponent },
+      { path: 'checkout', component: CheckoutComponent }
+    ]
+  },
 ];
 
 @NgModule({

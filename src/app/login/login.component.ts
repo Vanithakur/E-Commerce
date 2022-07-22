@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
 			resData => {
 				console.log(resData);
 				this.isLoading = false;
-				this.router.navigate(['']);
+				this.router.navigate(['/home']);
 	
 
 			},

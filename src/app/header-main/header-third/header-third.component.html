@@ -13,11 +13,13 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                    
-                    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="" >Home</a></li>
+                    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/home" >Home</a></li>
                     <li routerLinkActive="active"><a routerLink="products" >Products</a></li>
                     <li routerLinkActive="active"><a routerLink="product_details">Product Details</a></li>
-                    <li routerLinkActive="active"><a routerLink="/cart">Cart</a></li>
-                    <li routerLinkActive="active"><a routerLink="checkout">Checkout</a></li>
+                    <li routerLinkActive="active" *ngIf="isAuthenticated">
+                        <a routerLink="/cart">Cart</a>
+                    </li>
+                    <li routerLinkActive="active" *ngIf="isAuthenticated"><a routerLink="checkout">Checkout</a></li>
                     <li><a>Category</a></li>
                     <li><a>Others</a></li>
                     <li><a>Contact</a></li>
