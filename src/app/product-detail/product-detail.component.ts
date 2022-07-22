@@ -15,8 +15,6 @@ isReview:boolean = false;
 	ngOnInit(): void {
 	}
 
-
-
     
   isTab() {
    this.isSelected= false;
