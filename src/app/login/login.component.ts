@@ -47,6 +47,8 @@ export class LoginComponent implements OnInit {
 
 		if (this.isLoginMode) {
 			authObs = this.authService.login(email,password)
+			console.log(authObs);
+			
 		
 			
 		} else {

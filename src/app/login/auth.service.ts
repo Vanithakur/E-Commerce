@@ -1,26 +1,34 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, tap } from "rxjs/operators";
-import { Subject, throwError } from "rxjs";
+import { BehaviorSubject, Subject, throwError } from "rxjs";
 import { User } from "./user.model";
 import { Router } from "@angular/router";
 
 export interface AuthResponseData {
-    kind: string;
-    idToken: string;
-    email: string;
-    refreshToken: string;
-    expiresIn: string;
-    localId: string;
-    registered?: boolean;
+    // kind: string;
+    // token: string;
+    // email: string;
+    // Id: string;
+    // registered?: boolean;
+    success: boolean;
+    message: string;
+    data: {
+      email: string,
+      first_name?: string,
+      last_name?: string,
+      password?: string,
+      id: string,
+      token: string,
+      userName?: string,
+    }
 
 }
 
 @Injectable({ providedIn: "root" })
 
 export class AuthService {
-    user: any = new Subject<User>();
-    private tokenExpirationTimer: any;
+    user:any = new Subject<User>();
 
     constructor(private http: HttpClient, private router: Router) { }
 
@@ -39,9 +47,10 @@ export class AuthService {
             .pipe(catchError(this.handleError),
                 tap(resData => {
                     this.handleAuthentication(
-                        resData.email,
-                        resData.localId,
-                        resData.idToken
+                        resData.data.email,
+                        resData.data.id,
+                        resData.data.token,
+                       
 
                     );
                 })
@@ -52,19 +61,21 @@ export class AuthService {
     login(email: string, password: string) {
         return this.http.post<AuthResponseData>(
             'http://95.111.202.157/mangoproject/public/api/login',
-            {
+            {               
                 email: email,
-                password: password,
+                password: password            
                 // returnSecureToken: true
             }
         )
             .pipe
             (catchError(this.handleError),
                 tap(resData => {
+                    // console.log(resData.data);
+                    
                     this.handleAuthentication(
-                        resData.email,
-                        resData.localId,
-                        resData.idToken
+                        resData.data.email,
+                        resData.data.id,
+                        resData.data.token
 
                     );
                 })
@@ -85,7 +96,10 @@ export class AuthService {
             token
         );
         this.user.next(user);
+        console.log(user);
+        
         localStorage.setItem('userData', JSON.stringify(user));
+        
     }
 
     private handleError(errorRes: HttpErrorResponse) {
@@ -110,24 +124,3 @@ export class AuthService {
 function getItem(arg0: string): ((this: any, key: string, value: any) => any) | undefined {
     throw new Error("Function not implemented.");
 }
-
-// autoLogin(){
-//     const userData: {
-//         email: string;
-//         id: string;
-//         _token: string;
-//         _tokenExpirationDate: string;
-
-//     } = JSON.parse(localStorage.getItem('userData'));
-//     if(!userData){
-//         return;
-//     }
-
-//     const loadedUser = new User(userData.email, userData.id, userData._token, new Date(userData._tokenExpirationDate));
-
-//     if(loadedUser.token){
-//         this.user.next(loadedUser);
-//         const expirationDuration  =  new Date ( userData._tokenExpirationDate).getTime() - new Date().getTime();
-//         this.autoLogout(expirationDuration)
-//     }
-// }
