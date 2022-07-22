@@ -10,8 +10,8 @@
 	font-size: 35px;
 	left: 0;
 	box-shadow: 5px 0.5px #fffdfd;
-	
- }
+}
+
 .owl-next {
 	border-radius: 50% !important;
 	right: 0;
@@ -23,28 +23,25 @@
 	width: 40px;
 	font-size: 14px;
 	box-shadow: 5px 0.5px #fffdfd;
+}
 
- }
+.owl-prev i {
+	font-size: 25px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
 
- .owl-prev i {
-    font-size: 25px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-  }
+.owl-next i {
+	font-size: 25px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
 
-  .owl-next i {
-    font-size: 25px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-  }
-
-  .latest-product .owl-prev{
+.latest-product .owl-prev {
 	position: absolute;
 	left: -115;
 	top: -68;
@@ -52,10 +49,9 @@
 	height: 40px;
 	width: 40px;
 	font-size: 20px;
-	
-  }
+}
 
-  .latest-product .owl-next{
+.latest-product .owl-next {
 	position: absolute;
 	right: 8;
 	top: -68;
@@ -63,28 +59,25 @@
 	height: 40px;
 	width: 40px;
 	font-size: 20px;
-	
-  }
+}
 
-  .latest-product .owl-next i {
-    font-size: 25px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-  }
+.latest-product .owl-next i {
+	font-size: 25px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
 
-  .latest-product .owl-prev i {
-    font-size: 25px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-  }
+.latest-product .owl-prev i {
+	font-size: 25px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
 
-  .brands-area .owl-prev{
+.brands-area .owl-prev {
 	position: absolute;
 	left: -120;
 	top: -65;
@@ -92,10 +85,9 @@
 	height: 41px;
 	width: 41px;
 	font-size: 22px;
-	
-  }
+}
 
-  .brands-area .owl-next{
+.brands-area .owl-next {
 	position: absolute;
 	left: -66;
 	top: -65;
@@ -103,34 +95,41 @@
 	height: 41px;
 	width: 41px;
 	font-size: 22px;
-	
-  }
+}
 
-.footer-card-icon i{
+.footer-card-icon i {
 	margin-left: 8px;
 	margin-right: 8px;
 	padding: 5px;
 	font-size: 40px;
 }
 
-/* .product-detail .owl-prev{
+.related-products-carousel .owl-next {
 	position: absolute;
-	left: -120;
-	top: -65;
-	margin-right: -15%;
+	top: -25;
+	margin-right: -12%;
 	height: 41px;
 	width: 41px;
-	font-size: 22px;
-	
-  } */
+	font-size: 30px;
+}
 
-  .related-products-carousel .owl-next{
+.related-products-carousel .owl-prev {
 	position: absolute;
-	left: 190;
-	top: -65;
+	left: -110;
+	top: -25;
 	margin-right: -15%;
 	height: 41px;
 	width: 41px;
 	font-size: 22px;
-	
-  }
+}
+
+.woocommerce-billing-fields{
+	width: 30%;
+}
+
+.woocommerce-shipping-fields {
+	width: 25%;
+	position: absolute;
+	margin-left: 300px;
+}
+
