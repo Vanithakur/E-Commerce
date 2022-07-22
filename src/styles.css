@@ -123,13 +123,27 @@
 	font-size: 22px;
 }
 
+.woocommerce{
+	width: 92%;
+}
+
 .woocommerce-billing-fields{
-	width: 30%;
+    display: inline-block;
+	width: 23%;
+	float: left;
+	position: absolute;
+
 }
 
 .woocommerce-shipping-fields {
-	width: 25%;
+	width:23%;
 	position: absolute;
-	margin-left: 300px;
+	margin-left: 350px;
+	float: right;
+}
+
+
+.billing-field{
+	height: 180vh;
 }
 
