@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs'
 import { AuthResponseData, AuthService } from './auth.service';
@@ -13,12 +13,19 @@ import { AuthResponseData, AuthService } from './auth.service';
 export class LoginComponent implements OnInit {
 	isLoginMode = true;
 	isLoading = false;
+	authForm:any;
 	error: string | undefined;
     dataSource:any = '';
 	constructor(private authService: AuthService, private router: Router ) { }
 
 	ngOnInit(): void {
-	
+		this.authForm = new FormGroup({
+			'userData' : new FormGroup({
+			'first_name' : new FormControl(null, [Validators.required]),
+			'last_name': new FormControl(null, [Validators.required]),
+			'email' : new FormControl(null, [Validators.required, Validators.email])
+		  })
+		});
 	}
 
 	onSwitchMode() {

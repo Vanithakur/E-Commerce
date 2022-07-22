@@ -113,18 +113,18 @@
                                 <div role="tabpanel">
                                     <ul class="product-tab" role="tablist">
                                         <li role="presentation" class="active">
-                                            <a id="ex3-tab-1" href="#home"  aria-controls="home"
-                                            aria-selected="true" role="tab" data-toggle="tab">Description</a></li>
-                                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Reviews</a></li>
+                                            <a id="ex3-tab-1" 
+                                             (click)="isTab()">Description</a></li>
+                                        <li role="presentation"><a (click)="isTab()" aria-controls="profile" role="tab" data-toggle="tab">Reviews</a></li>
                                     </ul>
                                     <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="ex3-tab-1">
+                                        <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="ex3-tab-1" *ngIf="!isSelected">
                                             <h2>Product Description</h2>  
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique, diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus ex aliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissim porta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodales nisl. Aliquam eget dolor eget elit malesuada aliquet. In varius lorem lorem, semper bibendum lectus lobortis ac.</p>
 
                                             <p>Mauris placerat vitae lorem gravida viverra. Mauris in fringilla ex. Nulla facilisi. Etiam scelerisque tincidunt quam facilisis lobortis. In malesuada pulvinar neque a consectetur. Nunc aliquam gravida purus, non malesuada sem accumsan in. Morbi vel sodales libero.</p>
                                         </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="profile">
+                                        <div role="tabpanel" class="tab-pane fade" id="profile" *ngIf="isReview">
                                             <h2>Reviews</h2>
                                             <div class="submit-review">
                                                 <p><label for="name">Name</label> <input name="name" type="text"></p>

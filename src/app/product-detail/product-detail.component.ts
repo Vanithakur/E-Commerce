@@ -7,7 +7,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-
+isSelected:boolean = true;
+isReview:boolean = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -41,5 +42,9 @@ export class ProductDetailComponent implements OnInit {
       },
     },
     nav: true
+  }
+  isTab() {
+   this.isSelected= false;
+   this.isReview = true;
   }
 }
