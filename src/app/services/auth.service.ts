@@ -2,8 +2,9 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, tap } from "rxjs/operators";
 import { BehaviorSubject, Subject, throwError } from "rxjs";
-import { User } from "./user.model";
+
 import { Router } from "@angular/router";
+import { User } from "../model/user.model";
 
 export interface AuthResponseData {
     // kind: string;
@@ -49,13 +50,10 @@ export class AuthService {
                     this.handleAuthentication(
                         resData.data.email,
                         resData.data.id,
-                        resData.data.token,
-                       
-
+                        resData.data.token                      
                     );
                 })
             );
-
     }
 
     login(email2: string, password2: string) {
@@ -76,7 +74,6 @@ export class AuthService {
                         resData.data.email,
                         resData.data.id,
                         resData.data.token
-
                     );
                 })
             );
@@ -95,15 +92,14 @@ export class AuthService {
             userId,
             token
         );
-        this.user.next(user);
-        console.log(user);
-        
+        this.user.next(user);        
         localStorage.setItem('userData', JSON.stringify(user));
         
     }
 
     private handleError(errorRes: HttpErrorResponse) {
         let errorMessage = 'An error occured!';
+        
         if (!errorRes.error || !errorRes.error.error) {
             return throwError(errorMessage);
         }

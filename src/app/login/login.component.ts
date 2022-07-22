@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs'
-import { AuthResponseData, AuthService } from './auth.service';
+import { AuthResponseData, AuthService } from '../services/auth.service';
+
 
 
 @Component({
@@ -44,7 +45,6 @@ export class LoginComponent implements OnInit {
 	}
 
 	onSubmit() {
-		console.log(this.singupForm.value);
 		// console.log(this.loginData.value.loginData.email);
 		if (!this.singupForm.valid && !this.loginData.valid) {
 			return;
@@ -62,13 +62,8 @@ export class LoginComponent implements OnInit {
 		this.isLoading = true;
 
 		if (this.isLoginMode) {
-			console.log(email2);
-			
 			authObs = this.authService.login(email2,password2)
-			console.log(authObs);
-			
-		
-			
+	
 		} else {
 			authObs = this.authService.signup(first_name, last_name, email, password)
 		}
@@ -78,7 +73,6 @@ export class LoginComponent implements OnInit {
 				console.log(resData);
 				this.isLoading = false;
 				this.router.navigate(['/home']);
-	
 
 			},
 			errorMessage => {
