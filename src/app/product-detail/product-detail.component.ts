@@ -8,11 +8,20 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class ProductDetailComponent implements OnInit {
 
-	constructor() { }
+isSelected:boolean = true;
+isReview:boolean = false;
+  constructor() { }
 
 	ngOnInit(): void {
 	}
 
+
+
+    
+  isTab() {
+   this.isSelected= false;
+   this.isReview = true;
+  }
 
 	customOptions: OwlOptions = {
 		loop: true,
@@ -42,4 +51,5 @@ export class ProductDetailComponent implements OnInit {
 		},
 		nav: true
 	}
+
 }
