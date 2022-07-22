@@ -12,6 +12,8 @@ import { AuthResponseData, AuthService } from './auth.service';
 })
 export class LoginComponent implements OnInit {
 	isLoginMode = true;
+	singupForm:any;
+	loginData:any;
 	isLoading = false;
 	authForm:any;
 	error: string | undefined;
@@ -19,12 +21,21 @@ export class LoginComponent implements OnInit {
 	constructor(private authService: AuthService, private router: Router ) { }
 
 	ngOnInit(): void {
-		this.authForm = new FormGroup({
+		this.singupForm = new FormGroup({
 			'userData' : new FormGroup({
 			'first_name' : new FormControl(null, [Validators.required]),
-			'last_name': new FormControl(null, [Validators.required]),
-			'email' : new FormControl(null, [Validators.required, Validators.email])
+			'last_name' : new FormControl(null, [Validators.required]),
+			'email' : new FormControl(null, [Validators.required, Validators.email]),
+			'password': new FormControl(null, [Validators.required])
 		  })
+
+		});
+		this.loginData = new FormGroup({
+		  'loginData' : new FormGroup({
+			'email' : new FormControl(null, [Validators.required, Validators.email]),
+			'password': new FormControl(null, [Validators.required])
+		  })
+
 		});
 	}
 
@@ -32,21 +43,28 @@ export class LoginComponent implements OnInit {
 		this.isLoginMode = !this.isLoginMode;
 	}
 
-	onSubmit(form: NgForm) {
-		if (!form.valid) {
+	onSubmit() {
+		console.log(this.singupForm.value);
+		// console.log(this.loginData.value.loginData.email);
+		if (!this.singupForm.valid && !this.loginData.valid) {
 			return;
 		}
-        const first_name = form.value.first_name;
-		const last_name = form.value.last_name;
-		const email = form.value.email;
-		const password = form.value.password;
+        const first_name = this.singupForm.value.userData.first_name;
+		const last_name = this.singupForm.value.userData.last_name;
+		const email = this.singupForm.value.userData.email;
+		const password = this.singupForm.value.userData.password;
+
+		const email2 = this.loginData.value.loginData.email;		
+		const password2 = this.loginData.value.loginData.password;
 
 		let authObs : Observable<AuthResponseData>;
 
 		this.isLoading = true;
 
 		if (this.isLoginMode) {
-			authObs = this.authService.login(email,password)
+			console.log(email2);
+			
+			authObs = this.authService.login(email2,password2)
 			console.log(authObs);
 			
 		
@@ -69,7 +87,7 @@ export class LoginComponent implements OnInit {
 				this.isLoading = false;
 			}
 		);
-		form.reset();
+		this.singupForm.reset();
 		
 	}
 

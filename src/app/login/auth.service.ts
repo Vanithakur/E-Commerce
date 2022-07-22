@@ -58,19 +58,19 @@ export class AuthService {
 
     }
 
-    login(email: string, password: string) {
+    login(email2: string, password2: string) {
         return this.http.post<AuthResponseData>(
             'http://95.111.202.157/mangoproject/public/api/login',
             {               
-                email: email,
-                password: password            
+                email: email2,
+                password: password2            
                 // returnSecureToken: true
             }
         )
             .pipe
             (catchError(this.handleError),
                 tap(resData => {
-                    // console.log(resData.data);
+                    console.log(resData.data);
                     
                     this.handleAuthentication(
                         resData.data.email,
