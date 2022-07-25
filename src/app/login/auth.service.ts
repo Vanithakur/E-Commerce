@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, tap } from "rxjs/operators";
-import { BehaviorSubject, Subject, throwError } from "rxjs";
+import { BehaviorSubject, ReplaySubject, Subject, throwError } from "rxjs";
 import { User } from "./user.model";
 import { Router } from "@angular/router";
 
@@ -28,7 +28,17 @@ export interface AuthResponseData {
 @Injectable({ providedIn: "root" })
 
 export class AuthService {
+   
     user:any = new Subject<User>();
+   
+   
+    // user =  new BehaviorSubject<User | null >(null);
+    // private user: Subject<User> = new BehaviorSubject<User>(null);
+    // private user: Subject<User> = new ReplaySubject<User>(1);
+
+  
+   
+  
 
     constructor(private http: HttpClient, private router: Router) { }
 

@@ -70,7 +70,7 @@
 
             <div class="col-md-8">
                 <div class="product-content-right">
-                    <div class="woocommerce">
+                    <div class="woocommerce" >
                         <form method="post" action="#">
                             <table cellspacing="0" class="shop_table cart">
                                 <thead>
@@ -79,7 +79,7 @@
                                         <th class="product-thumbnail">&nbsp;</th>
                                         <th class="product-name">Product</th>
                                         <th class="product-price">Price</th>
-                                        <th class="product-quantity">Quantity</th>
+                                        <th class="product-quantity">Quantity:{{qty}}</th>
                                         <th class="product-subtotal">Total</th>
                                     </tr>
                                 </thead>
@@ -105,10 +105,10 @@
 
                                         <td class="product-quantity">
                                             <div class="quantity buttons_added">
-                                                <input type="button" class="minus" value="-">
+                                                <input type="button" class="minus" value="-" (click)="dec()">
                                                 <input type="number" size="4" class="input-text qty text" title="Qty"
                                                     value="1" min="0" step="1">
-                                                <input type="button" class="plus" value="+">
+                                                <input type="button" class="plus" value="+" (click)="inc()">
                                             </div>
                                         </td>
 
