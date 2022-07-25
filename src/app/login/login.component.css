@@ -5,3 +5,10 @@ button.btn.btn-primary{
     border-color: rgb(78, 78, 197);
 
 }
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+  .help-block {
+    color: red;
+    font-size: 14px;
+  }

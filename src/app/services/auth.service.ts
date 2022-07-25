@@ -1,9 +1,15 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, tap } from "rxjs/operators";
+<<<<<<< HEAD:src/app/login/auth.service.ts
 import { BehaviorSubject, ReplaySubject, Subject, throwError } from "rxjs";
 import { User } from "./user.model";
+=======
+import { BehaviorSubject, Subject, throwError } from "rxjs";
+
+>>>>>>> 9963746e8a39e37875ffb7df6b23295441a3d3ee:src/app/services/auth.service.ts
 import { Router } from "@angular/router";
+import { User } from "../model/user.model";
 
 export interface AuthResponseData {
     // kind: string;
@@ -59,34 +65,30 @@ export class AuthService {
                     this.handleAuthentication(
                         resData.data.email,
                         resData.data.id,
-                        resData.data.token,
-                       
-
+                        resData.data.token                      
                     );
                 })
             );
-
     }
 
-    login(email: string, password: string) {
+    login(email2: string, password2: string) {
         return this.http.post<AuthResponseData>(
             'http://95.111.202.157/mangoproject/public/api/login',
             {               
-                email: email,
-                password: password            
+                email: email2,
+                password: password2            
                 // returnSecureToken: true
             }
         )
             .pipe
             (catchError(this.handleError),
                 tap(resData => {
-                    // console.log(resData.data);
+                    console.log(resData.data);
                     
                     this.handleAuthentication(
                         resData.data.email,
                         resData.data.id,
                         resData.data.token
-
                     );
                 })
             );
@@ -105,15 +107,14 @@ export class AuthService {
             userId,
             token
         );
-        this.user.next(user);
-        console.log(user);
-        
+        this.user.next(user);        
         localStorage.setItem('userData', JSON.stringify(user));
         
     }
 
     private handleError(errorRes: HttpErrorResponse) {
         let errorMessage = 'An error occured!';
+        
         if (!errorRes.error || !errorRes.error.error) {
             return throwError(errorMessage);
         }

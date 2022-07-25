@@ -9,22 +9,62 @@
 		<div *ngIf="isLoading" style = "text-align: center;">
 			<app-loading-spinner></app-loading-spinner>
 		</div>
-	  <form  #authForm="ngForm"  (ngSubmit)="onSubmit(authForm)" *ngIf = "!isLoading">
+	  <!-- <form  #authForm="ngForm"  (ngSubmit)="onSubmit(authForm)" *ngIf = "!isLoading">
 		<div class="form-group">
 		  <label for="email">E-Mail</label>
 		  <input type="email" id="email" class="form-control" ngModel name="email" required email/>
-		  <p *ngIf="!authForm.valid && authForm.touched">Please enter the Email! </p>
+		  <p *ngIf="!authForm.valid">Please enter the Email! </p>
 		</div>
 		<div class="form-group">
 		  <label for="password">Password</label>
 		  <input type="password" id="password" class="form-control" ngModel name="password" required minlength="6"/>
-		  <p *ngIf="!authForm.valid && authForm.touched">Please enter the password with atleast 6 min char! </p>
+		  <p *ngIf="!authForm.valid">Please enter the password with atleast 6 min char! </p>
 		</div>
 		<div><br>
 		  <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? 'Login' : 'Sign Up'}}</button> |
 		  <button class="btn btn-primary" (click)="onSwitchMode()" type="button">Switch to{{ isLoginMode ? 'Sign Up' : 'Login'}}</button>
 		</div>
+	  </form> -->
+	  <form [formGroup]="loginData" (ngSubmit)="onSubmit()" *ngIf = "!isLoading">
+		<div formGroupName="loginData">
+		  <div class="form-group">
+			<label for="email">email</label>
+			<input
+			  type="text"
+			  id="email"
+			  formControlName = "email"
+			  class="form-control">
+			  <span  
+			  *ngIf="!loginData.get('loginData.email').valid && loginData.get('loginData.email').touched"
+			  class="help-block">
+			  Please Enter the valid email!
+			</span>
+		  </div>
+		  <div class="form-group">
+			<label for="username">Password</label>
+			<input
+			  type="password"
+			  id="username"
+			  formControlName = "password"
+			  class="form-control">
+			  <span  
+			  *ngIf="!loginData.get('loginData.password').valid && loginData.get('loginData.password').touched"
+			  class="help-block">
+			  Please Enter the valid Password!
+			</span>
+		  </div>
+		  
+		</div>
+	   
+		
+		<br>
+	
+	  <button class="btn btn-primary" type="submit" [disabled]="!loginData.valid">{{ isLoginMode ? 'Login' : 'Sign Up'}}</button> |
+	  <button class="btn btn-primary" (click)="onSwitchMode()" type="button">Switch to{{ isLoginMode ? 'Sign Up' : 'Login'}}</button>
 	  </form>
+
+
+
 	</div>
   </div>
 
@@ -37,7 +77,66 @@
 			<div *ngIf="isLoading" style = "text-align: center;">
 				<app-loading-spinner></app-loading-spinner>
 			</div>
-		  <form  #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf = "!isLoading">
+			<form [formGroup]="singupForm" (ngSubmit)="onSubmit()" *ngIf = "!isLoading"> 
+				<div formGroupName="userData">
+				  <div class="form-group">
+					<label for="username">First Name</label>
+					<input
+					  type="text"
+					  id="username"
+					  formControlName = "first_name"
+					  class="form-control">
+					  <span  
+					  *ngIf="!singupForm.get('userData.first_name').valid && singupForm.get('userData.first_name').touched"
+					  class="help-block">
+					  Please Enter the valid First name!
+					</span>
+				  </div>
+				  <div class="form-group">
+					<label for="username">Last Name</label>
+					<input
+					  type="text"
+					  id="username"
+					  formControlName = "last_name"
+					  class="form-control">
+					  <span  
+					  *ngIf="!singupForm.get('userData.last_name').valid && singupForm.get('userData.last_name').touched"
+					  class="help-block">
+					  Please Enter the valid Last name!
+					</span>
+				  </div>
+				  <div class="form-group">
+					<label for="email">email</label>
+					<input
+					  type="text"
+					  id="email"
+					  formControlName = "email"
+					  class="form-control">
+					  <span  
+					  *ngIf="!singupForm.get('userData.email').valid && singupForm.get('userData.email').touched"
+					  class="help-block">
+					  Please Enter the valid email!
+					</span>
+				  </div>
+				  <div class="form-group">
+					<label for="username">Password</label>
+					<input
+					  type="password"
+					  id="username"
+					  formControlName = "password"
+					  class="form-control">
+					  <span  
+					  *ngIf="!singupForm.get('userData.password').valid && singupForm.get('userData.password').touched"
+					  class="help-block">
+					  Please Enter the valid Password!
+					</span>
+				  </div>
+				</div>
+				<br>
+			  <button class="btn btn-primary" type="submit" [disabled]="!singupForm.valid">{{ isLoginMode ? 'Login' : 'Sign Up'}}</button> |
+			  <button class="btn btn-primary" (click)="onSwitchMode()" type="button">Switch to{{ isLoginMode ? 'Sign Up' : 'Login'}}</button>
+			  </form>
+		  <!-- <form  #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf = "!isLoading">
 			<div class="form-group">
 				<label for="email">First Name</label>
 				<input type="text"  class="form-control" ngModel name="first_name" required first_name/>
@@ -62,7 +161,8 @@
 			  <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? 'Login' : 'Sign Up'}}</button> |
 			  <button class="btn btn-primary" (click)="onSwitchMode()" type="button">Switch to{{ isLoginMode ? 'Sign Up' : 'Login'}}</button>
 			</div>
-		  </form>
+		  </form> -->
+
 		</div>
 	  </div>
   </div>

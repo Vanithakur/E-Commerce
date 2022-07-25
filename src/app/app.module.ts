@@ -26,12 +26,13 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { LoginComponent } from './login/login.component';
 
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './login/loading-spinner/loading-spinner.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import { AuthGuard } from './login/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +66,8 @@ import { AuthGuard } from './login/auth.guard';
     FormsModule,
     HttpClientModule,
     CarouselModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
 
   ],
   providers: [AuthGuard],
