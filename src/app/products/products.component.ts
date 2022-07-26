@@ -10,11 +10,12 @@ import { ProductService } from '../services/products/products.service';
 	styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-<<<<<<< HEAD
 
-	constructor() { }
 
 	ngOnInit(): void {
+    this.allproduct = this.allproducts.getProducts();
+    console.log(this.allproduct);
+    
 	}
 
 	productArray = [
@@ -147,15 +148,9 @@ export class ProductsComponent implements OnInit {
 		} 
 
 	}
-=======
+
   allproduct:any =[];
   constructor(private allproducts: ProductService ) { }
-
-  ngOnInit(): void {
-    this.allproduct = this.allproducts.getProducts();
-    console.log(this.allproduct);
-    
-  }
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -180,9 +175,6 @@ export class ProductsComponent implements OnInit {
       1200: {
         items:5
       }
-      
-      
->>>>>>> 9963746e8a39e37875ffb7df6b23295441a3d3ee
 
     },
     nav: true
