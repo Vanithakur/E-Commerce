@@ -22,7 +22,6 @@ import { FooterSecondComponent } from './common/footer-main/footer-second/footer
 import { HomeComponent } from './pages/home/home.component';
 import { SliderComponent } from './pages/home/slider/slider.component';
 import { LatestProductComponent } from './pages/home/latest-product/latest-product.component';
-import { RecentlyProductComponent } from './pages/home/recently-product/recently-product.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { CartComponent } from './pages/cart/cart.component';
@@ -32,6 +31,7 @@ import { OrdersComponent } from './pages/profile/orders/orders.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoadingSpinnerComponent } from './pages/login/loading-spinner/loading-spinner.component';
+import { RecentlyProductComponent } from './pages/home/recently-product/recently-product.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,6 @@ import { LoadingSpinnerComponent } from './pages/login/loading-spinner/loading-s
     HomeComponent,
     SliderComponent,
     LatestProductComponent,
-    RecentlyProductComponent,
     ProductDetailComponent,
     CartComponent,
     CheckoutComponent,
@@ -55,7 +54,9 @@ import { LoadingSpinnerComponent } from './pages/login/loading-spinner/loading-s
     WishlistComponent,
     LoginComponent,
     LoadingSpinnerComponent,
-    ProductsComponent
+    ProductsComponent,
+    RecentlyProductComponent
+    
   ],
   imports: [
     BrowserModule,
