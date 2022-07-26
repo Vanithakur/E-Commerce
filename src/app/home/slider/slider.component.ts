@@ -20,12 +20,7 @@ export class SliderComponent implements OnInit {
 				this.images = imagesData.data;
 
 			});
-
-		console.log(this.images);
-
 		this.promos = this.sliderService.getPromo();
-		console.log(this.promos);
-
 	}
 
 	customOptions: OwlOptions = {

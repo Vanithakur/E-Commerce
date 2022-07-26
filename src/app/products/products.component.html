@@ -18,101 +18,85 @@
                             <ng-template carouselSlide>
                                  <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="{{ product.product1 }}" alt="">
+                                        <img [src]="product.productImage" alt="{{ product.productImage }}">
                                         <div class="product-hover">
                                             <a routerLink="/cart" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                             <a routerLink="/product_details" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
                                     
-                                    <h2><a routerLink="/product_details">Samsung gallaxy note 4</a></h2>
+                                    <h2><a routerLink="/product_details">{{ product.productName }}</a></h2>
         
                                     <div class="product-carousel-price">
-                                        <ins>$400.00</ins>
+                                        <ins>{{ product.productprice }}</ins>
                                     </div>                            
                                 </div> 
                             </ng-template>
                             <ng-template carouselSlide>
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="{{ product.product2 }}" alt="">
+                                        <img [src]="product.productImage" alt="{{ product.productImage }}">
                                         <div class="product-hover">
                                             <a routerLink="/cart"  class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                             <a routerLink="/product_details" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
                                     
-                                    <h2>iPhone 6</h2>
+                                    <h2>{{ product.productName }}</h2>
         
                                     <div class="product-carousel-price">
-                                        <ins>$1200.00</ins> <del>$1355.00</del>
+                                        <ins>{{ product.productprice }}</ins> <del>{{ product. compareprice }}</del>
                                     </div>                                 
                                 </div>
                             </ng-template>
                             <ng-template carouselSlide>
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="{{ product.product3 }}" alt="">
+                                        <img [src]="product.productImage" alt="{{ product.productImage }}">
                                         <div class="product-hover">
                                             <a routerLink="/cart"  class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                             <a routerLink="/product_details" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
                                     
-                                    <h2>Nokia Lumia 1320</h2>
+                                    <h2>{{ product.productName }}</h2>
                                     <div class="product-carousel-price">
-                                        <ins>$899.00</ins> <del>$999.00</del>
+                                        <ins>{{ product.productprice }}</ins> <del>{{ product. compareprice }}</del>
                                     </div> 
                                 </div>
                             </ng-template>
                             <ng-template carouselSlide>
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="{{ product.product4 }}" alt="">
+                                        <img [src]="product.productImage" alt="{{ product.productImage }}">
                                         <div class="product-hover">
                                             <a routerLink="/cart"  class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                             <a routerLink="/product_details" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
                                     
-                                    <h2><a routerLink="/product_details">Samsung gallaxy note 4</a></h2>
+                                    <h2><a routerLink="/product_details">{{ product.productName }}</a></h2>
         
                                     <div class="product-carousel-price">
-                                        <ins>$400.00</ins>
+                                        <ins>{{ product.productprice }}</ins>
                                     </div>                            
                                 </div>
                             </ng-template>
                             <ng-template carouselSlide>
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="{{ product.product5 }}" alt="">
+                                        <img [src]="product.productImage" alt="{{ product.productImage }}">
                                         <div class="product-hover">
                                             <a routerLink="/cart"  class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                             <a routerLink="/product_details" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
                                     
-                                    <h2>iPhone 6</h2>
+                                    <h2>{{ product.productName }}</h2>
         
                                     <div class="product-carousel-price">
-                                        <ins>$1200.00</ins> <del>$1355.00</del>
+                                        <ins>{{ product.productprice }}</ins> <del>{{ product. compareprice }}</del>
                                     </div>                                 
-                                </div>
-                            </ng-template>
-                            <ng-template carouselSlide>
-                                <div class="single-product">
-                                    <div class="product-f-image">
-                                        <img src="{{ product.product6 }}" alt="">
-                                        <div class="product-hover">
-                                            <a routerLink="/cart"  class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a routerLink="/product_details" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                        </div>
-                                    </div>
-                                    
-                                    <h2>Nokia Lumia 1320</h2>
-                                    <div class="product-carousel-price">
-                                        <ins>$899.00</ins> <del>$999.00</del>
-                                    </div> 
                                 </div>
                             </ng-template>
                           </owl-carousel-o>

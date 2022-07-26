@@ -22,26 +22,15 @@ export class SliderService {
     return this.promo = [
         {
            promo1: '30 Days return',
+        
            promo2: 'Free shipping',
+        
            promo3: 'Secure payments',
+        
            promo4: 'New products'
-    
+
         }
-       
     ];
    }
-   getProducts() {
-    return this.allProducts= [
-        {
-            product1: 'assets/img/product-1.jpg',
-            product2: 'assets/img/product-1.jpg',
-            product3: 'assets/img/product-1.jpg',
-            product4: 'assets/img/product-1.jpg',
-            product5: 'assets/img/product-1.jpg',
-            product6: 'assets/img/product-1.jpg'
-        }
-
-    ];
-
-   }
+   
 }

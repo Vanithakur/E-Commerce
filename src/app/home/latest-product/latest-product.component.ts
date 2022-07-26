@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { LatestProductService } from 'src/app/services/latest-product/latest-product.service';
 @Component({
   selector: 'app-latest-product',
   templateUrl: './latest-product.component.html',
   styleUrls: ['./latest-product.component.css']
 })
 export class LatestProductComponent implements OnInit {
-
-  constructor() { }
+latestProducts: any= [];
+brands: any =[];
+  constructor(private latestproduct: LatestProductService) { }
 
   ngOnInit(): void {
+    this.latestProducts = this.latestproduct.getLatestProduct();
+    this.brands = this.latestproduct.getBrands();
+    console.log(this.brands);
+    
+    console.log(this.latestProducts);
   }
   customOptions: OwlOptions = {
     loop: true,
