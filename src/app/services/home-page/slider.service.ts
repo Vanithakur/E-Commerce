@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { Slider } from "../model/slider.model";
+import { Slider } from "src/app/model/slider.model";
 
 @Injectable(
     {

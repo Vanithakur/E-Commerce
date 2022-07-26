@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { SliderService } from '../services/slider.service';
+import { ProductService } from '../services/products/products.service';
+
+
 
 @Component({
   selector: 'app-products',
@@ -9,7 +11,7 @@ import { SliderService } from '../services/slider.service';
 })
 export class ProductsComponent implements OnInit {
   allproduct:any =[];
-  constructor(private allproducts: SliderService) { }
+  constructor(private allproducts: ProductService ) { }
 
   ngOnInit(): void {
     this.allproduct = this.allproducts.getProducts();

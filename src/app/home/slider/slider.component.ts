@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { SliderService } from 'src/app/services/slider.service';
+import { SliderService } from 'src/app/services/home-page/slider.service';
+
 @Component({
 	selector: 'app-slider',
 	templateUrl: './slider.component.html',
