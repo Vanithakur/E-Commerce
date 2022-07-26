@@ -32,7 +32,7 @@ import { LoadingSpinnerComponent } from './login/loading-spinner/loading-spinner
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { AuthGuard } from './guards/auth.guard';
-
+import {RecentlyProductService} from './services/home-page/recently-product.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +70,7 @@ import { AuthGuard } from './guards/auth.guard';
     ReactiveFormsModule
 
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,RecentlyProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
