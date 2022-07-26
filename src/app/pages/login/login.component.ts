@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs'
-import { AuthResponseData, AuthService } from '../services/auth.service';
+import { AuthResponseData, AuthService } from 'src/app/services/auth.service';
+
 
 
 
