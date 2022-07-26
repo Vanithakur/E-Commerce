@@ -32,6 +32,12 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoadingSpinnerComponent } from './pages/login/loading-spinner/loading-spinner.component';
 import { RecentlyProductComponent } from './pages/home/recently-product/recently-product.component';
+import { SidebarComponent } from './common/sidebar/sidebar.component';
+import { SearchComponent } from './common/sidebar/search/search.component';
+import { RecentlyPostsComponent } from './common/sidebar/recently-posts/recently-posts.component';
+import { SidebarProductsComponent } from './common/sidebar/sidebar-products/sidebar-products.component';
+import { SelectedProductComponent } from './pages/product-detail/selected-product/selected-product.component';
+import { RelatedProductComponent } from './pages/product-detail/related-product/related-product.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +61,13 @@ import { RecentlyProductComponent } from './pages/home/recently-product/recently
     LoginComponent,
     LoadingSpinnerComponent,
     ProductsComponent,
-    RecentlyProductComponent
+    RecentlyProductComponent,
+    SidebarComponent,
+    SearchComponent,
+    RecentlyPostsComponent,
+    SidebarProductsComponent,
+    SelectedProductComponent,
+    RelatedProductComponent
     
   ],
   imports: [

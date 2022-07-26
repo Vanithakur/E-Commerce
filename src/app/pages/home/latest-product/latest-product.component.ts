@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { LatestProductService } from 'src/app/services/latest-product/latest-product.service';
+import { LatestProductService } from 'src/app/services/home-page/latest-product.service';
+
 @Component({
   selector: 'app-latest-product',
   templateUrl: './latest-product.component.html',

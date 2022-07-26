@@ -15,11 +15,13 @@ export class ProductService {
     getProducts() {
         return this.allProducts= [
         { 
+            productId: '1',
             productImage:'assets/img/product-5.jpg',
             productName: 'Samsung gallaxy note 4',
             productprice: '$400.00'
         },
      {  
+            productId: '2',
             productImage:'assets/img/product-6.jpg' ,
             productName: 'iPhone 6',
             productprice: '$1200.00',
@@ -27,6 +29,7 @@ export class ProductService {
         },
     
         { 
+            productId: '3',
             productImage:'assets/img/product-2.jpg' ,
             productName: 'Nokia Lumia 1320',
             productprice: '$899.00',
@@ -34,12 +37,14 @@ export class ProductService {
 
          },
       {  
+            productId: '4',
             productImage: 'assets/img/product-1.jpg',
             productName: 'Samsung gallaxy note 4',
             productprice: '$400.00'
          },
     
         {
+            productId: '5',
              productImage: 'assets/img/product-3.jpg',
              productName: 'Nokia Lumia 1320',
              productprice: '$899.00',
@@ -47,6 +52,7 @@ export class ProductService {
         },
    
         { 
+            productId: '6',
             productImage: 'assets/img/product-4.jpg',
             productName: 'iPhone 6',
             productprice: '$1200.00',
