@@ -147,3 +147,17 @@
 	height: 180vh;
 }
 
+.coupon input{
+	width: 20%;
+}
+
+/* .cross-sells{
+	display: contents;
+	width: 50%;
+	float: left;
+}
+
+.cart-collaterals{
+	display: contents;
+	width: 50%;
+} */

@@ -16,7 +16,7 @@ export class SliderComponent implements OnInit {
 	ngOnInit(): void {
 		this.images = this.sliderService.getImages().subscribe(
 			imagesData => {
-				console.log(imagesData);
+				// console.log(imagesData);
 				this.images = imagesData.data;
 
 			});

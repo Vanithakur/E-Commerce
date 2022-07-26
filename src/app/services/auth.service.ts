@@ -1,8 +1,13 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, tap } from "rxjs/operators";
+<<<<<<< HEAD:src/app/login/auth.service.ts
+import { BehaviorSubject, ReplaySubject, Subject, throwError } from "rxjs";
+import { User } from "./user.model";
+=======
 import { BehaviorSubject, Subject, throwError } from "rxjs";
 
+>>>>>>> 9963746e8a39e37875ffb7df6b23295441a3d3ee:src/app/services/auth.service.ts
 import { Router } from "@angular/router";
 import { User } from "../model/user.model";
 
@@ -29,7 +34,17 @@ export interface AuthResponseData {
 @Injectable({ providedIn: "root" })
 
 export class AuthService {
+   
     user:any = new Subject<User>();
+   
+   
+    // user =  new BehaviorSubject<User | null >(null);
+    // private user: Subject<User> = new BehaviorSubject<User>(null);
+    // private user: Subject<User> = new ReplaySubject<User>(1);
+
+  
+   
+  
 
     constructor(private http: HttpClient, private router: Router) { }
 
