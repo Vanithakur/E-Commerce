@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SelectedProductService } from 'src/app/services/product-detail/selectedproduct.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { SelectedProductService } from 'src/app/services/product-detail/selected
   styleUrls: ['./selected-product.component.css']
 })
 export class SelectedProductComponent implements OnInit {
+  @Input() selectproduct: any;
 products: any=[];
   constructor(private selectedproduct: SelectedProductService) { }
 
