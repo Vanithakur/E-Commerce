@@ -25,13 +25,9 @@
                         <a href="">Category Name</a>
                         <a href="">Sony Smart TV - 2015</a>
                     </div>
-
-                  <!-- <app-selected-product
-                  *ngFor="let product of products ; let i = index" 
+                  <app-selected-product *ngFor="let product of products let i = index " 
                   [selectproduct]="product"
-                  ></app-selected-product> -->
-                  <app-selected-product *ngFor="let product of products" 
-                  [selectproduct]="product"
+                  [index]="i"
                   ></app-selected-product>
 
                  <app-related-product></app-related-product>

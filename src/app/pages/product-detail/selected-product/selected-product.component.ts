@@ -11,13 +11,18 @@ import { ProductService } from 'src/app/services/products/products.service';
 })
 export class SelectedProductComponent implements OnInit {
   @Input() selectproduct: any;
+  @Input() index: any;
   selectedproducts:any =[];
   detailData:any;
   quantity='';
+  reviewsData='';
+  mainImage='';
+  selectedImage = false;
 products: any=[];
 id:any='';
 selectId ='';
 productId ='';
+showreviews:boolean = false;
   constructor(
     private allproducts: ProductService,
     private route: ActivatedRoute,
@@ -35,6 +40,7 @@ productId ='';
 		  'detailData' : new FormGroup({
 			'qty' : new FormControl(null)
 		  })});
+     this.reviewsData
 
   }
   onSubmit() {   
@@ -49,6 +55,20 @@ productId ='';
   this.router.navigate(['/cart']);
     console.log(this.id);
     
+  }
+  changeMainImg(image:any){
+    this.selectedImage = true;
+    for(let product of this.products) {
+      if(this.id == product.prodID){
+      this.mainImage = image;
+      console.log(this.mainImage);
+      
+    }
+  
+}
+  }
+  reviews() {
+    this.showreviews =true;
   }
 
 }

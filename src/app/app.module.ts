@@ -38,6 +38,7 @@ import { RecentlyPostsComponent } from './common/sidebar/recently-posts/recently
 import { SidebarProductsComponent } from './common/sidebar/sidebar-products/sidebar-products.component';
 import { SelectedProductComponent } from './pages/product-detail/selected-product/selected-product.component';
 import { RelatedProductComponent } from './pages/product-detail/related-product/related-product.component';
+import { MainImageComponent } from './pages/product-detail/selected-product/main-image/main-image.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { RelatedProductComponent } from './pages/product-detail/related-product/
     RecentlyPostsComponent,
     SidebarProductsComponent,
     SelectedProductComponent,
-    RelatedProductComponent
+    RelatedProductComponent,
+    MainImageComponent
     
   ],
   imports: [
