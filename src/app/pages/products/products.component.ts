@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { SliderService } from 'src/app/services/home-page/slider.service';
 import { ProductService } from 'src/app/services/products/products.service';
+
 
 
 
@@ -11,20 +13,13 @@ import { ProductService } from 'src/app/services/products/products.service';
 })
 export class ProductsComponent implements OnInit {
 
-<<<<<<< HEAD:src/app/products/products.component.ts
+
 	allproduct: any = [];
-	constructor(private allproducts: SliderService) { }
+	constructor(private allproducts: ProductService) { }
 
 	ngOnInit(): void {
 		this.allproduct = this.allproducts.getProducts();
-		// console.log(this.allproduct);
-=======
-
-	ngOnInit(): void {
-    this.allproduct = this.allproducts.getProducts();
-    console.log(this.allproduct);
-    
->>>>>>> 804f7feec332f070fd7d35c9278159a574ea82ee:src/app/pages/products/products.component.ts
+		console.log(this.allproduct);
 	}
 	
 	customOptions: OwlOptions = {
@@ -57,107 +52,7 @@ export class ProductsComponent implements OnInit {
 		},
 		nav: true
 	}
-
-
-	productArray = [
-		{
-			prodID: 1,
-			img: "../../assets/img/product-2.jpg",
-			name: "Apple new mac book 2015 March :P",
-			ins: "$899.00",
-			del: "$999.00",
-			qty: 1
-		},
-		{
-			prodID: 2,
-			img: "assets/img/product-1.jpg",
-			name: "Apple new mac book 2015 March :P",
-			ins: "$899.00",
-			del: "$999.00",
-			qty: 1
-		},
-		{
-			prodID: 3,
-			img: "../../assets/img/product-3.jpg",
-			name: "Apple new mac book 2015 March :P",
-			ins: "$899.00",
-			del: "$999.00",
-			qty: 1
-		},
-		{
-			prodID: 4,
-			img: "../../assets/img/product-4.jpg",
-			name: "Apple new mac book 2015 March :P",
-			ins: "$899.00",
-			del: "$999.00",
-			qty: 1
-		},
-		{
-			prodID: 5,
-			img: "../../assets/img/product-2.jpg",
-			name: "Apple new mac book 2015 March :P",
-			ins: "$899.00",
-			del: "$999.00",
-			qty: 1
-		},
-		{
-			prodID: 6,
-			img: "../../assets/img/product-1.jpg",
-			name: "Apple new mac book 2015 March :P",
-			ins: "$899.00",
-			del: "$999.00",
-			qty: 1
-		},
-		{
-			prodID: 7,
-			img: "../../assets/img/product-3.jpg",
-			name: "Apple new mac book 2015 March :P",
-			ins: "$899.00",
-			del: "$999.00",
-			qty: 1
-		},
-		{
-			prodID: 8,
-			img: "../../assets/img/product-4.jpg",
-			name: "Apple new mac book 2015 March :P",
-			ins: "$899.00",
-			del: "$999.00",
-			qty: 1
-		},
-		{
-			prodID: 9,
-			img: "../../assets/img/product-2.jpg",
-			name: "Apple new mac book 2015 March :P",
-			ins: "$899.00",
-			del: "$999.00",
-			qty: 1
-		},
-		{
-			prodID: 10,
-			img: "../../assets/img/product-1.jpg",
-			name: "Apple new mac book 2015 March :P",
-			ins: "$899.00",
-			del: "$999.00",
-			qty: 1
-		},
-		{
-			prodID: 11,
-			img: "../../assets/img/product-3.jpg",
-			name: "Apple new mac book 2015 March :P",
-			ins: "$899.00",
-			del: "$999.00",
-			qty: 1
-		},
-		{
-			prodID: 12,
-			img: "../../assets/img/product-4.jpg",
-			name: "Apple new mac book 2015 March :P",
-			ins: "$899.00",
-			del: "$999.00",
-			qty: 1
-		}
-	]
-
+	
 	itemsCart: any = [];
 
 	addCart(category: any) {
@@ -189,38 +84,8 @@ export class ProductsComponent implements OnInit {
 		}
 
 	}
-<<<<<<< HEAD:src/app/products/products.component.ts
-=======
 
-  allproduct:any =[];
-  constructor(private allproducts: ProductService ) { }
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 300,
-    navText: ['<i class="fa fa-angle-left" ></i>', '<i class="fa fa-angle-right" ></i>'],
-    responsive: {
-      0: {
-        items: 1 
-      },
-      400: {
-        items: 2
-      },
-      760: {
-        items: 3
-      },
-      1000: {
-        items: 4
-      },
-      1200: {
-        items:5
-      }
 
-    },
-    nav: true
-  }
->>>>>>> 804f7feec332f070fd7d35c9278159a574ea82ee:src/app/pages/products/products.component.ts
+
+
 }
