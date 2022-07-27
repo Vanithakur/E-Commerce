@@ -12,12 +12,12 @@ export class CartComponent implements OnInit {
 
 	products: any = [];
 	allproducts: any = 0;
-  productQty:any =[];
-	item: any;
+	productQty: any = [];
+	
 	// public allproducts !:number; 
 
 	constructor(private cart: CartService,
-    private product: ProductService) { }
+		private product: ProductService) { }
 
 
 	ngOnInit(): void {
@@ -27,13 +27,13 @@ export class CartComponent implements OnInit {
 			// console.log(this.allproducts);
 
 		})
-    this.productQty = this.product.getProducts();
-    for(let product of this.productQty){
-      console.log(product.qty);
-      
-    }
-    
-    
+		this.productQty = this.product.getProducts();
+		for (let product of this.productQty) {
+			console.log(product.qty);
+
+		}
+
+
 	}
 
 	removeProduct(item: any) {
@@ -44,14 +44,10 @@ export class CartComponent implements OnInit {
 
 
 	onIncrement(item: any) {
-    
-      
-      // console.log(product.qty);
-      // product.qty = +product.qty + 1;
-      // console.log(product.qty );      
-      
-    
-		
+
+		// console.log(product.qty);
+		// product.qty = +product.qty + 1;
+		// console.log(product.qty );      
 	}
 
 }
