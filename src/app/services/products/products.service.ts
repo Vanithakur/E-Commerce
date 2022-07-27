@@ -8,12 +8,13 @@ import { Router } from "@angular/router";
     }
 )
 export class ProductService {
-    allProducts:any =[];
-    constructor(private http:HttpClient, private router: Router){
+    allProducts: any = [];
 
-    }
+    constructor(private http: HttpClient, private router: Router) { }
+
+
     getProducts() {
-        return this.allProducts= [
+        return this.allProducts = [
             {
                 prodID: 1,
                 img: "../../assets/img/product-2.jpg",
@@ -110,7 +111,9 @@ export class ProductService {
                 del: "$999.00",
                 qty: 1
             }
-       ];
+        ];
+
+    }
+
     
-       }
 }

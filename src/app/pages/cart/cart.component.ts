@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { CartService } from './cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,24 +9,24 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CartComponent implements OnInit {
 
-	qty!: number;
+  products:any = [];
+  allproducts:any =0;
+
+  constructor(private cart:CartService){}
+
 
   ngOnInit(): void {
+    this.cart.getProductData().subscribe(res => {
+      this.products = res;
+	  this.allproducts = this.cart.getTotalAmount();
+    })
   }
 
-  quantity(qty: any) {
-    this.qty = qty;
+  removeProduct(item:any){
+	this.cart.removeCartData(item);
   }
 
-
-  inc(){
-    // this.qty = +this.qty + 1;
-    this.qty += 1;
-  }
-
-  dec(){
-    this.qty = this.qty - 1;
-  }
+  
 
 
   // public cartItemList: any = []
