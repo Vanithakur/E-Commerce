@@ -10,6 +10,7 @@ export class CartService{
     
     cartDataList:any = [];
     productList= new BehaviorSubject<any>([]);
+    item: any;
 
     constructor(){}
 
@@ -44,8 +45,6 @@ export class CartService{
         for(i=0; i<this.cartDataList.length; i++){
             grandTotal += this.cartDataList[i].ins ;
         }
-
-        console.log(grandTotal);
         return grandTotal;
         // this.cartDataList.map((a:any) => {
         //     grandTotal += a.total;
@@ -69,6 +68,13 @@ export class CartService{
     //     })
     // this.productList.next(this.cartDataList)
     }
+
+
+    
+      onDecrement(){
+        // this.qty = this.qty - 1;
+        // this.totalAmount();
+      }
 
 
 
