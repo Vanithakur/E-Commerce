@@ -21,7 +21,15 @@ export class ProductService {
                 name: "Apple new mac book 2015 March :P",
                 ins: "$899.00",
                 del: "$999.00",
-                qty: 1
+                qty: 1,
+                thumbs: {
+                    thumb1:'assets/img/product-thumb-1.jpg',
+                    thumb2:'assets/img/product-thumb-2.jpg',
+                    thumb3:'assets/img/product-thumb-3.jpg'
+                },
+                Category: 'Summer',
+                Tags: ['awesome','best','sale','shoes'],
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique,diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus exaliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissimporta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodalesnisl. Aliquam eget dolor eget elit malesuada aliquet. In varius loremlorem, semper bibendum lectus lobortis ac."
             },
             {
                 prodID: 2,
@@ -29,7 +37,15 @@ export class ProductService {
                 name: "Apple new mac book 2015 March :P",
                 ins: "$899.00",
                 del: "$999.00",
-                qty: 1
+                qty: 1,
+                thumbs: {
+                    thumb1:'assets/img/product-thumb-1.jpg',
+                    thumb2:'assets/img/product-thumb-2.jpg',
+                    thumb3:'assets/img/product-thumb-3.jpg'
+                },
+                Category: 'Summer',
+                Tags: ['awesome','best','sale','shoes'],
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique,diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus exaliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissimporta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodalesnisl. Aliquam eget dolor eget elit malesuada aliquet. In varius loremlorem, semper bibendum lectus lobortis ac."
             },
             {
                 prodID: 3,
@@ -37,7 +53,15 @@ export class ProductService {
                 name: "Apple new mac book 2015 March :P",
                 ins: "$899.00",
                 del: "$999.00",
-                qty: 1
+                qty: 1,
+                thumbs: {
+                    thumb1:'assets/img/product-thumb-1.jpg',
+                    thumb2:'assets/img/product-thumb-2.jpg',
+                    thumb3:'assets/img/product-thumb-3.jpg'
+                },
+                Category: 'Summer',
+                Tags: ['awesome','best','sale','shoes'],
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique,diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus exaliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissimporta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodalesnisl. Aliquam eget dolor eget elit malesuada aliquet. In varius loremlorem, semper bibendum lectus lobortis ac."
             },
             {
                 prodID: 4,
@@ -45,7 +69,15 @@ export class ProductService {
                 name: "Apple new mac book 2015 March :P",
                 ins: "$899.00",
                 del: "$999.00",
-                qty: 1
+                qty: 1,
+                thumbs: {
+                    thumb1:'assets/img/product-thumb-1.jpg',
+                    thumb2:'assets/img/product-thumb-2.jpg',
+                    thumb3:'assets/img/product-thumb-3.jpg'
+                },
+                Category: 'Summer',
+                Tags: ['awesome','best','sale','shoes'],
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique,diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus exaliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissimporta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodalesnisl. Aliquam eget dolor eget elit malesuada aliquet. In varius loremlorem, semper bibendum lectus lobortis ac."
             },
             {
                 prodID: 5,
@@ -53,7 +85,15 @@ export class ProductService {
                 name: "Apple new mac book 2015 March :P",
                 ins: "$899.00",
                 del: "$999.00",
-                qty: 1
+                qty: 1,
+                thumbs: {
+                    thumb1:'assets/img/product-thumb-1.jpg',
+                    thumb2:'assets/img/product-thumb-2.jpg',
+                    thumb3:'assets/img/product-thumb-3.jpg'
+                },
+                Category: 'Summer',
+                Tags: ['awesome','best','sale','shoes'],
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique,diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus exaliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissimporta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodalesnisl. Aliquam eget dolor eget elit malesuada aliquet. In varius loremlorem, semper bibendum lectus lobortis ac."
             },
             {
                 prodID: 6,
@@ -61,7 +101,15 @@ export class ProductService {
                 name: "Apple new mac book 2015 March :P",
                 ins: "$899.00",
                 del: "$999.00",
-                qty: 1
+                qty: 1,
+                thumbs: {
+                    thumb1:'assets/img/product-thumb-1.jpg',
+                    thumb2:'assets/img/product-thumb-2.jpg',
+                    thumb3:'assets/img/product-thumb-3.jpg'
+                },
+                Category: 'Summer',
+                Tags: ['awesome','best','sale','shoes'],
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique,diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus exaliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissimporta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodalesnisl. Aliquam eget dolor eget elit malesuada aliquet. In varius loremlorem, semper bibendum lectus lobortis ac."
             },
             {
                 prodID: 7,
@@ -69,7 +117,15 @@ export class ProductService {
                 name: "Apple new mac book 2015 March :P",
                 ins: "$899.00",
                 del: "$999.00",
-                qty: 1
+                qty: 1,
+                thumbs: {
+                    thumb1:'assets/img/product-thumb-1.jpg',
+                    thumb2:'assets/img/product-thumb-2.jpg',
+                    thumb3:'assets/img/product-thumb-3.jpg'
+                },
+                Category: 'Summer',
+                Tags: ['awesome','best','sale','shoes'],
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique,diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus exaliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissimporta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodalesnisl. Aliquam eget dolor eget elit malesuada aliquet. In varius loremlorem, semper bibendum lectus lobortis ac."
             },
             {
                 prodID: 8,
@@ -77,7 +133,15 @@ export class ProductService {
                 name: "Apple new mac book 2015 March :P",
                 ins: "$899.00",
                 del: "$999.00",
-                qty: 1
+                qty: 1,
+                thumbs: {
+                    thumb1:'assets/img/product-thumb-1.jpg',
+                    thumb2:'assets/img/product-thumb-2.jpg',
+                    thumb3:'assets/img/product-thumb-3.jpg'
+                },
+                Category: 'Summer',
+                Tags: ['awesome','best','sale','shoes'],
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique,diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus exaliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissimporta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodalesnisl. Aliquam eget dolor eget elit malesuada aliquet. In varius loremlorem, semper bibendum lectus lobortis ac."
             },
             {
                 prodID: 9,
@@ -85,7 +149,15 @@ export class ProductService {
                 name: "Apple new mac book 2015 March :P",
                 ins: "$899.00",
                 del: "$999.00",
-                qty: 1
+                qty: 1,
+                thumbs: {
+                    thumb1:'assets/img/product-thumb-1.jpg',
+                    thumb2:'assets/img/product-thumb-2.jpg',
+                    thumb3:'assets/img/product-thumb-3.jpg'
+                },
+                Category: 'Summer',
+                Tags: ['awesome','best','sale','shoes'],
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique,diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus exaliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissimporta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodalesnisl. Aliquam eget dolor eget elit malesuada aliquet. In varius loremlorem, semper bibendum lectus lobortis ac."
             },
             {
                 prodID: 10,
@@ -93,7 +165,15 @@ export class ProductService {
                 name: "Apple new mac book 2015 March :P",
                 ins: "$899.00",
                 del: "$999.00",
-                qty: 1
+                qty: 1,
+                thumbs: {
+                    thumb1:'assets/img/product-thumb-1.jpg',
+                    thumb2:'assets/img/product-thumb-2.jpg',
+                    thumb3:'assets/img/product-thumb-3.jpg'
+                },
+                Category: 'Summer',
+                Tags: ['awesome','best','sale','shoes'],
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique,diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus exaliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissimporta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodalesnisl. Aliquam eget dolor eget elit malesuada aliquet. In varius loremlorem, semper bibendum lectus lobortis ac."
             },
             {
                 prodID: 11,
@@ -101,7 +181,15 @@ export class ProductService {
                 name: "Apple new mac book 2015 March :P",
                 ins: "$899.00",
                 del: "$999.00",
-                qty: 1
+                qty: 1,
+                thumbs: {
+                    thumb1:'assets/img/product-thumb-1.jpg',
+                    thumb2:'assets/img/product-thumb-2.jpg',
+                    thumb3:'assets/img/product-thumb-3.jpg'
+                },
+                Category: 'Summer',
+                Tags: ['awesome','best','sale','shoes'],
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique,diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus exaliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissimporta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodalesnisl. Aliquam eget dolor eget elit malesuada aliquet. In varius loremlorem, semper bibendum lectus lobortis ac."
             },
             {
                 prodID: 12,
@@ -109,7 +197,15 @@ export class ProductService {
                 name: "Apple new mac book 2015 March :P",
                 ins: "$899.00",
                 del: "$999.00",
-                qty: 1
+                qty: 1,
+                thumbs: {
+                    thumb1:'assets/img/product-thumb-1.jpg',
+                    thumb2:'assets/img/product-thumb-2.jpg',
+                    thumb3:'assets/img/product-thumb-3.jpg'
+                },
+                Category: 'Summer',
+                Tags: ['awesome','best','sale','shoes'],
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique,diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus exaliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissimporta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodalesnisl. Aliquam eget dolor eget elit malesuada aliquet. In varius loremlorem, semper bibendum lectus lobortis ac."
             }
         ];
 

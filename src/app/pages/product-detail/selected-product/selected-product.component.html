@@ -1,14 +1,15 @@
-<div class="row" *ngFor="let product of products">
+<div >
+    <div class="row"*ngIf="id == selectproduct.prodID" >
     <div class="col-sm-6">
         <div class="product-images">
             <div class="product-main-img">
-                <img [src]="product.image" alt="{{ product.image}}">
+                <img [src]="selectproduct.img" alt="{{ selectproduct.img}}">
             </div>
 
             <div class="product-gallery">
-                <img [src]="product.thumbs.thumb1" alt="{{ product.thumbs.thumb1 }}">
-                <img [src]="product.thumbs.thumb2" alt="{{ product.thumbs.thumb2 }}">
-                <img [src]="product.thumbs.thumb3" alt="{{ product.thumbs.thumb3 }}">
+                <img [src]="selectproduct.thumbs.thumb1" alt="{{ selectproduct.thumbs.thumb1 }}">
+                <img [src]="selectproduct.thumbs.thumb2" alt="{{ selectproduct.thumbs.thumb2 }}">
+                <img [src]="selectproduct.thumbs.thumb3" alt="{{ selectproduct.thumbs.thumb3 }}">
 
             </div>
         </div>
@@ -16,21 +17,27 @@
 
     <div class="col-sm-6">
         <div class="product-inner">
-            <h2 class="product-name">{{ product.productname }}</h2>
+            <h2 class="product-name">{{ selectproduct.name }}</h2>
             <div class="product-inner-price">
-                <ins>{{ product.productprice }}</ins> <del>{{ product.compareprice }}</del>
+                <ins>{{ selectproduct.productprice }}</ins> <del>{{ selectproduct.compareprice }}</del>
             </div>
 
-            <form action="" class="cart">
-                <div class="quantity">
-                    <input type="number" size="5" class="input-text qty text" title="Qty" value="1"
-                        name="quantity" min="1" step="1">
+            <form  class="cart" [formGroup]="detailData" (ngSubmit)="onSubmit()">
+                <div  formGroupName="detailData" class="quantity">
+                    <input
+                     type="number"
+                      size="5" 
+                      class="input-text qty text" 
+                      title="Qty" 
+                      value="1"
+                      formControlName = "qty"
+                       min="1" step="1">
                 </div>
-                <button class="add_to_cart_button" type="submit">Add to cart</button>
+               <button class="add_to_cart_button" type="submit">Add to cart</button>
             </form>
 
             <div class="product-inner-category">
-                <p>Category: <a>{{ product.Category }}</a>. Tags: <a  *ngFor="let tag of product.Tags">{{tag}} ,</a> </p>
+                <p>Category: <a>{{ selectproduct.Category }}</a>. Tags: <a  *ngFor="let tag of selectproduct.Tags">{{tag}} ,</a> </p>
             </div>
 
             <div role="tabpanel">
@@ -46,7 +53,7 @@
                     <div role="tabpanel" class="tab-pane fade in active" id="home"
                         aria-labelledby="ex3-tab-1">
                         <h2>Product Description</h2>
-                        <p>{{ product.description }}</p>
+                        <p>{{ selectproduct.description }}</p>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="profile">
                         <h2>Reviews</h2>
@@ -74,4 +81,5 @@
 
         </div>
     </div>
+</div>
 </div>
