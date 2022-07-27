@@ -1,13 +1,11 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, tap } from "rxjs/operators";
-<<<<<<< HEAD:src/app/login/auth.service.ts
 import { BehaviorSubject, ReplaySubject, Subject, throwError } from "rxjs";
-import { User } from "./user.model";
-=======
-import { BehaviorSubject, Subject, throwError } from "rxjs";
+// import { User } from "./user.model";
 
->>>>>>> 9963746e8a39e37875ffb7df6b23295441a3d3ee:src/app/services/auth.service.ts
+// import { BehaviorSubject, Subject, throwError } from "rxjs";
+
 import { Router } from "@angular/router";
 import { User } from "../model/user.model";
 

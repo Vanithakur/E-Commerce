@@ -8,12 +8,46 @@ import { SliderService } from '../services/slider.service';
 	styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-<<<<<<< HEAD
 
-	constructor() { }
+	allproduct: any = [];
+	constructor(private allproducts: SliderService) { }
 
 	ngOnInit(): void {
+		this.allproduct = this.allproducts.getProducts();
+		// console.log(this.allproduct);
 	}
+	
+	customOptions: OwlOptions = {
+		loop: true,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: false,
+		dots: false,
+		navSpeed: 300,
+		navText: ['<i class="fa fa-angle-left" ></i>', '<i class="fa fa-angle-right" ></i>'],
+		responsive: {
+			0: {
+				items: 1
+			},
+			400: {
+				items: 2
+			},
+			760: {
+				items: 3
+			},
+			1000: {
+				items: 4
+			},
+			1200: {
+				items: 5
+			}
+
+
+
+		},
+		nav: true
+	}
+
 
 	productArray = [
 		{
@@ -128,13 +162,13 @@ export class ProductsComponent implements OnInit {
 			var id = category.prodID;
 			let index: number = -1;
 			this.itemsCart = JSON.parse(localStorage.getItem('localCart') || '{}');
-			for(let i=0; i<this.itemsCart.length; i++){
-				if(parseInt(id) === parseInt(this.itemsCart[i].prodID)){
+			for (let i = 0; i < this.itemsCart.length; i++) {
+				if (parseInt(id) === parseInt(this.itemsCart[i].prodID)) {
 					this.itemsCart[i].qty = category.qty;
 					index = i;
 					break;
 				}
-				if(index == -1){
+				if (index == -1) {
 					this.itemsCart.push(category);
 					localStorage.setItem('localCart', JSON.stringify(category));
 				} else {
@@ -142,47 +176,7 @@ export class ProductsComponent implements OnInit {
 				}
 			}
 
-		} 
+		}
 
 	}
-=======
-  allproduct:any =[];
-  constructor(private allproducts: SliderService) { }
-
-  ngOnInit(): void {
-    this.allproduct = this.allproducts.getProducts();
-    console.log(this.allproduct);
-    
-  }
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 300,
-    navText: ['<i class="fa fa-angle-left" ></i>', '<i class="fa fa-angle-right" ></i>'],
-    responsive: {
-      0: {
-        items: 1 
-      },
-      400: {
-        items: 2
-      },
-      760: {
-        items: 3
-      },
-      1000: {
-        items: 4
-      },
-      1200: {
-        items:5
-      }
-      
-      
->>>>>>> 9963746e8a39e37875ffb7df6b23295441a3d3ee
-
-    },
-    nav: true
-  }
 }
