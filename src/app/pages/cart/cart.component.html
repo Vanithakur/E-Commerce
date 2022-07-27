@@ -29,37 +29,45 @@
                                         <th class="product-remove">&nbsp;</th>
                                         <th class="product-thumbnail">&nbsp;</th>
                                         <th class="product-name">Product</th>
+                                        <th class="product-name">Product Name</th>
                                         <th class="product-price">Price</th>
-                                        <th class="product-quantity">Quantity:{{qty}}</th>
+                                        <th class="product-quantity">Quantity</th>
                                         <th class="product-subtotal">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="cart_item">
+                                    <tr class="cart_item" *ngFor="let item of products, let i= index">
+                                        <td>{{i +1}}</td>
+
                                         <td class="product-remove">
-                                            <a title="Remove this item" class="remove" href="#">×</a>
+                                            <a title="Remove this item" class="remove" 
+                                            (click)="removeProduct(item)">×</a>
                                         </td>
 
                                         <td class="product-thumbnail">
                                             <a href="single-product.html"><img width="145" height="145"
                                                     alt="poster_1_up" class="shop_thumbnail"
-                                                    src="assets/img/product-thumb-2.jpg"></a>
-                                        </td>
-
-                                        <td class="product-name">
-                                            <a href="single-product.html">Ship Your Idea</a>
+                                                    src="{{item.img}}"></a>
                                         </td>
 
                                         <td class="product-price">
-                                            <span class="amount">£15.00</span>
+                                            <span class="amount">{{item.name}}</span>
                                         </td>
+
+                                        <td class="product-price">
+                                            <span class="amount">{{item.price}}</span>
+                                        </td>
+
+                                        <!-- <td class="product-name">
+                                            <a href="single-product.html">Ship Your Idea</a>
+                                        </td> -->
 
                                         <td class="product-quantity">
                                             <div class="quantity buttons_added">
-                                                <input type="button" class="minus" value="-" (click)="dec()">
+                                                <input type="button" class="minus" value="-" >
                                                 <input type="number" size="4" class="input-text qty text" title="Qty"
                                                     value="1" min="0" step="1">
-                                                <input type="button" class="plus" value="+" (click)="inc()">
+                                                <input type="button" class="plus" value="+" >
                                             </div>
                                         </td>
 
@@ -67,6 +75,7 @@
                                             <span class="amount">£15.00</span>
                                         </td>
                                     </tr>
+
                                     <tr>
                                         <td class="actions" colspan="6">
 
@@ -89,6 +98,10 @@
                                 </tbody>
                             </table>
                         </form>
+
+                        <div class="back-btn">
+                            <input type="submit" value="Back to Shopping" name="Back to Shopping" class="button" routerLink="/products">
+                        </div> <br><br>
 
                         <div class="cart-collaterals">
                         
@@ -148,6 +161,9 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            
+                            
 
 
                             <form method="post" class="shipping_calculator">

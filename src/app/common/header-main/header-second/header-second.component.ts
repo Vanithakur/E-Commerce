@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { CartService } from 'src/app/pages/cart/cart.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 
@@ -9,13 +10,20 @@ import { AuthService } from 'src/app/services/auth.service';
 	styleUrls: ['./header-second.component.css']
 })
 export class HeaderSecondComponent implements OnInit {
+
+	totalItemNumber:number = 0;
+
 	isAuthenticated: boolean = false;
 
 	private userSub: Subscription = new Subscription;
-	constructor(private authService: AuthService) { }
+	constructor(private authService: AuthService, private cart: CartService) { }
 
 	ngOnInit(): void {
-		this.cartItemFunc();
+
+		this.cart.getProductData().subscribe(res => {
+			this.totalItemNumber = res.length;
+		}) 
+		// this.cartItemFunc();
 
 		this.userSub = this.authService.user.subscribe((user: any) => {
 			this.isAuthenticated = !!user;
@@ -23,14 +31,14 @@ export class HeaderSecondComponent implements OnInit {
 		});
 	}
 
-	cartItem: number = 0;
-	cartItemFunc() {
-		if (localStorage.getItem('localCart') != null) {
-			var cartCount = JSON.parse(localStorage.getItem('localCart') || '{}');
-			// console.log(cartCount);
-			this.cartItem = cartCount.length;
+	// cartItem: number = 0;
+	// cartItemFunc() {
+	// 	if (localStorage.getItem('localCart') != null) {
+	// 		var cartCount = JSON.parse(localStorage.getItem('localCart') || '{}');
+	// 		// console.log(cartCount);
+	// 		this.cartItem = cartCount.length;
 			
-		}
-	}
+	// 	}
+	// }
 
 }	

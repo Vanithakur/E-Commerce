@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { SliderService } from 'src/app/services/home-page/slider.service';
 import { ProductService } from 'src/app/services/products/products.service';
+import { CartService } from '../cart/cart.service';
 
 
 
@@ -13,14 +14,28 @@ import { ProductService } from 'src/app/services/products/products.service';
 })
 export class ProductsComponent implements OnInit {
 
-
 	allproduct: any = [];
-	constructor(private allproducts: ProductService) { }
+	// productList: any;
+
+	constructor(private allproducts: ProductService, private cart:CartService) { }
 
 	ngOnInit(): void {
 		this.allproduct = this.allproducts.getProducts();
 		console.log(this.allproduct);
+
+		// this.productList.forEach((a:any) => {
+		// 	Object.assign(a,{quantity:1, total:a.price})
+		// });
 	}
+
+	addToCart(item:any){
+		this.cart.addToCart(item);
+		console.log(item);
+		
+		
+	}
+
+
 	
 	customOptions: OwlOptions = {
 		loop: true,
@@ -53,38 +68,37 @@ export class ProductsComponent implements OnInit {
 		nav: true
 	}
 	
-	itemsCart: any = [];
+	// itemsCart: any = [];
 
-	addCart(category: any) {
-		console.log(category);
-		let cartDataNull = localStorage.getItem('localCart');
+	// addCart(category: any) {
+	// 	console.log(category);
+	// 	let cartDataNull = localStorage.getItem('localCart');
 
-		if (cartDataNull = null) {
-			let storeDataGet: any = [];
-			storeDataGet.push(category);
-			localStorage.setItem('localCart', JSON.stringify(storeDataGet));
-		} else {
-			var id = category.prodID;
-			let index: number = -1;
-			this.itemsCart = JSON.parse(localStorage.getItem('localCart') || '{}');
-			for (let i = 0; i < this.itemsCart.length; i++) {
-				if (parseInt(id) === parseInt(this.itemsCart[i].prodID)) {
-					this.itemsCart[i].qty = category.qty;
-					index = i;
-					break;
-				}
-				if (index == -1) {
-					this.itemsCart.push(category);
-					localStorage.setItem('localCart', JSON.stringify(category));
-				} else {
-					localStorage.setItem('localCart', JSON.stringify(category));
-				}
-			}
+	// 	if (cartDataNull = null) {
+	// 		let storeDataGet: any = [];
+	// 		storeDataGet.push(category);
+	// 		localStorage.setItem('localCart', JSON.stringify(storeDataGet));
+	// 	} else {
+	// 		var id = category.prodID;
+	// 		let index: number = -1;
+	// 		this.itemsCart = JSON.parse(localStorage.getItem('localCart') || '{}');
+	// 		for (let i = 0; i < this.itemsCart.length; i++) {
+	// 			if (parseInt(id) === parseInt(this.itemsCart[i].prodID)) {
+	// 				this.itemsCart[i].qty = category.qty;
+	// 				index = i;
+	// 				break;
+	// 			}
+	// 			if (index == -1) {
+	// 				this.itemsCart.push(category);
+	// 				localStorage.setItem('localCart', JSON.stringify(category));
+	// 			} else {
+	// 				localStorage.setItem('localCart', JSON.stringify(category));
+	// 			}
+	// 		}
 
-		}
+	// 	}
 
-	}
-
+	// }
 
 
 
