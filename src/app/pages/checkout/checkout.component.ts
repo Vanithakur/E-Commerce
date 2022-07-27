@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CheckoutService } from 'src/app/services/checkout/checkout.service';
 
 @Component({
   selector: 'app-checkout',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-
-  constructor() { }
+countries:any =[];
+  constructor(private allcountry: CheckoutService) { }
 
   ngOnInit(): void {
+    this.countries = this.allcountry.getCountries();
   }
 
 }
