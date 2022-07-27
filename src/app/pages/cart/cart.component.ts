@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ProductService } from 'src/app/services/products/products.service';
 import { CartService } from './cart.service';
 
 @Component({
@@ -11,10 +12,12 @@ export class CartComponent implements OnInit {
 
 	products: any = [];
 	allproducts: any = 0;
+  productQty:any =[];
 	item: any;
 	// public allproducts !:number; 
 
-	constructor(private cart: CartService) { }
+	constructor(private cart: CartService,
+    private product: ProductService) { }
 
 
 	ngOnInit(): void {
@@ -24,6 +27,13 @@ export class CartComponent implements OnInit {
 			// console.log(this.allproducts);
 
 		})
+    this.productQty = this.product.getProducts();
+    for(let product of this.productQty){
+      console.log(product.qty);
+      
+    }
+    
+    
 	}
 
 	removeProduct(item: any) {
@@ -34,8 +44,14 @@ export class CartComponent implements OnInit {
 
 
 	onIncrement(item: any) {
-		this.item.qty = +this.item.qty + 1;
-		console.log(item);
+    
+      
+      // console.log(product.qty);
+      // product.qty = +product.qty + 1;
+      // console.log(product.qty );      
+      
+    
+		
 	}
 
 }
