@@ -8,11 +8,13 @@ import { RelatedProductService } from 'src/app/services/product-detail/relatedpr
   styleUrls: ['./related-product.component.css']
 })
 export class RelatedProductComponent implements OnInit {
-relatedproducts:[] =[];
+relatedproducts:any =[];
   constructor(private relatedproduct: RelatedProductService) { }
 
   ngOnInit(): void {
-	// this.relatedproducts = this.relatedproduct.getRelatedProduct();
+	this.relatedproducts = this.relatedproduct.getRelatedProduct();
+	console.log(this.relatedproducts);
+	
 
   }
   customOptions: OwlOptions = {

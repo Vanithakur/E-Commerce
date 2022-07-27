@@ -6,6 +6,7 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { MainImageComponent } from './pages/product-detail/selected-product/main-image/main-image.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { OrdersComponent } from './pages/profile/orders/orders.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -15,11 +16,17 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {path: 'home', component: HomeComponent},
   {path:'products', component: ProductsComponent },
-  {path:'product_details/:id', component: ProductDetailComponent },
+  {
+    path:'product_details/:id', component: ProductDetailComponent,
+    children:[
+      {path: ':id', component: MainImageComponent},
+    ]
+   },
   {path:'cart',component: CartComponent},
   {path:'checkout', component: CheckoutComponent},
   {path:'login', component: LoginComponent},
   {path:'profile', component: ProfileComponent},
+
 {path:'orders', component: OrdersComponent},
 {path:'wishlist', component: WishlistComponent},
   {

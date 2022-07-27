@@ -2,28 +2,30 @@
     <h2 class="related-products-title">Related Products</h2>
     <div class="related-products-carousel">
         <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let related of relatedproducts" >
             <ng-template carouselSlide>
                
                 <div class="single-product">
                     <div class="product-f-image">
-                        <img src="assets/img/product-1.jpg" alt="">
+                        <img [src]="related.img" alt="{{ related.img }}">
                         <div class="product-hover">
-                            <a class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>
+                            <a class="add-to-cart-link" routerLink="cart"><i class="fa fa-shopping-cart"></i>
                                 Add to cart</a>
-                            <a class="view-details-link"><i class="fa fa-link"></i> See
+                            <a class="view-details-link" routerLink="/product_details/{{ related.proID }}"><i class="fa fa-link"></i> See
                                 details</a>
                         </div>
                     </div>
 
-                    <h2><a href="">Sony Smart TV - 2015</a></h2>
+                    <h2><a>{{related.name}}</a></h2>
 
                     <div class="product-carousel-price">
-                        <ins>$700.00</ins> <del>$100.00</del>
+                        <ins>{{related.ins}}</ins> <del>{{related.del}}</del>
                     </div>
                 </div>
             
             </ng-template>
-            <ng-template carouselSlide>
+        </ng-container>
+            <!-- <ng-template carouselSlide>
                 <div class="single-product">
                     <div class="product-f-image">
                         <img src="assets/img/product-2.jpg" alt="">
@@ -116,7 +118,7 @@
                         <ins>$400.00</ins>
                     </div>
                 </div>
-            </ng-template>
+            </ng-template> -->
         </owl-carousel-o>
     </div>
 </div>

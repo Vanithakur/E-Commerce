@@ -3,13 +3,14 @@
     <div class="col-sm-6">
         <div class="product-images">
             <div class="product-main-img">
-                <img [src]="selectproduct.img" alt="{{ selectproduct.img}}">
+                <img *ngIf="!selectedImage" [src]="selectproduct.img" alt="{{ selectproduct.img}}">
+                <img *ngIf="selectedImage" [src]="mainImage" alt="{{ mainImage}}" height="250px" width="250px">
             </div>
 
             <div class="product-gallery">
-                <img [src]="selectproduct.thumbs.thumb1" alt="{{ selectproduct.thumbs.thumb1 }}">
-                <img [src]="selectproduct.thumbs.thumb2" alt="{{ selectproduct.thumbs.thumb2 }}">
-                <img [src]="selectproduct.thumbs.thumb3" alt="{{ selectproduct.thumbs.thumb3 }}">
+                <img [src]="selectproduct.thumbs.thumb1" (click)="changeMainImg(selectproduct.thumbs.thumb1)">
+                <img [src]="selectproduct.thumbs.thumb2" (click)="changeMainImg(selectproduct.thumbs.thumb2)">
+                <img [src]="selectproduct.thumbs.thumb3" (click)="changeMainImg(selectproduct.thumbs.thumb3)">
 
             </div>
         </div>
@@ -19,7 +20,7 @@
         <div class="product-inner">
             <h2 class="product-name">{{ selectproduct.name }}</h2>
             <div class="product-inner-price">
-                <ins>{{ selectproduct.productprice }}</ins> <del>{{ selectproduct.compareprice }}</del>
+                <ins>{{ selectproduct.ins }}</ins> <del>{{ selectproduct.del }}</del>
             </div>
 
             <form  class="cart" [formGroup]="detailData" (ngSubmit)="onSubmit()">
@@ -39,8 +40,37 @@
             <div class="product-inner-category">
                 <p>Category: <a>{{ selectproduct.Category }}</a>. Tags: <a  *ngFor="let tag of selectproduct.Tags">{{tag}} ,</a> </p>
             </div>
-
-            <div role="tabpanel">
+           <div>
+            <p>{{ selectproduct.description }}</p>
+           </div>
+           <div class="tab-content">
+           <a><button class="btn btn-primary" type="button" (click)="reviews()">Reviews</button></a> 
+           </div>            
+            <div *ngIf="showreviews">
+                <h2>Reviews</h2>
+                <div class="submit-review">
+                    <form >
+                    <p><label for="name">Name</label> <input name="name" type="text"></p>
+                    <p><label for="email">Email</label> <input name="email" type="email">
+                    </p>
+                    <div class="rating-chooser">
+                        <p>Your rating</p>
+                        <div class="rating-wrap-post">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                    <p><label for="review">Your review</label> <textarea name="review" id=""
+                            cols="30" rows="10"></textarea></p>
+                    <p><input type="submit" value="Submit"></p>
+                </form>
+                </div>
+            </div>
+        
+            <!-- <div role="tabpanel">
                 <ul class="product-tab" role="tablist">
                     <li role="presentation" class="active">           
                         <a id="ex3-tab-1" aria-controls="home" aria-selected="true" role="tab" data-toggle="tab">Description</a>
@@ -77,8 +107,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
+            </div> -->
+            
         </div>
     </div>
 </div>
