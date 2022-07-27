@@ -1,0 +1,41 @@
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Shop</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+              <app-sidebar></app-sidebar>
+            </div>
+
+            <div class="col-md-8">
+                <div class="product-content-right">
+                    <div class="product-breadcroumb">
+                        <a routerLink="/home">Home</a>
+                        <a href="">Category Name</a>
+                        <a href="">Sony Smart TV - 2015</a>
+                    </div>
+
+                  <!-- <app-selected-product
+                  *ngFor="let product of products ; let i = index" 
+                  [selectproduct]="product"
+                  ></app-selected-product> -->
+                  <app-selected-product></app-selected-product>
+
+                 <app-related-product></app-related-product>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

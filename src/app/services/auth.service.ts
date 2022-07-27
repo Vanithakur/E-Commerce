@@ -2,12 +2,15 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, tap } from "rxjs/operators";
 import { BehaviorSubject, ReplaySubject, Subject, throwError } from "rxjs";
+<<<<<<< HEAD
 // import { User } from "./user.model";
 
 // import { BehaviorSubject, Subject, throwError } from "rxjs";
 
+=======
+>>>>>>> 804f7feec332f070fd7d35c9278159a574ea82ee
 import { Router } from "@angular/router";
-import { User } from "../model/user.model";
+import { User } from "../models/user.model";
 
 export interface AuthResponseData {
     // kind: string;
