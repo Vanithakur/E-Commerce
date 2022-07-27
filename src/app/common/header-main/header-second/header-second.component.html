@@ -7,8 +7,22 @@
                 </div>
             </div>
             
+            <div class="col-sm-6"  >
 
-            <!-- <div class="col-sm-6" *ngIf="isAuthenticated" >
+                <div class="shopping-item" >
+                    <a routerLink="/cart">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">{{cartItem}}</span></a>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row" *ngIf="isAuthenticated">
+            <div class="col-sm-6">
+                <div class="logo">
+                    <h1><a  routerLink=""><img src="assets/img/logo.png"></a></h1>
+                </div>
+            </div>
+            
+
+             <div class="col-sm-6" *ngIf="isAuthenticated" >
 
             <div class="col-sm-6"  >
 
@@ -16,11 +30,11 @@
                     <a routerLink="/cart">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">2</span></a>
                 </div>
 
-            </div> -->
+            </div> 
             <div class="col-sm-6" *ngIf="!isAuthenticated" >
 
             </div>
-        </div>
+        </div> -->
         <div class="row" *ngIf="!isAuthenticated">
             <div class="col-sm-6">
                 <div class="logo">

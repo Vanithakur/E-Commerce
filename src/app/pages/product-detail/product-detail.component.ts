@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { SelectedProductService } from 'src/app/services/product-detail/selectedproduct.service';
+import { ProductService } from 'src/app/services/products/products.service';
+
 
 @Component({
 	selector: 'app-product-detail',
@@ -11,10 +12,10 @@ export class ProductDetailComponent implements OnInit {
   products: any=[];
 isSelected:boolean = true;
 isReview:boolean = false;
-  constructor(private selectedproduct: SelectedProductService) { }
+  constructor(private allproducts: ProductService) { }
 
 	ngOnInit(): void {
-    this.products = this.selectedproduct.getSelectedProduct();
+    this.products = this.allproducts.getProducts();
 	}
 
     
