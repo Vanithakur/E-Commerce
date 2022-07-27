@@ -56,15 +56,18 @@ export class CartService{
     }
 
     //remove a cart product
-    removeCartData(product:any){
-        
-        this.cartDataList.map((a:any, index:any) => {
-            if(product.id === a.id){
-                console.log(a.id);
-                this.cartDataList.splice(index,1);
-            }
-        })
-    this.productList.next(this.cartDataList)
+    removeCartData(item:any){
+        this.cartDataList.splice(item, 1);
+    this.productList.next(this.cartDataList.slice());
+    //     this.cartDataList.map((a:any, index:any) => {
+    //         console.log(a.prodID);
+            
+    //         if(product.id === a.id){
+    //             console.log(a.id);
+    //             this.cartDataList.splice(index,1);
+    //         }
+    //     })
+    // this.productList.next(this.cartDataList)
     }
 
 

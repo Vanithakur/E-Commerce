@@ -20,11 +20,15 @@ export class CartComponent implements OnInit {
     this.cart.getProductData().subscribe(res => {
       this.products = res;
 	  this.allproducts = this.cart.getTotalAmount();
+    console.log(this.allproducts);
+    
     })
   }
 
   removeProduct(item:any){
-	this.cart.removeCartData(item);
+    console.log(item);
+    this.cart.removeCartData(item);
+	// this.cart.removeCartData(item);
   }
 
   
