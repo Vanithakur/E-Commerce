@@ -14,51 +14,102 @@ export class ProductService {
     }
     getProducts() {
         return this.allProducts= [
-        { 
-            productId: '1',
-            productImage:'assets/img/product-5.jpg',
-            productName: 'Samsung gallaxy note 4',
-            productprice: '$400.00'
-        },
-     {  
-            productId: '2',
-            productImage:'assets/img/product-6.jpg' ,
-            productName: 'iPhone 6',
-            productprice: '$1200.00',
-            compareprice: '$1355.00'
-        },
-    
-        { 
-            productId: '3',
-            productImage:'assets/img/product-2.jpg' ,
-            productName: 'Nokia Lumia 1320',
-            productprice: '$899.00',
-            compareprice: '$999.00'
-
-         },
-      {  
-            productId: '4',
-            productImage: 'assets/img/product-1.jpg',
-            productName: 'Samsung gallaxy note 4',
-            productprice: '$400.00'
-         },
-    
-        {
-            productId: '5',
-             productImage: 'assets/img/product-3.jpg',
-             productName: 'Nokia Lumia 1320',
-             productprice: '$899.00',
-             compareprice: '$999.00'
-        },
-   
-        { 
-            productId: '6',
-            productImage: 'assets/img/product-4.jpg',
-            productName: 'iPhone 6',
-            productprice: '$1200.00',
-            compareprice: '$1355.00'
-        }             
-    
+            {
+                prodID: 1,
+                img: "../../assets/img/product-2.jpg",
+                name: "Apple new mac book 2015 March :P",
+                ins: "$899.00",
+                del: "$999.00",
+                qty: 1
+            },
+            {
+                prodID: 2,
+                img: "assets/img/product-1.jpg",
+                name: "Apple new mac book 2015 March :P",
+                ins: "$899.00",
+                del: "$999.00",
+                qty: 1
+            },
+            {
+                prodID: 3,
+                img: "../../assets/img/product-3.jpg",
+                name: "Apple new mac book 2015 March :P",
+                ins: "$899.00",
+                del: "$999.00",
+                qty: 1
+            },
+            {
+                prodID: 4,
+                img: "../../assets/img/product-4.jpg",
+                name: "Apple new mac book 2015 March :P",
+                ins: "$899.00",
+                del: "$999.00",
+                qty: 1
+            },
+            {
+                prodID: 5,
+                img: "../../assets/img/product-2.jpg",
+                name: "Apple new mac book 2015 March :P",
+                ins: "$899.00",
+                del: "$999.00",
+                qty: 1
+            },
+            {
+                prodID: 6,
+                img: "../../assets/img/product-1.jpg",
+                name: "Apple new mac book 2015 March :P",
+                ins: "$899.00",
+                del: "$999.00",
+                qty: 1
+            },
+            {
+                prodID: 7,
+                img: "../../assets/img/product-3.jpg",
+                name: "Apple new mac book 2015 March :P",
+                ins: "$899.00",
+                del: "$999.00",
+                qty: 1
+            },
+            {
+                prodID: 8,
+                img: "../../assets/img/product-4.jpg",
+                name: "Apple new mac book 2015 March :P",
+                ins: "$899.00",
+                del: "$999.00",
+                qty: 1
+            },
+            {
+                prodID: 9,
+                img: "../../assets/img/product-2.jpg",
+                name: "Apple new mac book 2015 March :P",
+                ins: "$899.00",
+                del: "$999.00",
+                qty: 1
+            },
+            {
+                prodID: 10,
+                img: "../../assets/img/product-1.jpg",
+                name: "Apple new mac book 2015 March :P",
+                ins: "$899.00",
+                del: "$999.00",
+                qty: 1
+            },
+            {
+                prodID: 11,
+                img: "../../assets/img/product-3.jpg",
+                name: "Apple new mac book 2015 March :P",
+                ins: "$899.00",
+                del: "$999.00",
+                qty: 1
+            },
+            {
+                prodID: 12,
+                img: "../../assets/img/product-4.jpg",
+                name: "Apple new mac book 2015 March :P",
+                ins: "$899.00",
+                del: "$999.00",
+                qty: 1
+            }
        ];
     
        }
