@@ -11,6 +11,7 @@ export class CartComponent implements OnInit {
 
   products:any = [];
   allproducts:any =0;
+// public allproducts !:number; 
 
   constructor(private cart:CartService){}
 

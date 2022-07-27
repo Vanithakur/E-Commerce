@@ -36,19 +36,35 @@ export class CartService{
 
     //get total amount
     getTotalAmount(){
+        console.log(this.cartDataList);
+
         let grandTotal = 0;
-        this.cartDataList.map((a:any) => {
-            grandTotal += a.total;
-        })
+        // return this.cartDataList.length;
+        let i;
+        for(i=0; i<this.cartDataList.length; i++){
+            grandTotal += this.cartDataList[i].ins ;
+        }
+
+        console.log(grandTotal);
+        return grandTotal;
+        // this.cartDataList.map((a:any) => {
+        //     grandTotal += a.total;
+        // })
+
+        // console.log(grandTotal);
+        
     }
 
     //remove a cart product
     removeCartData(product:any){
+        
         this.cartDataList.map((a:any, index:any) => {
             if(product.id === a.id){
+                console.log(a.id);
                 this.cartDataList.splice(index,1);
             }
         })
+    this.productList.next(this.cartDataList)
     }
 
 
