@@ -75,7 +75,7 @@
                                             </td>
 
                                             <td class="product-subtotal">
-                                                <span class="amount">{{itemprice }}</span>
+                                                <span class="amount">{{item.ins * item.qty}}</span>
                                                 <!-- <input type="hidden" value="{{item.ins * item.qty }} " > -->
                                             </td>
                                         </tr>
@@ -90,8 +90,8 @@
                                                     <input type="submit" value="Apply Coupon" name="apply_coupon"
                                                         class="button">&nbsp; &nbsp; &nbsp;
 
-                                                    <input type="submit" value="Update Cart" name="update_cart" (click)="onUpdate()"
-                                                        class="button"> &nbsp;
+                                                    <!-- <input type="submit" value="Update Cart" name="update_cart" 
+                                                        class="button"> &nbsp; -->
                                                     <input type="submit" value="Checkout" name="proceed"
                                                         class="checkout-button button alt wc-forward">
                                                 </div>
@@ -152,7 +152,7 @@
                                     <tbody>
                                         <tr class="cart-subtotal">
                                             <th>Cart Subtotal</th>
-                                            <td><span class="amount">£{{allproducts}}</span></td>
+                                            <td><span class="amount">£{{productTotalAmount}}</span></td>
                                         </tr>
 
                                         <tr class="shipping">
@@ -162,7 +162,7 @@
 
                                         <tr class="order-total">
                                             <th>Order Total</th>
-                                            <td><strong><span class="amount">£{{allproducts}}</span></strong> </td>
+                                            <td><strong><span class="amount">£{{productTotalAmount}}</span></strong> </td>
                                         </tr>
                                     </tbody>
                                 </table>

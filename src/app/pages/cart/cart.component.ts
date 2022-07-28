@@ -12,12 +12,18 @@ export class CartComponent implements OnInit {
 	itemprice: number = 0;
 	itemqty: number = 0;
 	validateInput: boolean = false;
+
+	productTotalAmount: number =0;
+
 	products: any = [];
 	allproducts: any = 0;
 	productQty: any = [];
 	amount: number = 899;
-	productTotalAmount: any;
+	cartDataList: any = [];
 	item: any;
+	total!: number;
+
+	//  ctrl: any = this;
 
 	// public allproducts !:number; 
 
@@ -26,14 +32,20 @@ export class CartComponent implements OnInit {
 
 
 	ngOnInit(): void {
+
+
 		this.cart.getProductData().subscribe(res => {
-			this.products = res;
+			
+
+			 this.products = res;
 			for (let product of this.products) {
 				this.itemprice = product.ins;
 
 			}
-			this.allproducts = this.cart.getTotalAmount();
-			// console.log(this.allproducts);
+			this.allproducts = this.recalculateTotalAmount();
+	
+			
+			
 
 		})
 		this.productQty = this.product.getProducts();
@@ -77,6 +89,12 @@ export class CartComponent implements OnInit {
 		item.qty = +item.qty + 1;
 		this.validateInput = true;
 
+		this.recalculateTotalAmount();
+
+		this.validateInput =true;
+
+		// this.onUpdate(this.item);
+
 	}
 
 
@@ -88,6 +106,10 @@ export class CartComponent implements OnInit {
 			this.validateInput = false;
 		}
 
+		this.recalculateTotalAmount();
+		// this.onUpdate(this.item);
+
+
 	}
 	// recalculateTotalAmount() {
 	// 	let newTotalAmount = 0;
@@ -97,15 +119,51 @@ export class CartComponent implements OnInit {
 	// 	this.totalAmount = newTotalAmount;
 	// }
 
+<<<<<<< HEAD
 	onUpdate() {
 		// console.log(this.item.qty);
 		// this.itemqty = this.onIncrement();
 		console.log(this.itemprice);
+=======
+	// onUpdate() {
+	// 	console.log(this.item.qty);
+	// 	// this.itemqty = this.onIncrement();
+	// 	console.log(this.itemprice);
 
+>>>>>>> d462f48d386bd8fc1bac347d2384b93ae666f364
 
+	// 	this.itemprice = this.itemprice * this.item.qty;
+	// 	console.log(this.itemprice);
+
+<<<<<<< HEAD
 		// this.itemprice = this.itemprice * this.item.qty;
 		// console.log(this.itemprice);
+=======
+>>>>>>> d462f48d386bd8fc1bac347d2384b93ae666f364
 
+	// 	// let subs = 0;
+	// 	//  for(const item of this.products){
+	// 	// 	subs += item.ins * item.qty;
 
+	// 	// 	this.total =  subs;
+	// 	//  }
+
+	// }
+
+	recalculateTotalAmount() {
+	
+    
+
+		let newTotalAmount = 0;
+		this.products.forEach( (item: { ins: number; qty: number; }) => {
+			newTotalAmount += (item.ins* item.qty)
+			console.log(item.qty);
+			
+		});
+		this.productTotalAmount = newTotalAmount;
+		console.log(this.productTotalAmount);
+		
 	}
+
+	
 }

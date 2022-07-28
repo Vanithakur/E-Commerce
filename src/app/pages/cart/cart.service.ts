@@ -58,7 +58,7 @@ export class CartService {
         for (i = 0; i < this.cartDataList.length; i++) {
             grandTotal += this.cartDataList[i].ins;
         }
-        // console.log(grandTotal);
+        console.log(grandTotal);
 
         return grandTotal;
      }
