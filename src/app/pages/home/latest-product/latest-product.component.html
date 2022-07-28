@@ -13,17 +13,17 @@
                             <ng-template carouselSlide>                               
                                  <div class="single-product">
                                     <div class="product-f-image">
-                                        <img [src]= "product.latestproduct" alt="{{ product.latestproduct}}">
+                                        <img [src]= "product.image" alt="{{ product.image}}" height="80px" width="80px">
                                         <div class="product-hover">
                                             <a routerLink="/cart" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a routerLink="/product_details" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                            <a routerLink="/product_details/{{product.id}}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
                                     
-                                    <h2><a routerLink="/product_details">{{ product.productName}}</a></h2>
+                                    <h2><a routerLink="/product_details">{{ product.product_name}}</a></h2>
         
                                     <div class="product-carousel-price">
-                                        <ins>{{ product.productprice}}</ins><del>{{ product.compareprice}}</del>
+                                        <ins>${{ product.discount_price}}</ins><del>${{ product.price}}</del>
                                     </div>                            
                                 </div> 
                             </ng-template>

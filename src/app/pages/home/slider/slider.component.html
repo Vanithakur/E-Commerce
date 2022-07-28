@@ -4,10 +4,10 @@
         <ul class="" id="bxslider-home4" >
 
             <owl-carousel-o [options]="customOptions">
-                <ng-container  *ngFor="let image of images" style="margin: 10%;" >
+                <ng-container  *ngFor="let image of images" style="margin: 10%;">
                 <ng-template carouselSlide>   
             <li>
-                <img [src]="image" alt=" {{ image }} ">
+                <img [src]="image.banner" alt="{{ image.banner }}">
                 <div class="caption-group">
                     <h2 class="caption title">
                         iPhone <span class="primary">6 <strong>Plus</strong></span>

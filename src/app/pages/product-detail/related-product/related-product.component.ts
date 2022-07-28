@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { RelatedProductService } from 'src/app/services/product-detail/relatedproduct.service';
+import { ProductService } from 'src/app/services/products/products.service';
 
 @Component({
   selector: 'app-related-product',
@@ -9,12 +10,14 @@ import { RelatedProductService } from 'src/app/services/product-detail/relatedpr
 })
 export class RelatedProductComponent implements OnInit {
 relatedproducts:any =[];
-  constructor(private relatedproduct: RelatedProductService) { }
+products:any =[];
+  constructor(private relatedproduct: RelatedProductService,
+	private allproduct: ProductService) { }
 
   ngOnInit(): void {
 	this.relatedproducts = this.relatedproduct.getRelatedProduct();
 	console.log(this.relatedproducts);
-	
+	this.products = this.allproduct.getProducts();
 
   }
   customOptions: OwlOptions = {

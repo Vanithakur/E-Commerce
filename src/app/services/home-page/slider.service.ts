@@ -15,18 +15,18 @@ export class SliderService {
     constructor(private http:HttpClient, private router: Router){
 
     }
-    // getImages() {
-    //     return this.http.get<Slider>("http://95.111.202.157/mangoproject/public/api/shop-banner-show");
-    // }
     getImages() {
-        return this.Images = [
-            "assets/img/h4-slide.png",
-            "assets/img/h4-slide2.png",
-            "assets/img/h4-slide3.png",
-            "assets/img/h4-slide4.png"
-
-        ];
+        return this.http.get<Slider>("http://95.111.202.157/mangoproject/public/api/shop-banner-show");
     }
+    // getImages() {
+    //     return this.Images = [
+    //         "assets/img/h4-slide.png",
+    //         "assets/img/h4-slide2.png",
+    //         "assets/img/h4-slide3.png",
+    //         "assets/img/h4-slide4.png"
+
+    //     ];
+    // }
    getPromo(){
     return this.promo = [
         {
