@@ -13,7 +13,11 @@ brands: any =[];
   constructor(private latestproduct: LatestProductService) { }
 
   ngOnInit(): void {
-    this.latestProducts = this.latestproduct.getLatestProduct();
+    this.latestproduct.getLatestProduct().subscribe(res=>{
+      this.latestProducts = res.data;
+      console.log(this.latestProducts);
+      
+    })
     this.brands = this.latestproduct.getBrands();
     console.log(this.brands);
     

@@ -63,7 +63,7 @@ export class ProductService {
             {
                 prodID: 4,
                 img: "../../assets/img/product-4.jpg",
-                name: "Apple new mac book 2015 March :P",
+                name: "I Phone",
                 ins: 899.00,
                 del: 999.00,
                 qty: 1,

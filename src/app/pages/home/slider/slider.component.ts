@@ -14,15 +14,17 @@ export class SliderComponent implements OnInit {
 
 	constructor(private sliderService: SliderService) { }
 	ngOnInit(): void {
-		this.images = this.sliderService.getImages();
-		console.log(this.images);
+		// this.images = this.sliderService.getImages();
+		// console.log(this.images);
 		
-		// this.images = this.sliderService.getImages().subscribe(
-		// 	imagesData => {
-		// 		console.log(imagesData);
-		// 		this.images = imagesData.data;
+		this.images = this.sliderService.getImages().subscribe(
+			imagesData => {
+				console.log(imagesData);
+				this.images = imagesData.data;
+				console.log(this.images);
+				
 
-		// 	});
+			});
 		this.promos = this.sliderService.getPromo();
 	}
 

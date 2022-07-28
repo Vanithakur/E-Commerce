@@ -1,4 +1,4 @@
-<div >
+
     <div class="row"*ngIf="id == selectproduct.prodID" >
     <div class="col-sm-6">
         <div class="product-images">
@@ -11,7 +11,7 @@
                 <img [src]="selectproduct.thumbs.thumb1" (click)="changeMainImg(selectproduct.thumbs.thumb1)">
                 <img [src]="selectproduct.thumbs.thumb2" (click)="changeMainImg(selectproduct.thumbs.thumb2)">
                 <img [src]="selectproduct.thumbs.thumb3" (click)="changeMainImg(selectproduct.thumbs.thumb3)">
-
+            
             </div>
         </div>
     </div>
@@ -20,18 +20,17 @@
         <div class="product-inner">
             <h2 class="product-name">{{ selectproduct.name }}</h2>
             <div class="product-inner-price">
-                <ins>{{ selectproduct.ins }}</ins> <del>{{ selectproduct.del }}</del>
+                <ins>${{ selectproduct.ins }}</ins> <del>${{ selectproduct.del }}</del>
             </div>
 
             <form  class="cart" [formGroup]="detailData" (ngSubmit)="onSubmit()">
                 <div  formGroupName="detailData" class="quantity">
-                    <input
+                    <input 
                      type="number"
                       size="5" 
-                      class="input-text qty text" 
+                      class="input-text qty text"
+                      formControlName = "qty" 
                       title="Qty" 
-                      value="1"
-                      formControlName = "qty"
                        min="1" step="1">
                 </div>
                <button class="add_to_cart_button" type="submit">Add to cart</button>
@@ -43,73 +42,6 @@
            <div>
             <p>{{ selectproduct.description }}</p>
            </div>
-           <div class="tab-content">
-           <a><button class="btn btn-primary" type="button" (click)="reviews()">Reviews</button></a> 
-           </div>            
-            <div *ngIf="showreviews">
-                <h2>Reviews</h2>
-                <div class="submit-review">
-                    <form >
-                    <p><label for="name">Name</label> <input name="name" type="text"></p>
-                    <p><label for="email">Email</label> <input name="email" type="email">
-                    </p>
-                    <div class="rating-chooser">
-                        <p>Your rating</p>
-                        <div class="rating-wrap-post">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                    </div>
-                    <p><label for="review">Your review</label> <textarea name="review" id=""
-                            cols="30" rows="10"></textarea></p>
-                    <p><input type="submit" value="Submit"></p>
-                </form>
-                </div>
-            </div>
-        
-            <!-- <div role="tabpanel">
-                <ul class="product-tab" role="tablist">
-                    <li role="presentation" class="active">           
-                        <a id="ex3-tab-1" aria-controls="home" aria-selected="true" role="tab" data-toggle="tab">Description</a>
-                    </li>
-                    <li role="presentation">
-                        <a aria-controls="profile" role="tab" data-toggle="tab">Reviews</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="home"
-                        aria-labelledby="ex3-tab-1">
-                        <h2>Product Description</h2>
-                        <p>{{ selectproduct.description }}</p>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="profile">
-                        <h2>Reviews</h2>
-                        <div class="submit-review">
-                            <p><label for="name">Name</label> <input name="name" type="text"></p>
-                            <p><label for="email">Email</label> <input name="email" type="email">
-                            </p>
-                            <div class="rating-chooser">
-                                <p>Your rating</p>
-                                <div class="rating-wrap-post">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <p><label for="review">Your review</label> <textarea name="review" id=""
-                                    cols="30" rows="10"></textarea></p>
-                            <p><input type="submit" value="Submit"></p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            
         </div>
     </div>
-</div>
 </div>
