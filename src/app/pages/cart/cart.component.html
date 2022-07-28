@@ -43,7 +43,7 @@
 
                                             <td class="product-remove">
                                                 <a title="Remove this item" class="remove"
-                                                    (click)="removeProduct(item.prodID)">×</a>
+                                                    (click)="removeProduct(i)">×</a>
                                             </td>
 
                                             <td class="product-thumbnail">
@@ -65,7 +65,10 @@
 
                                             <td class="product-quantity">
                                                 <div class="quantity buttons_added">
-                                                    <input type="button" class="minus" value="-">
+                                                    <input type="button" *ngIf="validateInput" class="input-text qty text" value="-" 
+                                                    (click)="onDecrement(item)"  
+                                                    
+                                                    min="1" step="1" >
                                                     <!-- <input type="number" size="4" class="input-text qty text"
                                                         title="Qty" value="1" min="0" step="1"> -->
                                                     <span class="qty" style="padding: 6px;">{{item.qty}}</span>
@@ -74,7 +77,8 @@
                                             </td>
 
                                             <td class="product-subtotal">
-                                                <span class="amount">{{item.ins}}</span>
+                                                <span class="amount">{{itemprice }}</span>
+                                                <!-- <input type="hidden" value="{{item.ins * item.qty }} " > -->
                                             </td>
                                         </tr>
 
@@ -88,7 +92,7 @@
                                                     <input type="submit" value="Apply Coupon" name="apply_coupon"
                                                         class="button">&nbsp; &nbsp; &nbsp;
 
-                                                    <input type="submit" value="Update Cart" name="update_cart"
+                                                    <input type="submit" value="Update Cart" name="update_cart" (click)="onUpdate()"
                                                         class="button"> &nbsp;
                                                     <input type="submit" value="Checkout" name="proceed"
                                                         class="checkout-button button alt wc-forward">

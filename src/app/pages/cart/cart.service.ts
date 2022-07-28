@@ -6,68 +6,74 @@ import { BehaviorSubject } from "rxjs";
 })
 
 
-export class CartService{
-    
-    cartDataList:any = [];
-    productList= new BehaviorSubject<any>([]);
-    item: any;
+export class CartService {
+	forEach(arg0: (cart: any) => void) {
+		throw new Error('Method not implemented.');
+	}
 
-    constructor(){}
+    cartDataList: any = [];
+    productList = new BehaviorSubject<any>([]);
+    item: any;
+    grandTotal :any =[];
+
+    constructor() { }
 
     //get product data
-    getProductData(){
+    getProductData() {
         return this.productList.asObservable();
     }
 
     //set product data
-    setProduct(product:any){
+    setProduct(product: any) {
         this.cartDataList.push(...product);
         this.productList.next(product);
+    this.getTotalAmount();
+
 
     }
 
     //add to cart
-    addToCart(product:any){
+    addToCart(product: any) {
         this.cartDataList.push(product);
         this.productList.next(this.cartDataList);
         this.getTotalAmount();
         console.log(this.cartDataList);
-        
+
     }
+    orderTotal(){
+       
+        for (let i = 0; i < this.cartDataList.length; i++) {
+            this.grandTotal += this.cartDataList[i].ins;
+        }
+     }
+
 
     //get total amount
-    getTotalAmount(){
-        // console.log(this.cartDataList);
+    getTotalAmount() {
+        // console.log(this.cartDataList.length);
 
         let grandTotal = 0;
         // return this.cartDataList.length;
         let i;
-        for(i=0; i<this.cartDataList.length; i++){
-            grandTotal += this.cartDataList[i].ins ;
+        for (i = 0; i < this.cartDataList.length; i++) {
+            grandTotal += this.cartDataList[i].ins;
         }
+        // console.log(grandTotal);
+
         return grandTotal;
-        
-    }
+     }
+
+    
 
     //remove a cart product
-    removeCartData(item:any){
-        console.log(item);
-        
-        this.cartDataList.splice(item, 1);
-    this.productList.next(this.cartDataList.slice());
+    removeCartData(product: any) {
+        // console.log(product);
+        this.cartDataList.splice(product, 1);
+        this.productList.next(this.cartDataList.slice());
 
-
-        // this.cartDataList.map((a:any, index:any) => {
-        //     // console.log(a.prodID);
-            
-        //     if(product.prodID === a.id){
-        //      console.log(a.id);
-                
-        //         this.cartDataList.splice(index,1);
-        //     }
-        // })
         this.productList.next(this.cartDataList)
     }
 
 
 }
+
