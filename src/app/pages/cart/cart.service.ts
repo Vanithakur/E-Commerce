@@ -37,7 +37,7 @@ export class CartService{
 
     //get total amount
     getTotalAmount(){
-        console.log(this.cartDataList);
+        // console.log(this.cartDataList);
 
         let grandTotal = 0;
         // return this.cartDataList.length;
@@ -46,36 +46,28 @@ export class CartService{
             grandTotal += this.cartDataList[i].ins ;
         }
         return grandTotal;
-        // this.cartDataList.map((a:any) => {
-        //     grandTotal += a.total;
-        // })
-
-        // console.log(grandTotal);
         
     }
 
     //remove a cart product
     removeCartData(item:any){
+        console.log(item);
+        
         this.cartDataList.splice(item, 1);
     this.productList.next(this.cartDataList.slice());
-    //     this.cartDataList.map((a:any, index:any) => {
-    //         console.log(a.prodID);
+
+
+        // this.cartDataList.map((a:any, index:any) => {
+        //     // console.log(a.prodID);
             
-    //         if(product.id === a.id){
-    //             console.log(a.id);
-    //             this.cartDataList.splice(index,1);
-    //         }
-    //     })
-    // this.productList.next(this.cartDataList)
+        //     if(product.prodID === a.id){
+        //      console.log(a.id);
+                
+        //         this.cartDataList.splice(index,1);
+        //     }
+        // })
+        this.productList.next(this.cartDataList)
     }
-
-
-    
-      onDecrement(){
-        // this.qty = this.qty - 1;
-        // this.totalAmount();
-      }
-
 
 
 }

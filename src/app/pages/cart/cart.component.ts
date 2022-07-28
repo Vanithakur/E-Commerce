@@ -37,7 +37,7 @@ export class CartComponent implements OnInit {
 	}
 
 	removeProduct(item: any) {
-		console.log(item);
+		// console.log(item);
 		this.cart.removeCartData(item);
 		// this.cart.removeCartData(item);
 	}
