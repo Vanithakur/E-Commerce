@@ -32,19 +32,7 @@ export class CartComponent implements OnInit {
 
 
 	ngOnInit(): void {
-<<<<<<< HEAD
-       		
-		this.cart.getProductData().subscribe(res => {		
 
-			 this.products = res;
-			// for (let product of this.products) {
-			// 	this.itemprice = product.ins;
-			// 	console.log(product.qty);
-				
-
-			// }		
-			
-=======
 
 
 		this.cart.getProductData().subscribe(res => {
@@ -56,7 +44,6 @@ export class CartComponent implements OnInit {
 
 			}
 			this.allproducts = this.recalculateTotalAmount();
->>>>>>> 169bf1f2ed0730c3ada351ba2ad9a6bbe8b80b96
 
 		})
 		this.productQty = this.product.getProducts();
@@ -103,8 +90,7 @@ export class CartComponent implements OnInit {
 
 
 	}
-<<<<<<< HEAD
-=======
+
 	
 	onUpdate() {
 		
@@ -117,7 +103,7 @@ export class CartComponent implements OnInit {
 			let newTotalAmount = 0;
 			this.products.forEach((item: { ins: number; qty: number; }) => {
 				newTotalAmount += (item.ins * item.qty)
-				// console.log(item.qty);
+				console.log(item.qty);
 
 			});
 			// console.log(this.productTotalAmount);
@@ -128,7 +114,6 @@ export class CartComponent implements OnInit {
 
 		}
 
->>>>>>> 169bf1f2ed0730c3ada351ba2ad9a6bbe8b80b96
 
 	}
 

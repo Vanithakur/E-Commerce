@@ -84,7 +84,7 @@ export class CartService {
 		let newTotalAmount = 0;
 		this.cartDataList.length.forEach( (item: { ins: number; qty: number; }) => {
 			newTotalAmount += (item.ins* item.qty)
-			// console.log(newTotalAmount);
+			console.log(item.qty);
 			
 		});
         // return newTotalAmount;
