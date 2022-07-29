@@ -21,6 +21,7 @@ export class CartComponent implements OnInit {
 	amount: number = 899;
 	cartDataList: any = [];
 	item: any;
+	items: any;
 	total!: number;
 
 	//  ctrl: any = this;
@@ -32,23 +33,22 @@ export class CartComponent implements OnInit {
 
 
 	ngOnInit(): void {
-
-
-		this.cart.getProductData().subscribe(res => {
-			
+       		
+		this.cart.getProductData().subscribe(res => {		
 
 			 this.products = res;
-			for (let product of this.products) {
-				this.itemprice = product.ins;
+			// for (let product of this.products) {
+			// 	this.itemprice = product.ins;
+			// 	console.log(product.qty);
+				
 
-			}
-			this.allproducts = this.recalculateTotalAmount();
-	
-			
+			// }		
 			
 
 		})
 		this.productQty = this.product.getProducts();
+		console.log(this.productQty);
+		
 		for (let product of this.productQty) {
 			// console.log(product.qty);
 
@@ -111,44 +111,6 @@ export class CartComponent implements OnInit {
 
 
 	}
-	// recalculateTotalAmount() {
-	// 	let newTotalAmount = 0;
-	// 	this.cartItems.forEach( cartItem => {
-	// 		newTotalAmount += (cartItem.productPrice * cartItem.count)
-	// 	});
-	// 	this.totalAmount = newTotalAmount;
-	// }
-
-<<<<<<< HEAD
-	onUpdate() {
-		// console.log(this.item.qty);
-		// this.itemqty = this.onIncrement();
-		console.log(this.itemprice);
-=======
-	// onUpdate() {
-	// 	console.log(this.item.qty);
-	// 	// this.itemqty = this.onIncrement();
-	// 	console.log(this.itemprice);
-
->>>>>>> d462f48d386bd8fc1bac347d2384b93ae666f364
-
-	// 	this.itemprice = this.itemprice * this.item.qty;
-	// 	console.log(this.itemprice);
-
-<<<<<<< HEAD
-		// this.itemprice = this.itemprice * this.item.qty;
-		// console.log(this.itemprice);
-=======
->>>>>>> d462f48d386bd8fc1bac347d2384b93ae666f364
-
-	// 	// let subs = 0;
-	// 	//  for(const item of this.products){
-	// 	// 	subs += item.ins * item.qty;
-
-	// 	// 	this.total =  subs;
-	// 	//  }
-
-	// }
 
 	recalculateTotalAmount() {
 	
