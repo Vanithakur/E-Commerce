@@ -13,12 +13,15 @@ export class CartService implements OnInit{
 		throw new Error('Method not implemented.');
 	}
 
+
     cartDataList: any = [];
     productList = new BehaviorSubject<any>([]);
     allproducts:any;
     item: any;
+
     grandTotal :any =[];
     productTotalAmount:any;
+
 
     constructor(private products: ProductService) { }
 ngOnInit(): void {
@@ -37,15 +40,16 @@ ngOnInit(): void {
     setProduct(product: any) {
         this.cartDataList.push(...product);
         this.productList.next(product);
-    this.getTotalAmount();
+        this.getTotalAmount();
 
 
     }
-    getnewProducts(data:any) {
+    getnewProducts(data: any) {
         console.log(data);
-        
+
 
     }
+
     //add to cart
     addToCart(product: any) {        
         this.cartDataList.push(product);
@@ -55,13 +59,13 @@ ngOnInit(): void {
         console.log(this.cartDataList);
 
     }
-    orderTotal(){
-       
+
+    orderTotal() {
+
         for (let i = 0; i < this.cartDataList.length; i++) {
             this.grandTotal += this.cartDataList[i].ins;
         }
-     }
-
+    }
 
     //get total amount
     getTotalAmount() {
@@ -76,8 +80,8 @@ ngOnInit(): void {
         // console.log(grandTotal);
 
         return grandTotal;
-     }
-   
+    }
+
     //remove a cart product
     removeCartData(product: any) {
         // console.log(product);
@@ -86,35 +90,7 @@ ngOnInit(): void {
 
         this.productList.next(this.cartDataList)
     }
-    increment(item: any){
-        item.qty = +item.qty + 1;	
-        this.recalculateTotalAmount();
-    }
-    decrement(item: any){
 
-		item.qty = item.qty - 1;
-		if (item.qty <= 1) {
-			
-		}
-
-        this.recalculateTotalAmount();
-    
-    }
-    
-    recalculateTotalAmount() {
-        let newTotalAmount = 0;
-        this.allproducts.forEach((item: { ins: number; qty: number; }) => {
-            newTotalAmount += (item.ins * item.qty)
-            console.log(item.qty);
-
-        });
-        // console.log(this.productTotalAmount);
-        console.log(newTotalAmount);
-
-        return this.productTotalAmount = newTotalAmount;
-
-
-}
 
 }
 

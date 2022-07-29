@@ -23,23 +23,19 @@ export class HeaderSecondComponent implements OnInit {
 		// this.totalAmount = this.cart.getTotalAmount();
 		// console.log(this.totalAmount );
 
-		// this.cart.getProductData().subscribe(res => {
-		// 	this.totalItemNumber = res.length;
-		// 	console.log(this.totalItemNumber);
-			
-		// 	this.products = res;
-		// 	for (let product of this.products) {
-		// 		// this.totalItemNumber = product.qty;
 
-		// 	}
-		// 	this.allproducts = this.recalculateTotalAmount();
-		// });
+		this.cart.getProductData().subscribe(res => {
+			this.totalItemNumber = res.length;
+		});
 
 		// this.cart.recalculateTotalAmount().subscribe((res: { newTotalAmount: number; }) => {
 		// 	this.totalAmount = res.newTotalAmount;
 		// 	console.log();
 			
 		// });
+
+		// console.log(this.cart.recalculateTotalAmount());
+
 
 		// this.cartItemFunc();
 
