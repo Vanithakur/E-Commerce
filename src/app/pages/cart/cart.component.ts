@@ -85,6 +85,7 @@ export class CartComponent implements OnInit {
 	onIncrement(item: any) {
 
 		item.qty = +item.qty + 1;
+		this.validateInput = true;
 
 		this.recalculateTotalAmount();
 
@@ -108,17 +109,35 @@ export class CartComponent implements OnInit {
 
 
 	}
+	// recalculateTotalAmount() {
+	// 	let newTotalAmount = 0;
+	// 	this.cartItems.forEach( cartItem => {
+	// 		newTotalAmount += (cartItem.productPrice * cartItem.count)
+	// 	});
+	// 	this.totalAmount = newTotalAmount;
+	// }
 
-
+<<<<<<< HEAD
+	onUpdate() {
+		// console.log(this.item.qty);
+		// this.itemqty = this.onIncrement();
+		console.log(this.itemprice);
+=======
 	// onUpdate() {
 	// 	console.log(this.item.qty);
 	// 	// this.itemqty = this.onIncrement();
 	// 	console.log(this.itemprice);
 
+>>>>>>> d462f48d386bd8fc1bac347d2384b93ae666f364
 
 	// 	this.itemprice = this.itemprice * this.item.qty;
 	// 	console.log(this.itemprice);
 
+<<<<<<< HEAD
+		// this.itemprice = this.itemprice * this.item.qty;
+		// console.log(this.itemprice);
+=======
+>>>>>>> d462f48d386bd8fc1bac347d2384b93ae666f364
 
 	// 	// let subs = 0;
 	// 	//  for(const item of this.products){
