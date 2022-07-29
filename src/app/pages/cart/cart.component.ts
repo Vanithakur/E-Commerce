@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
 
 	ngOnInit(): void {
 
-<<<<<<< HEAD
+
 
 		this.cart.getProductData().subscribe(res => {
 
@@ -42,21 +42,14 @@ export class CartComponent implements OnInit {
 			// 	this.itemprice = product.ins;
 			// 	console.log(product.qty);
 
-
 			// }		
-=======
->>>>>>> 4b2fe92cbba23526664066839b20a77e4c0b7cff
 
 
+			// this.cart.getProductData().subscribe(res => {
 
+			// }
+			// this.allproducts = this.recalculateTotalAmount();
 
-			this.cart.getProductData().subscribe(res => {
-
-<<<<<<< HEAD
-=======
-			}
-			this.allproducts = this.recalculateTotalAmount();
->>>>>>> 4b2fe92cbba23526664066839b20a77e4c0b7cff
 
 				this.products = res;
 				for (let product of this.products) {
@@ -111,13 +104,8 @@ export class CartComponent implements OnInit {
 
 
 	}
-
-<<<<<<< HEAD
-
-
-=======
 	
->>>>>>> 4b2fe92cbba23526664066839b20a77e4c0b7cff
+
 	onUpdate() {
 
 		console.log(this.itemprice);
@@ -126,17 +114,10 @@ export class CartComponent implements OnInit {
 
 	recalculateTotalAmount() {
 
-<<<<<<< HEAD
 		let newTotalAmount = 0;
 		this.products.forEach((item: { ins: number; qty: number; }) => {
 			newTotalAmount += (item.ins * item.qty)
 			// console.log(item.qty);
-=======
-			let newTotalAmount = 0;
-			this.products.forEach((item: { ins: number; qty: number; }) => {
-				newTotalAmount += (item.ins * item.qty)
-				console.log(item.qty);
->>>>>>> 4b2fe92cbba23526664066839b20a77e4c0b7cff
 
 		});
 		// console.log(this.productTotalAmount);

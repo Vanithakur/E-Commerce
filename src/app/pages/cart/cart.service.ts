@@ -7,17 +7,17 @@ import { BehaviorSubject } from "rxjs";
 
 
 export class CartService {
-    accurateQty:any;
-	forEach(arg0: (cart: any) => void) {
-		throw new Error('Method not implemented.');
-	}
+    accurateQty: any;
+    forEach(arg0: (cart: any) => void) {
+        throw new Error('Method not implemented.');
+    }
 
     cartDataList: any = [];
     productList = new BehaviorSubject<any>([]);
     newTotalAmount = new BehaviorSubject<any>([]);
 
     item: any;
-    grandTotal :any =[];
+    grandTotal: any = [];
 
     constructor() { }
 
@@ -30,15 +30,16 @@ export class CartService {
     setProduct(product: any) {
         this.cartDataList.push(...product);
         this.productList.next(product);
-    this.getTotalAmount();
+        this.getTotalAmount();
 
 
     }
-    getnewProducts(data:any) {
+    getnewProducts(data: any) {
         console.log(data);
-        
+
 
     }
+
     //add to cart
     addToCart(product: any) {
         this.cartDataList.push(product);
@@ -47,13 +48,13 @@ export class CartService {
         console.log(this.cartDataList);
 
     }
-    orderTotal(){
-       
+
+    orderTotal() {
+
         for (let i = 0; i < this.cartDataList.length; i++) {
             this.grandTotal += this.cartDataList[i].ins;
         }
-     }
-
+    }
 
     //get total amount
     getTotalAmount() {
@@ -68,8 +69,8 @@ export class CartService {
         // console.log(grandTotal);
 
         return grandTotal;
-     }
-   
+    }
+
     //remove a cart product
     removeCartData(product: any) {
         // console.log(product);
@@ -79,27 +80,19 @@ export class CartService {
         this.productList.next(this.cartDataList)
     }
 
-    // recalculateTotalAmount() {
-	
-<<<<<<< HEAD
-	// 	let newTotalAmount = 0;
-	// 	this.cartDataList.length.forEach( (item: { ins: number; qty: number; }) => {
-	// 		newTotalAmount += (item.ins* item.qty)
-	// 		// console.log(newTotalAmount);
-=======
+    recalculateTotalAmount() {
+
 		let newTotalAmount = 0;
 		this.cartDataList.length.forEach( (item: { ins: number; qty: number; }) => {
 			newTotalAmount += (item.ins* item.qty)
-			console.log(item.qty);
->>>>>>> 4b2fe92cbba23526664066839b20a77e4c0b7cff
-			
-	// 	});
-    //     // return newTotalAmount;
-    //     // console.log(this.newTotalAmount.asObservable());
-        
-    //     return this.newTotalAmount.asObservable();
-    
-	// }
+			// console.log(newTotalAmount);
+
+    	});
+        // return newTotalAmount;
+        // console.log(this.newTotalAmount.asObservable());
+        return this.newTotalAmount.asObservable();
+
+    }
 
 }
 
