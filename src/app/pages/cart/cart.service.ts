@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Subject } from "rxjs";
 import { ProductService } from "src/app/services/products/products.service";
 
 @Injectable({
@@ -13,20 +13,23 @@ export class CartService implements OnInit{
 		throw new Error('Method not implemented.');
 	}
 
-
+    cartValue:any;
     cartDataList: any = [];
     productList = new BehaviorSubject<any>([]);
     allproducts:any;
+    emitAmount = new Subject<any>();
     item: any;
-
+    items: any = [];
     grandTotal :any =[];
     productTotalAmount:any;
 
+    cartQuantity = new Subject<number>();
 
     constructor(private products: ProductService) { }
-ngOnInit(): void {
+    ngOnInit(): void {
     this.allproducts = this.products.getProducts();
-}
+   
+      }
     //get product data
     getProductData() {
      this.productList.asObservable().subscribe(res=>{
@@ -77,20 +80,17 @@ ngOnInit(): void {
         for (i = 0; i < this.cartDataList.length; i++) {
             grandTotal += this.cartDataList[i].ins;
         }
-        // console.log(grandTotal);
-
         return grandTotal;
     }
 
-    //remove a cart product
     removeCartData(product: any) {
-        // console.log(product);
+      
         this.cartDataList.splice(product, 1);
         this.productList.next(this.cartDataList.slice());
 
         this.productList.next(this.cartDataList)
     }
-
+    
 
 }
 
