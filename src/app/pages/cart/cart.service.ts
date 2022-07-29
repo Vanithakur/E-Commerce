@@ -13,6 +13,8 @@ export class CartService {
 
     cartDataList: any = [];
     productList = new BehaviorSubject<any>([]);
+    newTotalAmount = new BehaviorSubject<any>([]);
+
     item: any;
     grandTotal :any =[];
 
@@ -58,7 +60,7 @@ export class CartService {
         for (i = 0; i < this.cartDataList.length; i++) {
             grandTotal += this.cartDataList[i].ins;
         }
-        console.log(grandTotal);
+        // console.log(grandTotal);
 
         return grandTotal;
      }
@@ -73,19 +75,20 @@ export class CartService {
 
         this.productList.next(this.cartDataList)
     }
+
     recalculateTotalAmount() {
 	
-    
-
 		let newTotalAmount = 0;
 		this.cartDataList.length.forEach( (item: { ins: number; qty: number; }) => {
 			newTotalAmount += (item.ins* item.qty)
-			console.log(item.qty);
+			// console.log(newTotalAmount);
 			
 		});
-		// this.productTotalAmount = newTotalAmount;
-		// console.log(this.productTotalAmount);
-		
+        // return newTotalAmount;
+        // console.log(this.newTotalAmount.asObservable());
+        
+        return this.newTotalAmount.asObservable();
+    
 	}
 
 }
