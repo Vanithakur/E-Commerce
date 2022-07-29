@@ -111,7 +111,7 @@ export class CartComponent implements OnInit {
 
 		});
 		console.log(this.items);
-
+        this.cart.emitAmount.next(newTotalAmount);
 		return this.productTotalAmount = newTotalAmount;
 
 

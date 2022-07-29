@@ -32,12 +32,7 @@ export class CartService implements OnInit{
       }
     //get product data
     getProductData() {
-        // this.emitAmount.subscribe(
-		// 	res=>{
-		// 		this.totalAmount = res;
-				
-		// 	}
-		// );
+    
      return this.productList.asObservable();
     }
 
@@ -82,6 +77,7 @@ export class CartService implements OnInit{
         for (i = 0; i < this.cartDataList.length; i++) {
             grandTotal += this.cartDataList[i].ins;
         }
+       
         return grandTotal;
     }
 
