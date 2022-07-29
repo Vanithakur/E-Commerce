@@ -73,7 +73,20 @@ export class CartService {
 
         this.productList.next(this.cartDataList)
     }
+    recalculateTotalAmount() {
+	
+    
 
+		let newTotalAmount = 0;
+		this.cartDataList.length.forEach( (item: { ins: number; qty: number; }) => {
+			newTotalAmount += (item.ins* item.qty)
+			console.log(item.qty);
+			
+		});
+		// this.productTotalAmount = newTotalAmount;
+		// console.log(this.productTotalAmount);
+		
+	}
 
 }
 

@@ -23,9 +23,7 @@ export class CartComponent implements OnInit {
 	item: any;
 	total!: number;
 
-	//  ctrl: any = this;
-
-	// public allproducts !:number; 
+	 
 
 	constructor(private cart: CartService,
 		private product: ProductService) { }

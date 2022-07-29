@@ -26,7 +26,8 @@ totalAmount:number = 0;
 			this.totalItemNumber = res.length;
 			
 		}) 
-		
+		;
+		console.log(this.cart.recalculateTotalAmount());
 		
 		// this.cartItemFunc();
 
@@ -36,14 +37,5 @@ totalAmount:number = 0;
 		});
 	}
 
-	// cartItem: number = 0;
-	// cartItemFunc() {
-	// 	if (localStorage.getItem('localCart') != null) {
-	// 		var cartCount = JSON.parse(localStorage.getItem('localCart') || '{}');
-	// 		// console.log(cartCount);
-	// 		this.cartItem = cartCount.length;
-			
-	// 	}
-	// }
 
 }	
