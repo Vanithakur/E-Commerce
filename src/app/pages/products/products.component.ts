@@ -22,10 +22,6 @@ export class ProductsComponent implements OnInit {
 	ngOnInit(): void {
 		this.allproduct = this.allproducts.getProducts();
 		console.log(this.allproduct);
-
-		// this.productList.forEach((a:any) => {
-		// 	Object.assign(a,{quantity:1, total:a.price})
-		// });
 	}
 
 	addToCart(item:any){
@@ -68,37 +64,7 @@ export class ProductsComponent implements OnInit {
 		nav: true
 	}
 	
-	// itemsCart: any = [];
-
-	// addCart(category: any) {
-	// 	console.log(category);
-	// 	let cartDataNull = localStorage.getItem('localCart');
-
-	// 	if (cartDataNull = null) {
-	// 		let storeDataGet: any = [];
-	// 		storeDataGet.push(category);
-	// 		localStorage.setItem('localCart', JSON.stringify(storeDataGet));
-	// 	} else {
-	// 		var id = category.prodID;
-	// 		let index: number = -1;
-	// 		this.itemsCart = JSON.parse(localStorage.getItem('localCart') || '{}');
-	// 		for (let i = 0; i < this.itemsCart.length; i++) {
-	// 			if (parseInt(id) === parseInt(this.itemsCart[i].prodID)) {
-	// 				this.itemsCart[i].qty = category.qty;
-	// 				index = i;
-	// 				break;
-	// 			}
-	// 			if (index == -1) {
-	// 				this.itemsCart.push(category);
-	// 				localStorage.setItem('localCart', JSON.stringify(category));
-	// 			} else {
-	// 				localStorage.setItem('localCart', JSON.stringify(category));
-	// 			}
-	// 		}
-
-	// 	}
-
-	// }
+	
 
 
 

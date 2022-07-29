@@ -21,6 +21,7 @@ export class CartComponent implements OnInit {
 	amount: number = 899;
 	cartDataList: any = [];
 	item: any;
+	items: any;
 	total!: number;
 
 
@@ -31,6 +32,19 @@ export class CartComponent implements OnInit {
 
 
 	ngOnInit(): void {
+<<<<<<< HEAD
+       		
+		this.cart.getProductData().subscribe(res => {		
+
+			 this.products = res;
+			// for (let product of this.products) {
+			// 	this.itemprice = product.ins;
+			// 	console.log(product.qty);
+				
+
+			// }		
+			
+=======
 
 
 		this.cart.getProductData().subscribe(res => {
@@ -42,9 +56,12 @@ export class CartComponent implements OnInit {
 
 			}
 			this.allproducts = this.recalculateTotalAmount();
+>>>>>>> 169bf1f2ed0730c3ada351ba2ad9a6bbe8b80b96
 
 		})
 		this.productQty = this.product.getProducts();
+		console.log(this.productQty);
+		
 		for (let product of this.productQty) {
 			// console.log(product.qty);
 
@@ -86,6 +103,8 @@ export class CartComponent implements OnInit {
 
 
 	}
+<<<<<<< HEAD
+=======
 	
 	onUpdate() {
 		
@@ -109,6 +128,7 @@ export class CartComponent implements OnInit {
 
 		}
 
+>>>>>>> 169bf1f2ed0730c3ada351ba2ad9a6bbe8b80b96
 
 	}
 

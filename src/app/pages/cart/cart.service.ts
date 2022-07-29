@@ -7,6 +7,7 @@ import { BehaviorSubject } from "rxjs";
 
 
 export class CartService {
+    accurateQty:any;
 	forEach(arg0: (cart: any) => void) {
 		throw new Error('Method not implemented.');
 	}
@@ -33,7 +34,11 @@ export class CartService {
 
 
     }
+    getnewProducts(data:any) {
+        console.log(data);
+        
 
+    }
     //add to cart
     addToCart(product: any) {
         this.cartDataList.push(product);
@@ -64,9 +69,7 @@ export class CartService {
 
         return grandTotal;
      }
-
-    
-
+   
     //remove a cart product
     removeCartData(product: any) {
         // console.log(product);
