@@ -32,69 +32,69 @@ export class CartComponent implements OnInit {
 
 
 	ngOnInit(): void {
-<<<<<<< HEAD
-       		
-		this.cart.getProductData().subscribe(res => {		
-
-			 this.products = res;
-			// for (let product of this.products) {
-			// 	this.itemprice = product.ins;
-			// 	console.log(product.qty);
-				
-
-			// }		
-			
-=======
 
 
 		this.cart.getProductData().subscribe(res => {
 
-
 			this.products = res;
-			for (let product of this.products) {
-				this.itemprice = product.ins;
+			// for (let product of this.products) {
+			// 	this.itemprice = product.ins;
+			// 	console.log(product.qty);
+
+
+			// }		
+
+
+
+
+			this.cart.getProductData().subscribe(res => {
+
+
+				this.products = res;
+				for (let product of this.products) {
+					this.itemprice = product.ins;
+
+				}
+				this.allproducts = this.recalculateTotalAmount();
+
+
+			})
+			this.productQty = this.product.getProducts();
+			console.log(this.productQty);
+
+			for (let product of this.productQty) {
+				// console.log(product.qty);
 
 			}
-			this.allproducts = this.recalculateTotalAmount();
->>>>>>> 169bf1f2ed0730c3ada351ba2ad9a6bbe8b80b96
-
-		})
-		this.productQty = this.product.getProducts();
-		console.log(this.productQty);
-		
-		for (let product of this.productQty) {
-			// console.log(product.qty);
 
 		}
 
-	}
-
 	removeProduct(item: any) {
-		console.log(item);
-		this.cart.removeCartData(item);
-		// this.cart.removeCartData(item);
-	}
+			console.log(item);
+			this.cart.removeCartData(item);
+			// this.cart.removeCartData(item);
+		}
 
 
 	onIncrement(item: any) {
 
-		item.qty = +item.qty + 1;
-		this.validateInput = true;
+			item.qty = +item.qty + 1;
+			this.validateInput = true;
 
-		this.recalculateTotalAmount();
+			this.recalculateTotalAmount();
 
-		this.validateInput = true;
+			this.validateInput = true;
 
-		// this.onUpdate(this.item);
+			// this.onUpdate(this.item);
 
-	}
+		}
 
 
 
 	onDecrement(item: any) {
 
-		item.qty = item.qty - 1;
-		if (item.qty <= 1) {
+			item.qty = item.qty - 1;
+			if(item.qty <= 1) {
 			this.validateInput = false;
 		}
 
@@ -103,32 +103,32 @@ export class CartComponent implements OnInit {
 
 
 	}
-<<<<<<< HEAD
-=======
-	
+
+
+
 	onUpdate() {
-		
+
 		console.log(this.itemprice);
 
 	}
 
-		recalculateTotalAmount() {
+	recalculateTotalAmount() {
 
-			let newTotalAmount = 0;
-			this.products.forEach((item: { ins: number; qty: number; }) => {
-				newTotalAmount += (item.ins * item.qty)
-				// console.log(item.qty);
+		let newTotalAmount = 0;
+		this.products.forEach((item: { ins: number; qty: number; }) => {
+			newTotalAmount += (item.ins * item.qty)
+			// console.log(item.qty);
 
-			});
-			// console.log(this.productTotalAmount);
-			console.log(newTotalAmount);
+		});
+		// console.log(this.productTotalAmount);
+		console.log(newTotalAmount);
 
-			return this.productTotalAmount = newTotalAmount;
+		return this.productTotalAmount = newTotalAmount;
 
-
-		}
-
->>>>>>> 169bf1f2ed0730c3ada351ba2ad9a6bbe8b80b96
 
 	}
+
+
+
+}
 
