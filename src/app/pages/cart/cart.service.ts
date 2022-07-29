@@ -76,20 +76,20 @@ export class CartService {
         this.productList.next(this.cartDataList)
     }
 
-    recalculateTotalAmount() {
+    // recalculateTotalAmount() {
 	
-		let newTotalAmount = 0;
-		this.cartDataList.length.forEach( (item: { ins: number; qty: number; }) => {
-			newTotalAmount += (item.ins* item.qty)
-			// console.log(newTotalAmount);
+	// 	let newTotalAmount = 0;
+	// 	this.cartDataList.length.forEach( (item: { ins: number; qty: number; }) => {
+	// 		newTotalAmount += (item.ins* item.qty)
+	// 		// console.log(newTotalAmount);
 			
-		});
-        // return newTotalAmount;
-        // console.log(this.newTotalAmount.asObservable());
+	// 	});
+    //     // return newTotalAmount;
+    //     // console.log(this.newTotalAmount.asObservable());
         
-        return this.newTotalAmount.asObservable();
+    //     return this.newTotalAmount.asObservable();
     
-	}
+	// }
 
 }
 

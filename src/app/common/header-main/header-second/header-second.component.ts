@@ -26,13 +26,13 @@ export class HeaderSecondComponent implements OnInit {
 			this.totalItemNumber = res.length;
 		});
 
-		this.cart.recalculateTotalAmount().subscribe((res: { newTotalAmount: number; }) => {
-			this.totalAmount = res.newTotalAmount;
-			console.log();
+		// this.cart.recalculateTotalAmount().subscribe((res: { newTotalAmount: number; }) => {
+		// 	this.totalAmount = res.newTotalAmount;
+		// 	console.log();
 			
-		});
+		// });
 
-		console.log(this.cart.recalculateTotalAmount());
+		// console.log(this.cart.recalculateTotalAmount());
 
 		// this.cartItemFunc();
 
