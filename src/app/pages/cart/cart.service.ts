@@ -12,7 +12,7 @@ export class CartService implements OnInit{
 	forEach(arg0: (cart: any) => void) {
 		throw new Error('Method not implemented.');
 	}
-
+    totalAmount:number =0;
     cartValue:any;
     cartDataList: any = [];
     productList = new BehaviorSubject<any>([]);
@@ -32,10 +32,12 @@ export class CartService implements OnInit{
       }
     //get product data
     getProductData() {
-     this.productList.asObservable().subscribe(res=>{
-       this.allproducts = res;
-        
-     });
+        // this.emitAmount.subscribe(
+		// 	res=>{
+		// 		this.totalAmount = res;
+				
+		// 	}
+		// );
      return this.productList.asObservable();
     }
 

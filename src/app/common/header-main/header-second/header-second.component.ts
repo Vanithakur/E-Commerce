@@ -15,21 +15,26 @@ export class HeaderSecondComponent implements OnInit {
 	totalItemNumber: number = 0;
 	totalAmount: any = 0;
 	isAuthenticated: boolean = false;
-
+GrandTotal:number =0;
 	private userSub: Subscription = new Subscription;
 	constructor(private authService: AuthService, private cart: CartService) { }
 
 	ngOnInit(): void {
 
 		
-		// this.cart.getProductData().subscribe(res => {
-		// 	this.totalItemNumber = res.length;
+		this.cart.getProductData().subscribe(res => {
+			this.totalItemNumber = res.length;
+			this.totalAmount = this.cart.getTotalAmount();
 			
-		// 	console.log("ok");
-			
-		// });
-		this.totalAmount = this.cart.emitAmount.subscribe();
-		console.log(this.totalAmount);
+		});
+		this.cart.emitAmount.subscribe(
+			res=>{
+				this.totalAmount = res;
+				
+			}
+		);
+		this.GrandTotal
+		// console.log(this.totalAmount);
 		
 
 		this.userSub = this.authService.user.subscribe((user: any) => {

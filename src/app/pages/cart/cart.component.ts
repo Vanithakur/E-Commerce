@@ -107,9 +107,10 @@ export class CartComponent implements OnInit {
 		this.products.forEach((item: { ins: number; qty: number; }) => {
 			newTotalAmount += (item.ins * item.qty)
 			console.log(item.qty);
+			this.items = item.qty;
 
 		});
-		console.log(newTotalAmount);
+		console.log(this.items);
 
 		return this.productTotalAmount = newTotalAmount;
 
