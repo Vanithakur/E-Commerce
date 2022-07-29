@@ -98,7 +98,7 @@ export class CartComponent implements OnInit {
 
 	}
 
-		recalculateTotalAmount() {
+	recalculateTotalAmount() {
 
 			let newTotalAmount = 0;
 			this.products.forEach((item: { ins: number; qty: number; }) => {
@@ -112,7 +112,7 @@ export class CartComponent implements OnInit {
 			return this.productTotalAmount = newTotalAmount;
 
 
-		}
+	}
 
 
 	}

@@ -10,7 +10,8 @@ import { AuthService } from 'src/app/services/auth.service';
 	styleUrls: ['./header-second.component.css']
 })
 export class HeaderSecondComponent implements OnInit {
-
+	products:any;
+	allproducts:any;
 	totalItemNumber: number = 0;
 	totalAmount: number = 0;
 	isAuthenticated: boolean = false;
@@ -22,17 +23,23 @@ export class HeaderSecondComponent implements OnInit {
 		// this.totalAmount = this.cart.getTotalAmount();
 		// console.log(this.totalAmount );
 
-		this.cart.getProductData().subscribe(res => {
-			this.totalItemNumber = res.length;
-		});
-
-		this.cart.recalculateTotalAmount().subscribe((res: { newTotalAmount: number; }) => {
-			this.totalAmount = res.newTotalAmount;
-			console.log();
+		// this.cart.getProductData().subscribe(res => {
+		// 	this.totalItemNumber = res.length;
+		// 	console.log(this.totalItemNumber);
 			
-		});
+		// 	this.products = res;
+		// 	for (let product of this.products) {
+		// 		// this.totalItemNumber = product.qty;
 
-		console.log(this.cart.recalculateTotalAmount());
+		// 	}
+		// 	this.allproducts = this.recalculateTotalAmount();
+		// });
+
+		// this.cart.recalculateTotalAmount().subscribe((res: { newTotalAmount: number; }) => {
+		// 	this.totalAmount = res.newTotalAmount;
+		// 	console.log();
+			
+		// });
 
 		// this.cartItemFunc();
 
@@ -40,6 +47,22 @@ export class HeaderSecondComponent implements OnInit {
 			this.isAuthenticated = !!user;
 			console.log(this.isAuthenticated);
 		});
+	}
+      recalculateTotalAmount() {
+			let newTotalAmount = 0;
+			this.products.forEach((item: { ins: number; qty: number; }) => {
+				newTotalAmount += (item.ins * item.qty)
+				// this.totalItemNumber = item.qty;
+				// console.log(item.qty);
+
+			});
+			
+			// console.log(this.totalItemNumber);
+			console.log(newTotalAmount);
+
+			return this.totalAmount = newTotalAmount;
+
+
 	}
 
 

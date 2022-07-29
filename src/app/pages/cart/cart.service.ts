@@ -1,12 +1,13 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
+import { ProductService } from "src/app/services/products/products.service";
 
 @Injectable({
     providedIn: 'root'
 })
 
 
-export class CartService {
+export class CartService implements OnInit{
     accurateQty:any;
 	forEach(arg0: (cart: any) => void) {
 		throw new Error('Method not implemented.');
@@ -14,16 +15,22 @@ export class CartService {
 
     cartDataList: any = [];
     productList = new BehaviorSubject<any>([]);
-    newTotalAmount = new BehaviorSubject<any>([]);
-
+    allproducts:any;
     item: any;
     grandTotal :any =[];
+    productTotalAmount:any;
 
-    constructor() { }
-
+    constructor(private products: ProductService) { }
+ngOnInit(): void {
+    this.allproducts = this.products.getProducts();
+}
     //get product data
     getProductData() {
-        return this.productList.asObservable();
+     this.productList.asObservable().subscribe(res=>{
+       this.allproducts = res;
+        
+     });
+     return this.productList.asObservable();
     }
 
     //set product data
@@ -40,8 +47,9 @@ export class CartService {
 
     }
     //add to cart
-    addToCart(product: any) {
+    addToCart(product: any) {        
         this.cartDataList.push(product);
+        
         this.productList.next(this.cartDataList);
         this.getTotalAmount();
         console.log(this.cartDataList);
@@ -78,21 +86,35 @@ export class CartService {
 
         this.productList.next(this.cartDataList)
     }
+    increment(item: any){
+        item.qty = +item.qty + 1;	
+        this.recalculateTotalAmount();
+    }
+    decrement(item: any){
 
-    recalculateTotalAmount() {
-	
-		let newTotalAmount = 0;
-		this.cartDataList.length.forEach( (item: { ins: number; qty: number; }) => {
-			newTotalAmount += (item.ins* item.qty)
-			console.log(item.qty);
+		item.qty = item.qty - 1;
+		if (item.qty <= 1) {
 			
-		});
-        // return newTotalAmount;
-        // console.log(this.newTotalAmount.asObservable());
-        
-        return this.newTotalAmount.asObservable();
+		}
+
+        this.recalculateTotalAmount();
     
-	}
+    }
+    
+    recalculateTotalAmount() {
+        let newTotalAmount = 0;
+        this.allproducts.forEach((item: { ins: number; qty: number; }) => {
+            newTotalAmount += (item.ins * item.qty)
+            console.log(item.qty);
+
+        });
+        // console.log(this.productTotalAmount);
+        console.log(newTotalAmount);
+
+        return this.productTotalAmount = newTotalAmount;
+
+
+}
 
 }
 
