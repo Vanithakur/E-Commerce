@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
 	itemqty: number = 0;
 	validateInput: boolean = false;
 
-	productTotalAmount: number =0;
+	productTotalAmount: number = 0;
 
 	products: any = [];
 	allproducts: any = 0;
@@ -24,15 +24,15 @@ export class CartComponent implements OnInit {
 	items: any;
 	total!: number;
 
-	//  ctrl: any = this;
 
-	// public allproducts !:number; 
+
 
 	constructor(private cart: CartService,
 		private product: ProductService) { }
 
 
 	ngOnInit(): void {
+<<<<<<< HEAD
        		
 		this.cart.getProductData().subscribe(res => {		
 
@@ -44,6 +44,19 @@ export class CartComponent implements OnInit {
 
 			// }		
 			
+=======
+
+
+		this.cart.getProductData().subscribe(res => {
+
+
+			this.products = res;
+			for (let product of this.products) {
+				this.itemprice = product.ins;
+
+			}
+			this.allproducts = this.recalculateTotalAmount();
+>>>>>>> 169bf1f2ed0730c3ada351ba2ad9a6bbe8b80b96
 
 		})
 		this.productQty = this.product.getProducts();
@@ -54,7 +67,6 @@ export class CartComponent implements OnInit {
 
 		}
 
-		// this.productTotalAmount = this.products.ins;
 	}
 
 	removeProduct(item: any) {
@@ -64,26 +76,6 @@ export class CartComponent implements OnInit {
 	}
 
 
-
-	// 	validateInput( item:any) {	
-	// console.log(item);
-
-
-	// 		const qty = +item.qty;
-	// 		console.log(qty);
-
-	// 		if(qty<1){
-	// 			this.item.qty;
-	// 			console.log(item.value);
-
-	// 			return;
-	// 		} else {
-	// 			this.onIncrement(this.item);
-	// 		}
-
-
-	// 	}
-
 	onIncrement(item: any) {
 
 		item.qty = +item.qty + 1;
@@ -91,7 +83,7 @@ export class CartComponent implements OnInit {
 
 		this.recalculateTotalAmount();
 
-		this.validateInput =true;
+		this.validateInput = true;
 
 		// this.onUpdate(this.item);
 
@@ -111,21 +103,32 @@ export class CartComponent implements OnInit {
 
 
 	}
-
-	recalculateTotalAmount() {
+<<<<<<< HEAD
+=======
 	
-    
-
-		let newTotalAmount = 0;
-		this.products.forEach( (item: { ins: number; qty: number; }) => {
-			newTotalAmount += (item.ins* item.qty)
-			console.log(item.qty);
-			
-		});
-		this.productTotalAmount = newTotalAmount;
-		console.log(this.productTotalAmount);
+	onUpdate() {
 		
+		console.log(this.itemprice);
+
 	}
 
-	
-}
+		recalculateTotalAmount() {
+
+			let newTotalAmount = 0;
+			this.products.forEach((item: { ins: number; qty: number; }) => {
+				newTotalAmount += (item.ins * item.qty)
+				// console.log(item.qty);
+
+			});
+			// console.log(this.productTotalAmount);
+			console.log(newTotalAmount);
+
+			return this.productTotalAmount = newTotalAmount;
+
+
+		}
+
+>>>>>>> 169bf1f2ed0730c3ada351ba2ad9a6bbe8b80b96
+
+	}
+
