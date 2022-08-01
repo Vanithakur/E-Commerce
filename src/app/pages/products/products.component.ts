@@ -5,8 +5,6 @@ import { ProductService } from 'src/app/services/products/products.service';
 import { CartService } from '../cart/cart.service';
 
 
-
-
 @Component({
 	selector: 'app-products',
 	templateUrl: './products.component.html',
@@ -26,12 +24,8 @@ export class ProductsComponent implements OnInit {
 
 	addToCart(item:any){
 		this.cart.addToCart(item);
-		console.log(item);
-		
-		
+		console.log(item);		
 	}
-
-
 	
 	customOptions: OwlOptions = {
 		loop: true,

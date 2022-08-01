@@ -56,17 +56,10 @@ export class CartComponent implements OnInit {
 					this.itemprice = product.ins;
 
 				}
-				this.allproducts = this.recalculateTotalAmount();
-
 
 			})
-			this.productQty = this.product.getProducts();
-			console.log(this.productQty);
-
-			for (let product of this.productQty) {
-				// console.log(product.qty);
-
-			}
+		
+			this.productTotalAmount = this.recalculateTotalAmount();
 
 		}
 
@@ -85,6 +78,7 @@ export class CartComponent implements OnInit {
 			this.recalculateTotalAmount();
 
 			this.validateInput = true;
+			this.cart.emitAmount.next(this.productTotalAmount);
 
 			// this.onUpdate(this.item);
 
@@ -100,15 +94,10 @@ export class CartComponent implements OnInit {
 		}
 
 		this.recalculateTotalAmount();
-		// this.onUpdate(this.item);
+		this.items = this.cart.emitAmount.next(this.productTotalAmount);
+		console.log(this.items);
+		
 
-
-	}
-	
-
-	onUpdate() {
-
-		console.log(this.itemprice);
 
 	}
 
@@ -117,12 +106,12 @@ export class CartComponent implements OnInit {
 		let newTotalAmount = 0;
 		this.products.forEach((item: { ins: number; qty: number; }) => {
 			newTotalAmount += (item.ins * item.qty)
-			// console.log(item.qty);
+			console.log(item.qty);
+			this.items = item.qty;
 
 		});
-		// console.log(this.productTotalAmount);
-		console.log(newTotalAmount);
-
+		console.log(this.items);
+        this.cart.emitAmount.next(newTotalAmount);
 		return this.productTotalAmount = newTotalAmount;
 
 

@@ -10,37 +10,38 @@ import { AuthService } from 'src/app/services/auth.service';
 	styleUrls: ['./header-second.component.css']
 })
 export class HeaderSecondComponent implements OnInit {
-
+	products:any;
+	allproducts:any;
 	totalItemNumber: number = 0;
-	totalAmount: number = 0;
+	totalAmount: any = 0;
 	isAuthenticated: boolean = false;
-
+GrandTotal:number =0;
+total:number=0;
 	private userSub: Subscription = new Subscription;
 	constructor(private authService: AuthService, private cart: CartService) { }
 
 	ngOnInit(): void {
-		// this.totalAmount = this.cart.getTotalAmount();
-		// console.log(this.totalAmount );
+     
 
 		this.cart.getProductData().subscribe(res => {
 			this.totalItemNumber = res.length;
-		});
-
-		// this.cart.recalculateTotalAmount().subscribe((res: { newTotalAmount: number; }) => {
-		// 	this.totalAmount = res.newTotalAmount;
-		// 	console.log();
+			this.totalAmount = this.cart.getTotalAmount();
 			
-		// });
-
-		// console.log(this.cart.recalculateTotalAmount());
-
-		// this.cartItemFunc();
+		});
+		this.cart.emitAmount.subscribe(
+			res=>{
+				this.totalAmount = res;
+				
+			}
+		);
+		this.GrandTotal = this.total+this.totalAmount;
+		console.log(this.totalAmount);
+		
 
 		this.userSub = this.authService.user.subscribe((user: any) => {
 			this.isAuthenticated = !!user;
 			console.log(this.isAuthenticated);
 		});
 	}
-
 
 }	
