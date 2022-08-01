@@ -22,7 +22,7 @@
             <div class="col-md-8">
                 <div class="product-content-right">
                     <div class="woocommerce">
-                        <form enctype="multipart/form-data" class="checkout" method="post" name="checkout">
+                        <form enctype="multipart/form-data" class="checkout" method="post" name="checkout" #f="ngForm">
 
                             <div id="customer_details" class="col2-set billing-field">
                                 <div class="col-1">
@@ -30,24 +30,42 @@
                                         <h3>Billing Details</h3>
                                         <p id="billing_country_field"
                                             class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
-                                            <label class="" for="billing_country">Country <abbr title="required"
+                                            <label class="" for="billing_country" >Country <abbr title="required"
                                                     class="required">*</abbr>
                                             </label>
                                             <select class="country_to_state country_select" id="billing_country"
-                                                name="billing_country">
+                                                name="billing_country" ngModel name="Country" class="form-control" required #Country="ngModel">
                                                 <option value="">Select a country…</option>
                                                 <option *ngFor="let country of countries" value="{{ country}}">{{ country }}</option>
                                             </select>
+
+                                            <label class="help-block" *ngIf="!Country.valid && Country.touched">
+                                                <div class="error" *ngIf="!Country?.valid && (Country?.dirty || Country?.touched)">
+                                                    Country is required!
+                                                </div>
+                                            </label>
                                         </p>
 
                                         <p id="billing_first_name_field"
                                             class="form-row form-row-first validate-required">
+                                            
                                             <label class="" for="billing_first_name">First Name <abbr title="required"
                                                     class="required">*</abbr>
                                             </label>
+                                            
                                             <input type="text" value="" placeholder="" id="billing_first_name"
-                                                name="billing_first_name" class="input-text ">
+                                                name="billing_first_name" class="input-text" ngModel name="firstname" class="form-control" required
+                                                pattern="^[a-zA-Z ]+$" #firstname="ngModel">
+                                            
+                                                <label class="help-block" *ngIf="!firstname.valid && firstname.touched">
+                                                    <div class="error" *ngIf="!firstname?.valid && (firstname?.dirty || firstname?.touched)">
+                                                        First name is required!
+                                                    </div>
+                                                </label>
+                                        
                                         </p>
+
+                                       
 
                                         <p id="billing_last_name_field"
                                             class="form-row form-row-last validate-required">
@@ -55,9 +73,16 @@
                                                     class="required">*</abbr>
                                             </label>
                                             <input type="text" value="" placeholder="" id="billing_last_name"
-                                                name="billing_last_name" class="input-text ">
+                                                name="billing_last_name" class="input-text" ngModel name="lastname" class="form-control" required
+                                                pattern="^[a-zA-Z ]+$" #lastname="ngModel">
+                                           
+                                                <label class="help-block" *ngIf="!lastname.valid && lastname.touched">
+                                                    <div class="error" *ngIf="!lastname?.valid && (lastname?.dirty || lastname?.touched)">
+                                                        Last name is required!
+                                                    </div>
+                                                </label>
                                         </p>
-                                        <div class="clear"></div>
+                                        
 
                                         <p id="billing_company_field" class="form-row form-row-wide">
                                             <label class="" for="billing_company">Company Name</label>
@@ -71,7 +96,13 @@
                                                     class="required">*</abbr>
                                             </label>
                                             <input type="text" value="" placeholder="Street address"
-                                                id="billing_address_1" name="billing_address_1" class="input-text ">
+                                                id="billing_address_1" name="billing_address_1" class="input-text" ngModel name="address" class="form-control" required #address="ngModel">
+
+                                            <label class="help-block" *ngIf="!address.valid && address.touched">
+                                                <div class="error" *ngIf="!address?.valid && (address?.dirty || address?.touched)">
+                                                    Address is required!
+                                                </div>
+                                            </label>
                                         </p>
 
                                         <p id="billing_address_2_field" class="form-row form-row-wide address-field">
@@ -83,11 +114,19 @@
                                         <p id="billing_city_field"
                                             class="form-row form-row-wide address-field validate-required"
                                             data-o_class="form-row form-row-wide address-field validate-required">
+
                                             <label class="" for="billing_city">Town / City <abbr title="required"
                                                     class="required">*</abbr>
                                             </label>
+                                            
                                             <input type="text" value="" placeholder="Town / City" id="billing_city"
-                                                name="billing_city" class="input-text ">
+                                                name="billing_city" class="input-text"  ngModel name="town" class="form-control" required #town="ngModel">
+
+                                            <label class="help-block" *ngIf="!town.valid && town.touched">
+                                                <div class="error" *ngIf="!town?.valid && (town?.dirty || town?.touched)">
+                                                    Town / City  is required!
+                                                </div>
+                                            </label>
                                         </p>
 
                                         <p id="billing_state_field"
@@ -96,7 +135,13 @@
                                             <label class="" for="billing_state">Country <abbr title="required"
                                                 class="required">*</abbr></label>
                                             <input type="text" id="billing_state" name="billing_state"
-                                                placeholder="State / County" value="" class="input-text ">
+                                                placeholder="State / County" value="" class="input-text"  ngModel name="country" class="form-control" required #country="ngModel">
+                                               
+                                                <label class="help-block" *ngIf="!country.valid && country.touched">
+                                                    <div class="error" *ngIf="!country?.valid && (country?.dirty || country?.touched)">
+                                                        Country  is required!
+                                                    </div>
+                                                </label>
                                         </p>
                                         <p id="billing_postcode_field"
                                             class="form-row form-row-last address-field validate-required validate-postcode"
@@ -105,7 +150,13 @@
                                                     class="required">*</abbr>
                                             </label>
                                             <input type="text" value="" placeholder="Postcode / Zip"
-                                                id="billing_postcode" name="billing_postcode" class="input-text ">
+                                                id="billing_postcode" name="billing_postcode" class="input-text " ngModel name="postcode" class="form-control" required #postcode="ngModel">
+                                           
+                                            <label class="help-block" *ngIf="!postcode.valid && postcode.touched">
+                                                    <div class="error" *ngIf="!postcode?.valid && (postcode?.dirty || postcode?.touched)">
+                                                        Postcode  is required!
+                                                    </div>
+                                            </label>
                                         </p>
 
                                         <div class="clear"></div>
@@ -116,7 +167,13 @@
                                                     class="required">*</abbr>
                                             </label>
                                             <input type="text" value="" placeholder="" id="billing_email"
-                                                name="billing_email" class="input-text ">
+                                                name="billing_email" class="input-text" ngModel name="email" class="form-control" required email #email="ngModel">
+                                            
+                                            <label class="help-block" *ngIf="!email.valid && email.touched">
+                                                    <div class="error" *ngIf="!email?.valid && (email?.dirty || postcode?.touched)">
+                                                        Email  is required!
+                                                    </div>
+                                            </label>
                                         </p>
 
                                         <p id="billing_phone_field"
@@ -125,7 +182,13 @@
                                                     class="required">*</abbr>
                                             </label>
                                             <input type="text" value="" placeholder="" id="billing_phone"
-                                                name="billing_phone" class="input-text ">
+                                                name="billing_phone" class="input-text " ngModel name="phone" class="form-control" required #phone="ngModel">
+
+                                            <label class="help-block" *ngIf="!phone.valid && phone.touched">
+                                                    <div class="error" *ngIf="!phone?.valid && (phone?.dirty || phone?.touched)">
+                                                        Phone  is required!
+                                                    </div>
+                                            </label>
                                         </p>
                                         <div class="clear"></div>
                                     </div>
@@ -290,7 +353,7 @@
                                 <div id="payment">
                                     <div class="form-row place-order">
                                         <input type="submit" data-value="Place order" value="Place order"
-                                            id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+                                            id="place_order" name="woocommerce_checkout_place_order" class="button alt" [disabled]="!f.valid">
                                     </div>
 
                                     <div class="clear"></div>
