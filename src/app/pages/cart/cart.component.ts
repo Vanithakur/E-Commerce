@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, filter, map, pipe, Subject } from 'rxjs';
 import { ProductService } from 'src/app/services/products/products.service';
+import { LoginComponent } from '../login/login.component';
 import { CartService } from './cart.service';
 
 @Component({
@@ -14,6 +15,8 @@ export class CartComponent implements OnInit {
 	validateInput: boolean = false;
 
 	productTotalAmount: number = 0;
+	
+
 
 	products: any = [];
 	allproducts: any = 0;
@@ -23,6 +26,9 @@ export class CartComponent implements OnInit {
 	item: any;
 	items: any;
 	total!: number;
+	totalItemNumber: any;
+
+	productCount:any = 0;
 
 
 
@@ -37,7 +43,9 @@ export class CartComponent implements OnInit {
 
 		this.cart.getProductData().subscribe(res => {
 
-			this.products = res;
+			this.products += res;
+
+
 			// for (let product of this.products) {
 			// 	this.itemprice = product.ins;
 			// 	console.log(product.qty);
@@ -51,54 +59,78 @@ export class CartComponent implements OnInit {
 			// this.allproducts = this.recalculateTotalAmount();
 
 
-				this.products = res;
-				for (let product of this.products) {
-					this.itemprice = product.ins;
+			this.products = res;
+			for (let product of this.products) {
+				this.itemprice = product.ins;
 
-				}
+			}
 
-			})
-		
-			this.productTotalAmount = this.recalculateTotalAmount();
+		})
 
-		}
+		this.productTotalAmount = this.recalculateTotalAmount();
+		console.log(this.products);
+
+
+		// this.totalItemsCount(this.products);
+
+		this.totalItemCountInc(this.products);
+
+		// this.totalItemCountDec(this.products);
+
+	}
 
 	removeProduct(item: any) {
-			console.log(item);
-			this.cart.removeCartData(item);
-			// this.cart.removeCartData(item);
-		}
+		this.cart.removeCartData(item);
+		// this.cart.removeCartData(item);
+		console.log(this.products);
+
+		this.totalItemCountInc(this.products);
+		this.recalculateTotalAmount();
+	}
 
 
 	onIncrement(item: any) {
 
-			item.qty = +item.qty + 1;
-			this.validateInput = true;
+		item.qty = +item.qty + 1;
+		this.validateInput = true;
 
-			this.recalculateTotalAmount();
+		this.recalculateTotalAmount();
 
-			this.validateInput = true;
-			this.cart.emitAmount.next(this.productTotalAmount);
+		this.validateInput = true;
+		this.cart.emitAmount.next(this.productTotalAmount);
 
-			// this.onUpdate(this.item);
+		this.totalItemCountInc(this.products);
 
-		}
+
+		// this.totalItemsCount(this.products);
+		// this.cart.emitQty.next(this.productCount);
+		console.log(this.productCount);
+		
+
+	}
 
 
 
 	onDecrement(item: any) {
 
-			item.qty = item.qty - 1;
-			if(item.qty <= 1) {
+		item.qty = item.qty - 1;
+		if (item.qty <= 1) {
 			this.validateInput = false;
 		}
 
 		this.recalculateTotalAmount();
 		this.items = this.cart.emitAmount.next(this.productTotalAmount);
-		console.log(this.items);
 		
 
+		// this.totalItemCountDec(this.products);
 
+		// this.totalItemsCount(this.products);
+
+		this.productCount = this.productCount - 1;
+
+		this.cart.emitQty.next(this.productCount);
+
+		
 	}
 
 	recalculateTotalAmount() {
@@ -106,18 +138,49 @@ export class CartComponent implements OnInit {
 		let newTotalAmount = 0;
 		this.products.forEach((item: { ins: number; qty: number; }) => {
 			newTotalAmount += (item.ins * item.qty)
-			console.log(item.qty);
+			// console.log(item.qty);
 			this.items = item.qty;
 
 		});
-		console.log(this.items);
-        this.cart.emitAmount.next(newTotalAmount);
-		return this.productTotalAmount = newTotalAmount;
+		// console.log(this.items);
 
+		this.cart.emitAmount.next(newTotalAmount);
+		return this.productTotalAmount = newTotalAmount;
 
 	}
 
 
+
+	// private totalItemsCount(items: any) {
+	// 	const totalCount =
+	// 		items
+	// 		.filter((item: any) => {
+	// 			// this.productCount = +this.productCount +1;
+
+	// 			this.productCount = +this.productCount + item.qty
+	// 			console.log(this.productCount);
+				
+	// 		})
+
+	// }
+
+
+
+
+	private totalItemCountInc(items:any){
+		console.log(items);
+		this.productCount = 0;
+		
+		const totalCount =
+			items
+			.filter((item: any) => {
+				this.productCount = +this.productCount + item.qty;
+				// console.log(this.productCount);
+				
+			})
+
+		this.cart.emitQty.next(this.productCount);
+	}
 
 }
 

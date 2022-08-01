@@ -9,9 +9,7 @@ import { ProductService } from "src/app/services/products/products.service";
 
 export class CartService implements OnInit{
     accurateQty:any;
-	forEach(arg0: (cart: any) => void) {
-		throw new Error('Method not implemented.');
-	}
+	
     totalAmount:number =0;
     cartValue:any;
     cartDataList: any = [];
@@ -24,16 +22,18 @@ export class CartService implements OnInit{
     productTotalAmount:any;
 
     cartQuantity = new Subject<number>();
+	// emitQty: any;
+    emitQty = new Subject<any>();
+
 
     constructor(private products: ProductService) { }
     ngOnInit(): void {
-    this.allproducts = this.products.getProducts();
-   
-      }
+        this.allproducts = this.products.getProducts();
+    }
+    
     //get product data
     getProductData() {
-    
-     return this.productList.asObservable();
+        return this.productList.asObservable();
     }
 
     //set product data
@@ -41,13 +41,10 @@ export class CartService implements OnInit{
         this.cartDataList.push(...product);
         this.productList.next(product);
         this.getTotalAmount();
-
-
     }
+    
     getnewProducts(data: any) {
         console.log(data);
-
-
     }
 
     //add to cart
@@ -85,6 +82,7 @@ export class CartService implements OnInit{
       
         this.cartDataList.splice(product, 1);
         this.productList.next(this.cartDataList.slice());
+        
 
         this.productList.next(this.cartDataList)
     }
