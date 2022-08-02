@@ -10,7 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { AuthGuard } from './guards/auth.guard';
@@ -42,6 +42,7 @@ import { SelectedProductComponent } from './pages/product-detail/selected-produc
 import { RelatedProductComponent } from './pages/product-detail/related-product/related-product.component';
 import { MainImageComponent } from './pages/product-detail/selected-product/main-image/main-image.component';
 import { PaymentComponent } from './pages/checkout/payment/payment.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,11 @@ import { PaymentComponent } from './pages/checkout/payment/payment.component';
     
 
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, {
+    provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
