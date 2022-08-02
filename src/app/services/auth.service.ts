@@ -38,6 +38,7 @@ export class AuthService {
     user:any = new Subject<User>();
    
    
+//   user = new BehaviorSubject<LoggedUser>(null);
     // user =  new BehaviorSubject<User | null >(null);
     // private user: Subject<User> = new BehaviorSubject<User>(null);
     // private user: Subject<User> = new ReplaySubject<User>(1);

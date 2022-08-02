@@ -41,6 +41,7 @@ import { SidebarProductsComponent } from './common/sidebar/sidebar-products/side
 import { SelectedProductComponent } from './pages/product-detail/selected-product/selected-product.component';
 import { RelatedProductComponent } from './pages/product-detail/related-product/related-product.component';
 import { MainImageComponent } from './pages/product-detail/selected-product/main-image/main-image.component';
+import { PaymentComponent } from './pages/checkout/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { MainImageComponent } from './pages/product-detail/selected-product/main
     SidebarProductsComponent,
     SelectedProductComponent,
     RelatedProductComponent,
-    MainImageComponent
+    MainImageComponent,
+    PaymentComponent
     
   ],
   imports: [

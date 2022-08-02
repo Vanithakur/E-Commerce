@@ -32,22 +32,23 @@
                                         <h3>Billing Details</h3>
                                         <p id="billing_country_field"
                                             class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
-
-                                            <!-- <label class="" for="billing_country">Country <abbr title="required"
+                                           
+                                            <label class="" for="billing_country">Country <abbr title="required"
                                                     class="required">*</abbr>
-                                            </label> -->
-                                            <!-- <select class="country_to_state country_select" id="billing_country"
-                                                name="billing_country"
+                                            </label>
+                                             <select class="country_to_state country_select" id="billing_country"
+                                                name="billing_country" formControlName="country"
                                                  >
                                                 <option value="">Select a country…</option>
-                                                <option *ngFor="let country of countries" value="{{ country}}">{{ country }}</option>
+                                                <option  *ngFor="let country of countries" value="{{ country}}">{{ country }}</option>
                                             </select>
+                                           
                                             <span *ngIf="
-                                            checkoutform.get('checkoutInfo.').touched &&
-                                            checkoutform.get('checkoutInfo.').hasError('required')
-                                          " class="text-msg">Please Enter Name!</span> -->
+                                            checkoutform.get('checkoutInfo.country').touched &&
+                                            checkoutform.get('checkoutInfo.country').hasError('required')
+                                          " class="text-msg">Please select the country!</span>
 
-                                        </p>
+                                        <!-- </p> -->
 
                                         <p id="billing_first_name_field"
                                             class="form-row form-row-first validate-required">
@@ -57,7 +58,6 @@
                                             </label>
                                             
                                             <input type="text" value="" placeholder="" id="billing_first_name"
-
                                                 name="billing_first_name" class="input-text "  formControlName="first_name">
                                                 <span *ngIf="
                                             checkoutform.get('checkoutInfo.first_name').touched &&
@@ -73,7 +73,6 @@
                                                     class="required">*</abbr>
                                             </label>
                                             <input type="text" value="" placeholder="" id="billing_last_name"
-
                                                 name="billing_last_name" class="input-text " formControlName="last_name">
                                                 <span *ngIf="
                                                 checkoutform.get('checkoutInfo.last_name').touched &&
@@ -83,9 +82,14 @@
                                         
 
                                         <p id="billing_company_field" class="form-row form-row-wide">
-                                            <label class="" for="billing_company">Company Name</label>
+                                            <label class="" for="billing_company">Company Name<abbr title="required"
+                                                class="required">*</abbr></label>
                                             <input type="text" value="" placeholder="" id="billing_company"
-                                                name="billing_company" class="input-text ">
+                                                name="billing_company" class="input-text " formControlName="company">
+                                                <span *ngIf="
+                                                checkoutform.get('checkoutInfo.company').touched &&
+                                                checkoutform.get('checkoutInfo.company').hasError('required')
+                                              " class="text-msg">Please enter the company name!</span>
                                         </p>
 
                                         <p id="billing_address_1_field"
@@ -93,12 +97,12 @@
                                             <label class="" for="billing_address_1">Address <abbr title="required"
                                                     class="required">*</abbr>
                                             </label>
-                                            <input type="text" value="" placeholder="Street address" id="billing_address_1" formControlName="address" name="billing_address_1" class="input-text ">
+                                            <input type="text" value="" placeholder="Street address" id="billing_address_1" formControlName="address1" name="billing_address_1" class="input-text ">
 
                                              
                                                 <span *ngIf="
-                                                checkoutform.get('checkoutInfo.address').touched &&
-                                                checkoutform.get('checkoutInfo.address').hasError('required')
+                                                checkoutform.get('checkoutInfo.address1').touched &&
+                                                checkoutform.get('checkoutInfo.address1').hasError('required')
                                               " class="text-msg">Please enter your address!</span>
 
                                         </p>
@@ -106,7 +110,13 @@
                                         <p id="billing_address_2_field" class="form-row form-row-wide address-field">
                                             <input type="text" value=""
                                                 placeholder="Apartment, suite, unit etc. (optional)"
-                                                id="billing_address_2" name="billing_address_2" class="input-text ">
+                                                id="billing_address_2" name="billing_address_2" class="input-text " formControlName="address2">
+
+                                                <span *ngIf="
+                                                checkoutform.get('checkoutInfo.address2').touched &&
+                                                checkoutform.get('checkoutInfo.address2').hasError('required')
+                                              " class="text-msg">Please enter your optional address!</span>
+
                                         </p>
 
                                         <p id="billing_city_field"
@@ -127,15 +137,15 @@
                                         <p id="billing_state_field"
                                             class="form-row form-row-first address-field validate-state"
                                             data-o_class="form-row form-row-first address-field validate-state">
-                                            <label class="" for="billing_state">Country <abbr title="required"
+                                            <label class="" for="billing_state">State <abbr title="required"
                                                 class="required">*</abbr></label>
                                             <input type="text" id="billing_state" name="billing_state"
 
-                                                placeholder="State / County" value="" class="input-text " formControlName="country">
+                                                placeholder="State" value="" class="input-text " formControlName="state">
                                                 <span *ngIf="
-                                                checkoutform.get('checkoutInfo.country').touched &&
-                                                checkoutform.get('checkoutInfo.country').hasError('required')
-                                              " class="text-msg">Please enter the country!</span>
+                                                checkoutform.get('checkoutInfo.state').touched &&
+                                                checkoutform.get('checkoutInfo.state').hasError('required')
+                                              " class="text-msg">Please enter the state!</span>
 
                                     
                                         </p>
@@ -169,8 +179,6 @@
                                                 checkoutform.get('checkoutInfo.email').touched &&
                                                 checkoutform.get('checkoutInfo.email').hasError('required')
                                               " class="text-msg">Please enter the email!</span>
-
-                                           
                                         </p>
 
                                         <p id="billing_phone_field"
@@ -184,6 +192,20 @@
                                                 checkoutform.get('checkoutInfo.phone').touched &&
                                                 checkoutform.get('checkoutInfo.phone').hasError('required')
                                            " class="text-msg">Please enter the phone number!</span>
+
+                                        </p>
+                                        <p id="order_comments_field" class="form-row notes">
+                                            <label class="" for="order_comments">Order Notes</label>
+                                            <textarea cols="5" rows="2" placeholder="Notes about your order, e.g. special notes for delivery." 
+                                            id="order_comments"
+                                             class="input-text " 
+                                             name="order_comments"
+                                             formControlName="optional"></textarea>
+                                             <span *ngIf="
+                                                checkoutform.get('checkoutInfo.optional').touched &&
+                                                checkoutform.get('checkoutInfo.optional').hasError('required')
+                                           " class="text-msg">Please enter optional field!</span>
+
 
                                         </p>
                                         <div class="clear"></div>
@@ -242,7 +264,7 @@
                                 <div id="payment">
                                     <div class="form-row place-order">
 
-                                        <input [disabled]="!checkoutform.valid"  type="submit" data-value="Place order" value="Payment"
+                                        <input type="submit" data-value="Place order" value="Payment"
                                             id="place_order" name="woocommerce_checkout_place_order" class="button alt">
                                     </div>
 
