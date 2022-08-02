@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, tap } from "rxjs/operators";
-import { BehaviorSubject, ReplaySubject, Subject, throwError } from "rxjs";
+import { BehaviorSubject, Subject, throwError } from "rxjs";
 
 // import { User } from "./user.model";
 
@@ -12,11 +12,7 @@ import { Router } from "@angular/router";
 import { User } from "../models/user.model";
 
 export interface AuthResponseData {
-    // kind: string;
-    // token: string;
-    // email: string;
-    // Id: string;
-    // registered?: boolean;
+    
     success: boolean;
     message: string;
     data: {
@@ -35,7 +31,7 @@ export interface AuthResponseData {
 
 export class AuthService {
    
-    user:any = new Subject<User>();
+    user:any = new BehaviorSubject<User|null>(null);
    
    
     // user =  new BehaviorSubject<User | null >(null);

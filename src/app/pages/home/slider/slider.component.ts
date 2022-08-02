@@ -22,8 +22,7 @@ export class SliderComponent implements OnInit {
 				console.log(imagesData);
 				this.images = imagesData.data;
 				console.log(this.images);
-				
-
+		
 			});
 		this.promos = this.sliderService.getPromo();
 	}

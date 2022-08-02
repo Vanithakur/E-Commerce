@@ -1,5 +1,7 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
-import { BehaviorSubject, Subject } from "rxjs";
+import { BehaviorSubject, catchError, Subject } from "rxjs";
+import { Cart } from "src/app/models/cart.model";
 import { ProductService } from "src/app/services/products/products.service";
 
 @Injectable({
@@ -27,9 +29,43 @@ export class CartService implements OnInit{
     emitQty = new Subject<any>();
 
 
-    constructor(private products: ProductService) { }
+    constructor(private products: ProductService, private http: HttpClient) { }
     ngOnInit(): void {
-        this.allproducts = this.products.getProducts();
+        // this.allproducts = this.products.getProducts();
+        this.products.getProducts().subscribe(res =>{
+            this.allproducts = res.data;
+            console.log(this.allproducts);
+            
+        })
+    }
+
+    //post api for add to cart
+    getAddToCart(user_id:number, product_id:string, quant:number){
+        return this.http.post<Cart>(
+            "http://95.111.202.157/mangoproject/public/api/add-to-card-ustora",{
+                user_id: user_id,
+                product_id: product_id,
+                quant: quant,
+                // quant_minus?: quant_minus,
+            }
+        );
+           
+    }
+
+    //post api for displaying cart items
+    getDisplayCartItems(user_id:string){
+        return this.http.post<Cart>(
+            "http://95.111.202.157/mangoproject/public/apicard-display-ustora", {
+                user_id: user_id,
+            }
+        )
+    }
+
+    //get api to remove cart item
+    getRemoveCartItem(){
+        return this.http.get<Cart>(
+            "http://95.111.202.157/mangoproject/public/api/cart-remove-ustora/$id"
+        );
     }
     
     //get product data
@@ -51,11 +87,10 @@ export class CartService implements OnInit{
     //add to cart
     addToCart(product: any) {        
         this.cartDataList.push(product);
-        
         this.productList.next(this.cartDataList);
+
         this.getTotalAmount();
         console.log(this.cartDataList);
-
     }
 
     orderTotal() {
@@ -67,7 +102,6 @@ export class CartService implements OnInit{
 
     //get total amount
     getTotalAmount() {
-        // console.log(this.cartDataList.length);
 
         let grandTotal = 0;
         // return this.cartDataList.length;
@@ -86,6 +120,7 @@ export class CartService implements OnInit{
 
         this.productList.next(this.cartDataList)
     }
+
     gettotal() {
        return this.getTotalAmount();
     }

@@ -13,11 +13,20 @@ import { CartService } from '../cart/cart.service';
 export class ProductsComponent implements OnInit {
 
 	allproduct: any = [];
+	item: any;
+	userIdData:any;
+
 	// productList: any;
 
 	constructor(private allproducts: ProductService, private cart:CartService) { }
 
 	ngOnInit(): void {
+
+		this.userIdData = localStorage.getItem('userData');
+		console.log(this.userIdData);
+		
+		
+
 		// this.allproduct = this.allproducts.getProducts();
 		// console.log(this.allproduct);
 		this.allproducts.getProducts().subscribe(res=>{
@@ -28,8 +37,25 @@ export class ProductsComponent implements OnInit {
 	}
 
 	addToCart(item:any){
+
+	let product_id = item.id;
+	let quant = (item.quantity);
+
+		const user_id = JSON.parse(this.userIdData)
+		const userId = user_id.id;
+		const userToken = user_id._token;
+
 		this.cart.addToCart(item);
-		console.log(item);		
+		// console.log(item);		
+
+		this.item = this.cart.getAddToCart(user_id, product_id, quant).subscribe(
+			res => {
+				console.log(res);
+				
+				this.item = res.data;
+				console.log(this.item);
+		
+			});
 	}
 	
 	customOptions: OwlOptions = {

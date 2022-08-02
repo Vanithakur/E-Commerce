@@ -25,8 +25,9 @@ export class CartComponent implements OnInit {
 	items: any;
 	total!: number;
 	totalItemNumber: any;
-
+	userIdData:any;
 	productCount:any = 0;
+	user_id: any;
 
 	constructor(private cart: CartService,
 		private product: ProductService, private router: Router) { }
@@ -35,34 +36,53 @@ export class CartComponent implements OnInit {
 	ngOnInit(): void {
 
 
+    //  let data = localStorage.getItem('userData');
+	// const userIdData  = JSON.parse(localStorage.getItem('userData'))
+	
+
+	 this.userIdData = localStorage.getItem('userData');
+	 console.log(this.userIdData);
+	 
+        const user_id = JSON.parse(this.userIdData)
+		const userId = user_id.id;
+		const userToken = user_id._token;
+		// console.log(user_id.quant);
+		// console.log(user_id.quant_minus);
+
+
 
 		this.cart.getProductData().subscribe(res => {
-
+			
 			this.products += res;
-
-<<<<<<< HEAD
-
-=======
->>>>>>> f70a57e4585cebdb598ff97efd4475c4e122859e
+			console.log(res);
+			
 			this.products = res;
 			for (let product of this.products) {
 				this.itemprice = product.ins;
-
 			}
 
-		})
+		});
 
+
+ //for displaying items at cart page
+		// this.products = this.cart.getDisplayCartItems(userId).subscribe(
+		// 	res => {
+		// 		console.log(res);
+			
+		//  		this.products = res.data;
+
+		//  		console.log(this.products );
+			
+		//  });
+
+		
 		this.productTotalAmount = this.recalculateTotalAmount();
-		console.log(this.products);
-
-
-		// this.totalItemsCount(this.products);
+		// console.log(this.products);
 
 		this.totalItemCountInc(this.products);
-
-		// this.totalItemCountDec(this.products);
-
 	}
+	
+	
 
 	removeProduct(item: any) {
 		this.cart.removeCartData(item);
@@ -71,6 +91,8 @@ export class CartComponent implements OnInit {
 
 		this.totalItemCountInc(this.products);
 		this.recalculateTotalAmount();
+
+
 	}
 
 
