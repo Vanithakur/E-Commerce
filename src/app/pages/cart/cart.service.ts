@@ -82,7 +82,6 @@ export class CartService implements OnInit{
       
         this.cartDataList.splice(product, 1);
         this.productList.next(this.cartDataList.slice());
-        
 
         this.productList.next(this.cartDataList)
     }

@@ -43,8 +43,6 @@ export class AuthService {
     // private user: Subject<User> = new ReplaySubject<User>(1);
 
   
-   
-  
 
     constructor(private http: HttpClient, private router: Router) { }
 
