@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { RelatedProductService } from 'src/app/services/product-detail/relatedproduct.service';
 import { ProductService } from 'src/app/services/products/products.service';
+import { CartService } from '../../cart/cart.service';
 
 @Component({
   selector: 'app-related-product',
@@ -11,15 +13,23 @@ import { ProductService } from 'src/app/services/products/products.service';
 export class RelatedProductComponent implements OnInit {
 relatedproducts:any =[];
 products:any =[];
-  constructor(private relatedproduct: RelatedProductService,
-	private allproduct: ProductService) { }
+  constructor(
+	private relatedproduct: RelatedProductService,
+	private allproduct: ProductService,
+	private cart : CartService,
+	private router : Router) { }
 
   ngOnInit(): void {
-	this.relatedproducts = this.relatedproduct.getRelatedProduct();
-	console.log(this.relatedproducts);
-	this.products = this.allproduct.getProducts();
-
+	this.allproduct.getProducts().subscribe(res => {
+		console.log(res.data);
+		this.products = res.data;
+	})
   }
+  addToCart(item:any){
+	this.cart.addToCart(item);		  
+this.router.navigate(['/cart']);
+	
+}
   customOptions: OwlOptions = {
 		loop: true,
 		mouseDrag: false,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, filter, map, pipe, Subject } from 'rxjs';
 import { ProductService } from 'src/app/services/products/products.service';
 import { LoginComponent } from '../login/login.component';
@@ -15,9 +16,6 @@ export class CartComponent implements OnInit {
 	validateInput: boolean = false;
 
 	productTotalAmount: number = 0;
-	
-
-
 	products: any = [];
 	allproducts: any = 0;
 	productQty: any = [];
@@ -30,11 +28,8 @@ export class CartComponent implements OnInit {
 
 	productCount:any = 0;
 
-
-
-
 	constructor(private cart: CartService,
-		private product: ProductService) { }
+		private product: ProductService, private router: Router) { }
 
 
 	ngOnInit(): void {
@@ -44,20 +39,6 @@ export class CartComponent implements OnInit {
 		this.cart.getProductData().subscribe(res => {
 
 			this.products += res;
-
-
-			// for (let product of this.products) {
-			// 	this.itemprice = product.ins;
-			// 	console.log(product.qty);
-
-			// }		
-
-
-			// this.cart.getProductData().subscribe(res => {
-
-			// }
-			// this.allproducts = this.recalculateTotalAmount();
-
 
 			this.products = res;
 			for (let product of this.products) {
@@ -145,6 +126,7 @@ export class CartComponent implements OnInit {
 		// console.log(this.items);
 
 		this.cart.emitAmount.next(newTotalAmount);
+		
 		return this.productTotalAmount = newTotalAmount;
 
 	}
@@ -180,6 +162,11 @@ export class CartComponent implements OnInit {
 			})
 
 		this.cart.emitQty.next(this.productCount);
+	}
+
+	onCheckout() {
+	 this.productTotalAmount;
+		this.router.navigate(["/checkout"]);
 	}
 
 }

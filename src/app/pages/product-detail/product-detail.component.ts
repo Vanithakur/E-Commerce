@@ -16,7 +16,9 @@ isReview:boolean = false;
   constructor(private allproducts: ProductService) { }
 
 	ngOnInit(): void {
-    this.products = this.allproducts.getProducts();
+    this.allproducts.getProducts().subscribe(res => {
+      this.products = res.data; 
+    })
 	}
 
     

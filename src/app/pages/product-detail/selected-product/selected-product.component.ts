@@ -37,7 +37,9 @@ showreviews:boolean = false;
       this.id = params.get('id');
       console.log(this.id);
     });
-    this.products = this.allproducts.getProducts(); 
+    this.allproducts.getProducts().subscribe(res => {
+      this.products = res.data; 
+    })
    
    
      this.reviewsData
@@ -49,21 +51,6 @@ showreviews:boolean = false;
 		
 	}
 
-  // onSubmit() {   
-  //   for(let product of this.products) {
-  //     if(this.id == product.prodID){
-  //     product.qty = this.detailData.value.detailData.qty;
-  //     // this.quantity = product.qty;
-     
-  //   }
-  // }
-  // // console.log(this.quantity);
-  // this.cart.getnewProducts(this.products);
-  
-  // this.router.navigate(['/cart']);
-  // //   console.log(this.id);
-    
-  //  }
   changeMainImg(image:any){
     this.selectedImage = true;
     for(let product of this.products) {

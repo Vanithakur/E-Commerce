@@ -9,9 +9,9 @@
                         <a href="" class="wid-view-more">View All</a>
                    
                         <div class="single-wid-product" *ngFor="let detail of products" >
-                           <div *ngIf="detail.category == 'Top Sellers'">
-                            <a href="single-product.html"><img src={{detail.img}} alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">{{detail.name}}</a></h2>
+                           <div *ngIf="detail.top_seller == 1">
+                            <a href="single-product.html"><img src={{detail.image}} alt="" class="product-thumb"></a>
+                            <h2><a href="single-product.html">{{detail.product_name}}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -20,38 +20,10 @@
                                 <i class="fa fa-star"></i>
                             </div>
                             <div class="product-wid-price">
-                                <ins>${{detail.price_ins}}</ins> <del>${{detail.price_del}}</del>
+                                <ins>${{detail.discount_price}}</ins> <del>${{detail.price}}</del>
                             </div>
                            </div>                             
                         </div>
-                        <!-- <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/img/product-thumb-2.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Apple new mac book 2015</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div> -->
-                        <!-- <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/img/product-thumb-3.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Apple new i phone 6</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -59,9 +31,9 @@
                         <h2 class="product-wid-title">Recently Viewed</h2>
                         <a href="#" class="wid-view-more">View All</a>
                         <div class="single-wid-product" *ngFor="let detail of products" >
-                            <div *ngIf="detail.category == 'Top Sellers'">
-                             <a href="single-product.html"><img src={{detail.img}} alt="" class="product-thumb"></a>
-                             <h2><a href="single-product.html">{{detail.name}}</a></h2>
+                            <div *ngIf="detail.recently_view == 1">
+                             <a href="single-product.html"><img src={{detail.image}} alt="" class="product-thumb"></a>
+                             <h2><a href="single-product.html">{{detail.product_name}}</a></h2>
                              <div class="product-wid-rating">
                                  <i class="fa fa-star"></i>
                                  <i class="fa fa-star"></i>
@@ -70,96 +42,21 @@
                                  <i class="fa fa-star"></i>
                              </div>
                              <div class="product-wid-price">
-                                 <ins>${{detail.price_ins}}</ins> <del>${{detail.price_del}}</del>
+                                 <ins>${{detail.discount_price}}</ins> <del>${{detail.price}}</del>
                              </div>
                             </div>                             
                          </div>
-                        <!-- <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Sony Smart Air Condtion</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div> -->
-                        <!-- <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/img/product-thumb-2.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div> -->
                     </div>
                 </div>
-                <!-- <div class="col-md-4">
-                    <div class="single-product-widget">
-                        <h2 class="product-wid-title">Top New</h2>
-                        <a href="#" class="wid-view-more">View All</a>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/img/product-thumb-3.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Apple new i phone 6</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/img/product-thumb-4.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Sony playstation microsoft</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                    </div>
-                </div> -->
+               
             <div class="col-md-4">
                     <div class="single-product-widget">
                         <h2 class="product-wid-title">Top New</h2>
                         <a href="#" class="wid-view-more">View All</a>
                         <div class="single-wid-product" *ngFor="let detail of products" >
-                            <div *ngIf="detail.category == 'Top Sellers'">
-                             <a href="single-product.html"><img src={{detail.img}} alt="" class="product-thumb"></a>
-                             <h2><a href="single-product.html">{{detail.name}}</a></h2>
+                            <div *ngIf="detail.top_new == 1 ">
+                             <a href="single-product.html"><img src={{detail.image}} alt="" class="product-thumb"></a>
+                             <h2><a href="single-product.html">{{detail.product_name}}</a></h2>
                              <div class="product-wid-rating">
                                  <i class="fa fa-star"></i>
                                  <i class="fa fa-star"></i>
@@ -168,39 +65,10 @@
                                  <i class="fa fa-star"></i>
                              </div>
                              <div class="product-wid-price">
-                                 <ins>${{detail.price_ins}}</ins> <del>${{detail.price_del}}</del>
+                                 <ins>${{detail.discount_price}}</ins> <del>${{detail.price}}</del>
                              </div>
                             </div>                             
                          </div>
-                        <!-- <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Sony Smart Air Condtion</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div> -->
-                        <!-- <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/img/product-thumb-2.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div> -->
-                    <!-- </div> -->
                 </div>
             </div>
         </div>

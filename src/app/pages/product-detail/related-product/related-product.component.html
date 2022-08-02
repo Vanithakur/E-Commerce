@@ -7,19 +7,19 @@
                
                 <div class="single-product">
                     <div class="product-f-image">
-                        <img [src]="related.img" alt="{{ related.img }}">
+                        <img [src]="related.image" alt="{{ related.image }}">
                         <div class="product-hover">
-                            <a class="add-to-cart-link" routerLink="/cart"><i class="fa fa-shopping-cart"></i>
+                            <a class="add-to-cart-link" (click)="addToCart(related)" ><i class="fa fa-shopping-cart"></i>
                                 Add to cart</a>
-                            <a class="view-details-link" routerLink="/product_details/{{ related.prodID }}"><i class="fa fa-link"></i> See
+                            <a class="view-details-link" routerLink="/product_details/{{ related.id }}"><i class="fa fa-link"></i> See
                                 details</a>
                         </div>
                     </div>
 
-                    <h2><a>{{related.name}}</a></h2>
+                    <h2><a>{{related.product_name}}</a></h2>
 
                     <div class="product-carousel-price">
-                        <ins>${{related.ins}}</ins> <del>${{related.del}}</del>
+                        <ins>${{related.discount_price}}</ins> <del>${{related.price}}</del>
                     </div>
                 </div>
             

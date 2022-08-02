@@ -16,6 +16,7 @@ export class CartService implements OnInit{
     productList = new BehaviorSubject<any>([]);
     allproducts:any;
     emitAmount = new Subject<any>();
+   
     item: any;
     items: any = [];
     grandTotal :any =[];
@@ -86,7 +87,9 @@ export class CartService implements OnInit{
 
         this.productList.next(this.cartDataList)
     }
-    
+    gettotal() {
+       return this.getTotalAmount();
+    }
 
 }
 

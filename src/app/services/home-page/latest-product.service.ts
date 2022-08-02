@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Brands } from "src/app/models/Brands.model";
 import { LatestProduct } from "src/app/models/latest.model";
 
 @Injectable({
@@ -12,15 +13,7 @@ export class LatestProductService {
 
     }
     getBrands() {
-        return this.brands = [
-        "assets/img/brand1.png",
-        "assets/img/brand2.png",
-        "assets/img/brand3.png",
-        "assets/img/brand4.png",
-        "assets/img/brand5.png",
-        "assets/img/brand6.png",
-        "assets/img/brand3.png"
-        ]
+        return this.http.get<Brands>("http://95.111.202.157/mangoproject/public/api/ustora-category");   
     }
     getLatestProduct() {
         return this.http.get<LatestProduct>("http://95.111.202.157/mangoproject/public/api/ustora-all-product");
