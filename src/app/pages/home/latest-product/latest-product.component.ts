@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { LatestProductService } from 'src/app/services/home-page/latest-product.service';
+import { CartService } from '../../cart/cart.service';
 
 @Component({
   selector: 'app-latest-product',
@@ -10,7 +12,10 @@ import { LatestProductService } from 'src/app/services/home-page/latest-product.
 export class LatestProductComponent implements OnInit {
 latestProducts: any= [];
 brands: any =[];
-  constructor(private latestproduct: LatestProductService) { }
+  constructor(
+    private latestproduct: LatestProductService,
+    private cart : CartService,
+    private router : Router) { }
 
   ngOnInit(): void {
     this.latestproduct.getLatestProduct().subscribe(res=>{
@@ -18,11 +23,19 @@ brands: any =[];
       console.log(this.latestProducts);
       
     })
-    this.brands = this.latestproduct.getBrands();
-    console.log(this.brands);
+    this.latestproduct.getBrands().subscribe(res => {
+      this.brands = res.data
+      console.log(this.brands);
+      
+    })
     
     console.log(this.latestProducts);
   }
+  addToCart(item:any){
+		this.cart.addToCart(item);		  
+    this.router.navigate(['/cart']);
+		
+	}
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,

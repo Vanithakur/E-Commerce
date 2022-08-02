@@ -18,8 +18,13 @@ export class ProductsComponent implements OnInit {
 	constructor(private allproducts: ProductService, private cart:CartService) { }
 
 	ngOnInit(): void {
-		this.allproduct = this.allproducts.getProducts();
-		console.log(this.allproduct);
+		// this.allproduct = this.allproducts.getProducts();
+		// console.log(this.allproduct);
+		this.allproducts.getProducts().subscribe(res=>{
+			this.allproduct = res.data;
+			console.log(this.allproduct);
+			
+		})
 	}
 
 	addToCart(item:any){
