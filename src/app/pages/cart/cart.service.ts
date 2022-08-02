@@ -41,6 +41,11 @@ export class CartService implements OnInit{
 
     //post api for add to cart
     getAddToCart(user_id:number, product_id:string, quant:number){
+        console.log(user_id);
+        console.log(product_id);
+        console.log(quant);
+
+        
         return this.http.post<Cart>(
             "http://95.111.202.157/mangoproject/public/api/add-to-card-ustora",{
                 user_id: user_id,

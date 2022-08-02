@@ -48,7 +48,7 @@ export class ProductsComponent implements OnInit {
 		this.cart.addToCart(item);
 		// console.log(item);		
 
-		this.item = this.cart.getAddToCart(user_id, product_id, quant).subscribe(
+		this.item = this.cart.getAddToCart(userId, product_id, quant).subscribe(
 			res => {
 				console.log(res);
 				
