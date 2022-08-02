@@ -21,6 +21,7 @@ import {
       return this.authService.user.pipe(
         take(1),
         exhaustMap((user) => {
+          
            let data:any =  localStorage.getItem('userData');
             let token = JSON.parse(data);
           console.log(token._token);

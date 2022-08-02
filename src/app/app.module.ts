@@ -90,7 +90,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     
 
   ],
-  providers: [AuthGuard, {
+  providers: [AuthGuard,{
     provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true,
