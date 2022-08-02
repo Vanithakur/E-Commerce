@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { RelatedProductService } from 'src/app/services/product-detail/relatedproduct.service';
 import { ProductService } from 'src/app/services/products/products.service';
 import { CartService } from '../../cart/cart.service';
 
@@ -14,7 +13,6 @@ export class RelatedProductComponent implements OnInit {
 relatedproducts:any =[];
 products:any =[];
   constructor(
-	private relatedproduct: RelatedProductService,
 	private allproduct: ProductService,
 	private cart : CartService,
 	private router : Router) { }

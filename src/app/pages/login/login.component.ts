@@ -4,9 +4,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs'
 import { AuthResponseData, AuthService } from 'src/app/services/auth.service';
 
-
-
-
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.component.html',

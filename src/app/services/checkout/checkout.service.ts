@@ -1,4 +1,8 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { catchError, tap } from "rxjs";
+
+import { Checkout } from "src/app/models/checkout.model";
 
 @Injectable(
     {
@@ -7,11 +11,33 @@ import { Injectable } from "@angular/core";
 )
 export class CheckoutService {
     countries:any = [];
-    constructor(){}
+    constructor(private http : HttpClient){}
     getCountries(){
         return this.countries = [
         "Afghanistan","Albania","Algeria","Argentina","Austria","Bahamas","Bangladesh","Canada","Chile","China","Dominica",
         "Egypt","France","Vatican"
         ]
+    }
+    postDetails(details:any , id:number, token: string) {        
+
+       this.http.post<Checkout>("http://95.111.202.157/mangoproject/public/api/checkout-ustora",
+        {
+            user_id: id, 
+            compony_name: details['company'],
+            email: details['email'],
+            first_name: details['first_name'],
+            last_name : details['last_name'],
+            address1: details['address1'],
+            address2: details['address2'],
+            zip_code: details['postcode'],
+            country: details['country'],
+            state: details['state'],
+            city: details['city'],
+            phone: details['phone'],
+            optional_address: details['optional'],
+            token: true
+
+        }
+        ).subscribe();
     }
 }
