@@ -83,9 +83,11 @@ export class CartService implements OnInit{
     }
 
     //get api to remove cart item
-    getRemoveCartItem(){
+    getRemoveCartItem(product_id:number){
+        console.log(product_id);
+        
         return this.http.get<Cart>(
-            "http://95.111.202.157/mangoproject/public/api/cart-remove-ustora/$id"
+            "http://95.111.202.157/mangoproject/public/api/cart-remove-ustora/"+product_id
         );
     }
     
