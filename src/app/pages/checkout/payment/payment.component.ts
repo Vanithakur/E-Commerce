@@ -10,6 +10,7 @@ import { CheckoutService } from 'src/app/services/checkout/checkout.service';
 })
 export class PaymentComponent implements OnInit {
   paymentform:any;
+  success : boolean = false;
   user_id:any;
   constructor(
     private checkoutService: CheckoutService,
@@ -30,7 +31,8 @@ export class PaymentComponent implements OnInit {
     console.log(id);
     let total_ammount:any = 5000;
     
-   this.checkoutService.paymentMethod(card_name, id, total_ammount);      
+   this.checkoutService.paymentMethod(card_name, id, total_ammount);  
+   this.success = true;    
         this.router.navigate(['/home']);
 
   }
