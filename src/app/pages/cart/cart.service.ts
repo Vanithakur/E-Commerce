@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
 import { BehaviorSubject, catchError, Subject } from "rxjs";
 import { Cart } from "src/app/models/cart.model";
+import { DisplayCart } from "src/app/models/display-cart.model";
 import { ProductService } from "src/app/services/products/products.service";
 
 @Injectable({
@@ -10,7 +11,6 @@ import { ProductService } from "src/app/services/products/products.service";
 
 
 export class CartService implements OnInit{
-    accurateQty:any;
 	
     totalAmount:number =0;
     cartValue:any;
@@ -18,12 +18,12 @@ export class CartService implements OnInit{
     productList = new BehaviorSubject<any>([]);
     allproducts:any;
     emitAmount = new Subject<any>();
-   
+    product:any;
     item: any;
     items: any = [];
     grandTotal :any =[];
     productTotalAmount:any;
-
+    userIdData:any =  0;
     cartQuantity = new Subject<number>();
 	// emitQty: any;
     emitQty = new Subject<any>();
@@ -31,21 +31,34 @@ export class CartService implements OnInit{
 
     constructor(private products: ProductService, private http: HttpClient) { }
     ngOnInit(): void {
+
+        this.userIdData = localStorage.getItem('userData');
+        console.log(this.userIdData);
+        
+           const user_id = JSON.parse(this.userIdData)
+           const userId = user_id.id;		
+           const userToken = user_id._token;
         // this.allproducts = this.products.getProducts();
         this.products.getProducts().subscribe(res =>{
             this.allproducts = res.data;
-            console.log(this.allproducts);
-            
+      
         })
+
+
+        this.product = this.getDisplayCartItems(userId).subscribe(
+			res => {
+				console.log(res);
+			
+		 		this.product = res.data;
+
+		 		// console.log(this.products );
+			
+		 });
     }
 
     //post api for add to cart
 
     getAddToCart(user_id:number, product_id:string, quant:number){
-        console.log(user_id);
-        console.log(product_id);
-        console.log(quant);
-
         
         return this.http.post<Cart>(
             "http://95.111.202.157/mangoproject/public/api/add-to-card-ustora",{
@@ -57,21 +70,13 @@ export class CartService implements OnInit{
         )
     }
 
-    // getAddToCart(user_id:number, product_id:string, quant:number){
-    //     this.http.post<Cart>("http://95.111.202.157/mangoproject/public/api/add-to-card-ustora",{
-    //         user_id: user_id,
-    //         product_id: product_id,
-    //         quant: quant,
-    //     }
-    //     ).subscribe();
-    // }
 
     //post api for displaying cart items
     getDisplayCartItems(user_id:number){
         console.log(user_id);
         
-        return this.http.post<Cart>(
-            "http://95.111.202.157/mangoproject/public/apicard-display-ustora", {
+        return this.http.post<DisplayCart>(
+            "http://95.111.202.157/mangoproject/public/api/card-display-ustora", {
                 user_id: user_id,
             }
         );
@@ -96,9 +101,9 @@ export class CartService implements OnInit{
         this.getTotalAmount();
     }
     
-    getnewProducts(data: any) {
-        console.log(data);
-    }
+    // getnewProducts(data: any) {
+    //     console.log(data);
+    // }
 
     //add to cart
     addToCart(product: any) {        
@@ -106,7 +111,7 @@ export class CartService implements OnInit{
         this.productList.next(this.cartDataList);
 
         this.getTotalAmount();
-        console.log(this.cartDataList);
+        // console.log(this.cartDataList);
     }
 
     orderTotal() {
@@ -123,7 +128,7 @@ export class CartService implements OnInit{
         // return this.cartDataList.length;
         let i;
         for (i = 0; i < this.cartDataList.length; i++) {
-            grandTotal += this.cartDataList[i].ins;
+            grandTotal += this.cartDataList[i].price;
         }
        
         return grandTotal;
@@ -131,15 +136,16 @@ export class CartService implements OnInit{
 
     removeCartData(product: any) {
       
-        this.cartDataList.splice(product, 1);
-        this.productList.next(this.cartDataList.slice());
+        // this.cartDataList.splice(product, 1);
+        // this.productList.next(this.cartDataList.slice());
 
-        this.productList.next(this.cartDataList)
+        // this.productList.next(this.cartDataList)
     }
 
     gettotal() {
        return this.getTotalAmount();
     }
+
 
 }
 
