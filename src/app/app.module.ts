@@ -44,6 +44,7 @@ import { MainImageComponent } from './pages/product-detail/selected-product/main
 import { PaymentComponent } from './pages/checkout/payment/payment.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,14 +88,16 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     CarouselModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    
 
   ],
-  providers: [AuthGuard,{
+
+  providers: [ 
+    {
     provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true,
-  }],
+  },
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
