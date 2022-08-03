@@ -90,6 +90,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     ReactiveFormsModule,
 
   ],
+
   providers: [ 
     {
     provide: HTTP_INTERCEPTORS,

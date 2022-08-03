@@ -94,9 +94,11 @@ export class AuthService {
             userId,
             token
         );
+
         this.user.next(user);        
       localStorage.setItem('userData', JSON.stringify(user));
         
+
         
     }
 

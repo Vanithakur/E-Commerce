@@ -65,18 +65,18 @@ export class CartComponent implements OnInit {
 
 
  //for displaying items at cart page
-		// this.products = this.cart.getDisplayCartItems(userId).subscribe(
-		// 	res => {
-		// 		console.log(res);
+		this.products = this.cart.getDisplayCartItems(userId).subscribe(
+			res => {
+				console.log(res);
 			
-		//  		this.products = res.data;
+		 		this.products = res.data;
 
-		//  		console.log(this.products );
+		 		console.log(this.products );
 			
-		//  });
+		 });
 
 		
-		this.productTotalAmount = this.recalculateTotalAmount();
+		// this.productTotalAmount = this.recalculateTotalAmount();
 		// console.log(this.products);
 
 		this.totalItemCountInc(this.products);
