@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, filter, map, pipe, Subject } from 'rxjs';
+import { CheckoutService } from 'src/app/services/checkout/checkout.service';
 import { ProductService } from 'src/app/services/products/products.service';
 import { LoginComponent } from '../login/login.component';
 import { CartService } from './cart.service';
@@ -30,7 +31,9 @@ export class CartComponent implements OnInit {
 	user_id: any;
 
 	constructor(private cart: CartService,
-		private product: ProductService, private router: Router) { }
+		private product: ProductService, 
+		private router: Router,
+		private checkoutService : CheckoutService) { }
 
 
 	ngOnInit(): void {
@@ -63,9 +66,7 @@ export class CartComponent implements OnInit {
 		 		this.products = res.data;
 				console.log(this.products);
 				
-			 });
-
-				
+			 });				
 		// this.totalItemCountInc(this.products);
 		this.totalItemsCount(this.products);
 	}
@@ -84,12 +85,9 @@ export class CartComponent implements OnInit {
 		
 			});
 		// this.cart.removeCartData(item);
-		
-
 
 		this.totalItemsCount(this.products);
 		this.recalculateTotalAmount();
-
 		
 	}
 
@@ -105,9 +103,6 @@ export class CartComponent implements OnInit {
 
 		this.totalItemsCount(this.products);
 
-		// this.totalItemsCount(this.products);
-		// this.cart.emitQty.next(this.productCount);
-
 	}
 
 	onDecrement(item: any) {
@@ -119,10 +114,6 @@ export class CartComponent implements OnInit {
 
 		this.recalculateTotalAmount();
 		this.items = this.cart.emitAmount.next(this.productTotalAmount);
-	
-
-		// this.totalItemsCount(this.products);
-
 		this.productCount = this.productCount - 1;
 
 		this.cart.emitQty.next(this.productCount);
@@ -147,23 +138,6 @@ export class CartComponent implements OnInit {
 
 	}
 	
-	// private totalItemCountInc(items:any){
-	// 	console.log(items);
-	// 	this.productCount = 0;
-		
-	// 	const totalCount =
-	// 		items
-	// 		.filter((item: any) => {
-			
-
-	// 			this.productCount = +this.productCount + item.quant;
-	// 			console.log(this.productCount);
-				
-	// 		})
-		
-	// 	this.cart.emitQty.next(this.productCount);
-	// }
-
 	private totalItemsCount(items: any) {
 				const totalCount =
 					items
@@ -181,8 +155,9 @@ export class CartComponent implements OnInit {
 		
 			}
 
-	onCheckout() {
-	 this.productTotalAmount;
+	onCheckout(amount:any) {
+	 this.checkoutService.totalfinalAmount = amount;
+	 
 		this.router.navigate(["/checkout"]);
 	}
 

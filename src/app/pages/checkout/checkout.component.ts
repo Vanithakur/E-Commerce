@@ -25,6 +25,9 @@ user_id: any;
     private cart: CartService) { }
 
   ngOnInit(): void {
+    this.totalAmount = this.checkoutService.totalfinalAmount;
+    console.log(this.totalAmount);
+    
     this.user_id = localStorage.getItem('userData');
 
     this.countries = this.checkoutService.getCountries();

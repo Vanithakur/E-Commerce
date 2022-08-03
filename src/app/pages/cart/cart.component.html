@@ -95,7 +95,7 @@
 
                                                     <!-- <input type="submit" value="Update Cart" name="update_cart" 
                                                         class="button"> &nbsp; -->
-                                                    <input (click)="onCheckout()" type="submit" value="Checkout"
+                                                    <input (click)="onCheckout(productTotalAmount)" type="submit" value="Checkout"
                                                         name="proceed" class="checkout-button button alt wc-forward">
                                                 </div>
 
@@ -155,7 +155,7 @@
                                     <tbody>
                                         <tr class="cart-subtotal">
                                             <th>Cart Subtotal</th>
-                                            <td><span class="amount">£{{productTotalAmount}}</span></td>
+                                            <td><span class="amount">${{productTotalAmount}}</span></td>
                                         </tr>
 
                                         <tr class="shipping">
@@ -165,7 +165,7 @@
 
                                         <tr class="order-total">
                                             <th>Order Total</th>
-                                            <td><strong><span class="amount">£{{productTotalAmount}}</span></strong>
+                                            <td><strong><span class="amount">${{productTotalAmount}}</span></strong>
                                             </td>
                                         </tr>
                                     </tbody>

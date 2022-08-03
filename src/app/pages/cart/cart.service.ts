@@ -25,7 +25,7 @@ export class CartService implements OnInit{
     productTotalAmount:any;
     userIdData:any =  0;
     cartQuantity = new Subject<number>();
-	// emitQty: any;
+	data: any;
     emitQty = new Subject<any>();
 
 
@@ -43,8 +43,6 @@ export class CartService implements OnInit{
             this.allproducts = res.data;
       
         })
-
-
         this.product = this.getDisplayCartItems(userId).subscribe(
 			res => {
 				console.log(res);
@@ -54,6 +52,12 @@ export class CartService implements OnInit{
 		 		// console.log(this.products );
 			
 		 });
+         this.getDisplayCartItems(userId).subscribe(
+			res => {
+		 		this.data = res.data;
+				console.log(this.data);
+				
+			 });
     }
 
     //post api for add to cart
@@ -103,11 +107,6 @@ export class CartService implements OnInit{
         this.getTotalAmount();
     }
     
-    // getnewProducts(data: any) {
-    //     console.log(data);
-    // }
-
-    //add to cart
     addToCart(product: any) {        
         this.cartDataList.push(product);
         this.productList.next(this.cartDataList);
@@ -132,6 +131,7 @@ export class CartService implements OnInit{
         for (i = 0; i < this.cartDataList.length; i++) {
             grandTotal += this.cartDataList[i].price;
         }
+       console.log(grandTotal);
        
         return grandTotal;
     }
@@ -143,11 +143,6 @@ export class CartService implements OnInit{
 
         // this.productList.next(this.cartDataList)
     }
-
-    gettotal() {
-       return this.getTotalAmount();
-    }
-
-
+    
 }
 
