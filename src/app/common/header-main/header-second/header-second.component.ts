@@ -51,12 +51,7 @@ export class HeaderSecondComponent implements OnInit {
 			}
 		);
 
-		// this.cart.emitQty.subscribe(
-		// 	(res: any)=> {
-		// 		// console.log(res);
-		// 		this.totalItemNumber = res;
-		// 	}
-		// );
+		
 
 		this.cart.emitAmount.subscribe(
 			res=>{

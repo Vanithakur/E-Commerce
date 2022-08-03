@@ -27,11 +27,8 @@ user_id: any;
   ngOnInit(): void {
     this.user_id = localStorage.getItem('userData');
 
-   this.totalAmount = this.cart.gettotal();
-   console.log(this.totalAmount);  
-
     this.countries = this.checkoutService.getCountries();
-    
+  
     this.checkoutform = new FormGroup({
       checkoutInfo : new  FormGroup({
         first_name: new FormControl(null, Validators.required),
@@ -50,7 +47,8 @@ user_id: any;
       })
     });
   
-   
+  //    this.totalAmount = this.cart.gettotal();
+  //  console.log(this.totalAmount);  
     }
     onSubmit() {
       this.checkoutform;

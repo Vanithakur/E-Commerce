@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Observable } from 'rxjs';
 import { SliderService } from 'src/app/services/home-page/slider.service';
 import { ProductService } from 'src/app/services/products/products.service';
 import { CartService } from '../cart/cart.service';
+import { Cart } from "src/app/models/cart.model";
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -18,7 +22,7 @@ export class ProductsComponent implements OnInit {
 
 	// productList: any;
 
-	constructor(private allproducts: ProductService, private cart:CartService) { }
+	constructor(private allproducts: ProductService, private cart:CartService, private router:Router) { }
 
 	ngOnInit(): void {
 
@@ -38,17 +42,25 @@ export class ProductsComponent implements OnInit {
 
 	addToCart(item:any){
 
-	let product_id = item.id;
-	let quant = (item.quantity);
+		let product_id = item.id;
+	
+		let quant = (item.quantity);
+		// console.log(quant);
 
 		const user_id = JSON.parse(this.userIdData)
 		const userId = user_id.id;
 		const userToken = user_id._token;
 
-		this.cart.addToCart(item);
-		// console.log(item);		
+		// let forms : Observable<Cart>;
+		// let data= this.cart.getAddToCart(userId, product_id, quant);   
+		// console.log(data);
+		   
+		//   this.router.navigate(['/cart']); 
 
-		this.item = this.cart.getAddToCart(userId, product_id, quant).subscribe(
+		// let items = this.cart.getAddToCart(userId, product_id, quant);
+		// console.log(items);		
+
+		 this.cart.getAddToCart(userId, product_id, quant).subscribe(
 			res => {
 				console.log(res);
 				
