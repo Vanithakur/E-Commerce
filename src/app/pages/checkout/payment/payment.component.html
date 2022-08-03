@@ -1,5 +1,6 @@
 <div class="container">
     <div class="container p-0">
+        <p *ngIf="success">You have been successfully order your product.</p>
         <div class="card px-4">
             <p class="h8 py-3">Payment Details</p>
            <form [formGroup]="paymentform" (ngSubmit)="onSubmit()" >
@@ -17,7 +18,7 @@
                 <div class="col-6">
                     <div class="d-flex">
                         <p class="text mb-1">Total Amount   : </p>
-                       <h5>5000</h5>
+                       <h5>{{total_ammount}}</h5>
                     </div><br>
                 </div><br>
             </div>

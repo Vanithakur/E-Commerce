@@ -12,6 +12,7 @@ import { Payment } from "src/app/models/payment.model";
 )
 export class CheckoutService {
     countries:any = [];
+    totalfinalAmount:any;
     constructor(private http : HttpClient){}
     getCountries(){
         return this.countries = [
@@ -41,7 +42,9 @@ export class CheckoutService {
         }
         ).subscribe();
     }
-    paymentMethod(card_name:string, id:number, total_ammount:number) {
+    paymentMethod(card_name:string, id:number, total_ammount:any) {
+        console.log(total_ammount);
+        
         this.http.post<Payment>("http://95.111.202.157/mangoproject/public/api/payment-details-ustora",{
             user_id:id,
             card_name: card_name,

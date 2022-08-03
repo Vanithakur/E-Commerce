@@ -25,9 +25,13 @@ export class CartService implements OnInit {
     productTotalAmount: any;
     userIdData: any = 0;
     cartQuantity = new Subject<number>();
+<<<<<<< HEAD
     productCount: any = 0;
 
    
+=======
+	data: any;
+>>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
     emitQty = new Subject<any>();
     removeCart = new Subject<any>();
 
@@ -47,6 +51,7 @@ export class CartService implements OnInit {
         this.products.getProducts().subscribe(res => {
             this.allproducts = res.data;
         })
+<<<<<<< HEAD
 
 
          this.getDisplayCartItems(userId).subscribe(
@@ -55,6 +60,23 @@ export class CartService implements OnInit {
                 this.product = res.data;
                 console.log(this.product);
             });
+=======
+        this.product = this.getDisplayCartItems(userId).subscribe(
+			res => {
+				console.log(res);
+			
+		 		this.product = res.data;
+
+		 		// console.log(this.products );
+			
+		 });
+         this.getDisplayCartItems(userId).subscribe(
+			res => {
+		 		this.data = res.data;
+				console.log(this.data);
+				
+			 });
+>>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
     }
 
     //post api for add to cart
@@ -105,10 +127,15 @@ export class CartService implements OnInit {
         this.productList.next(product);
         this.getTotalAmount();
     }
+<<<<<<< HEAD
 
 
     //add to cart
     addToCart(product: any) {
+=======
+    
+    addToCart(product: any) {        
+>>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
         this.cartDataList.push(product);
         this.productList.next(this.cartDataList);
 
@@ -133,7 +160,12 @@ export class CartService implements OnInit {
         for (i = 0; i < this.cartDataList.length; i++) {
             grandTotal += this.cartDataList[i].price;
         }
+<<<<<<< HEAD
 
+=======
+       console.log(grandTotal);
+       
+>>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
         return grandTotal;
     }
 
@@ -144,6 +176,7 @@ export class CartService implements OnInit {
 
         // this.productList.next(this.cartDataList)
     }
+<<<<<<< HEAD
 
     gettotal() {
         return this.getTotalAmount();
@@ -188,5 +221,8 @@ export class CartService implements OnInit {
     }
 
 
+=======
+    
+>>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
 }
 

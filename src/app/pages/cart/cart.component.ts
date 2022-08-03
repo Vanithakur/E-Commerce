@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, filter, map, pipe, Subject } from 'rxjs';
+import { CheckoutService } from 'src/app/services/checkout/checkout.service';
 import { ProductService } from 'src/app/services/products/products.service';
 import { LoginComponent } from '../login/login.component';
 import { CartService } from './cart.service';
@@ -30,7 +31,9 @@ export class CartComponent implements OnInit {
 	user_id: any;
 
 	constructor(private cart: CartService,
-		private product: ProductService, private router: Router) { }
+		private product: ProductService, 
+		private router: Router,
+		private checkoutService : CheckoutService) { }
 
 
 	ngOnInit(): void {
@@ -72,6 +75,7 @@ export class CartComponent implements OnInit {
 			res => {
 				this.products = res.data;
 				console.log(this.products);
+<<<<<<< HEAD
 
 			});
 
@@ -82,6 +86,12 @@ export class CartComponent implements OnInit {
 		this.cart.totalItemsCount(this.cart.productCount);
 
 		
+=======
+				
+			 });				
+		// this.totalItemCountInc(this.products);
+		this.totalItemsCount(this.products);
+>>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
 	}
 
 
@@ -97,6 +107,7 @@ export class CartComponent implements OnInit {
 
 				this.data = res.data;
 				console.log(this.data);
+<<<<<<< HEAD
 
 				this.cart.getDisplayCartItems(userId).subscribe(
 					res => {
@@ -110,6 +121,14 @@ export class CartComponent implements OnInit {
 
 			});
 
+=======
+		
+			});
+		// this.cart.removeCartData(item);
+
+		this.totalItemsCount(this.products);
+		this.recalculateTotalAmount();
+>>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
 		
 
 	}
@@ -122,9 +141,12 @@ export class CartComponent implements OnInit {
 
 		this.cart.recalculateTotalAmount(this.products);
 
+<<<<<<< HEAD
 		// this.cart.emitAmount.next(this.productTotalAmount);
 
 		this.cart.totalItemsCount(this.products);
+=======
+>>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
 	}
 
 
@@ -135,11 +157,17 @@ export class CartComponent implements OnInit {
 			this.validateInput = false;
 		}
 
+<<<<<<< HEAD
 		this.cart.recalculateTotalAmount(this.products);
 		// this.items = this.cart.emitAmount.next(this.productTotalAmount);
 		this.cart.totalItemsCount(this.products);
 
 	}
+=======
+		this.recalculateTotalAmount();
+		this.items = this.cart.emitAmount.next(this.productTotalAmount);
+		this.productCount = this.productCount - 1;
+>>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
 
 
 	// recalculateTotalAmount() {
@@ -157,12 +185,36 @@ export class CartComponent implements OnInit {
 
 	// 	return this.productTotalAmount = newTotalAmount;
 
+<<<<<<< HEAD
 	// }
 
+=======
+	}
+	
+	private totalItemsCount(items: any) {
+				const totalCount =
+					items
+					.filter((item: any) => {
+						// this.productCount = +this.productCount +1;
+		
+						this.productCount = +this.productCount + +item.quant
+						// console.log(this.productCount);
+						// console.log(item);
+
+						
+					})
+					this.cart.emitQty.next(this.productCount);
+>>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
 
 
+<<<<<<< HEAD
 	onCheckout() {
 		this.productTotalAmount;
+=======
+	onCheckout(amount:any) {
+	 this.checkoutService.totalfinalAmount = amount;
+	 
+>>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
 		this.router.navigate(["/checkout"]);
 	}
 

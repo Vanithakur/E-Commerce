@@ -10,13 +10,16 @@ import { CheckoutService } from 'src/app/services/checkout/checkout.service';
 })
 export class PaymentComponent implements OnInit {
   paymentform:any;
+  success : boolean = false;
   user_id:any;
+  total_ammount:any;
   constructor(
     private checkoutService: CheckoutService,
     private router : Router
     ) { }
 
   ngOnInit(): void {
+    this.total_ammount = this.checkoutService.totalfinalAmount;
     this.user_id = localStorage.getItem('userData');
     this.paymentform = new FormGroup({    
         card_name: new FormControl(null, Validators.required),
@@ -28,9 +31,12 @@ export class PaymentComponent implements OnInit {
     const user_id = JSON.parse(this.user_id);
     const id = user_id.id;   
     console.log(id);
-    let total_ammount:any = 5000;
+ let total_ammount:any = this.total_ammount;
+ console.log(total_ammount);
+ 
     
-   this.checkoutService.paymentMethod(card_name, id, total_ammount);      
+   this.checkoutService.paymentMethod(card_name, id, total_ammount);  
+   this.success = true;    
         this.router.navigate(['/home']);
 
   }
