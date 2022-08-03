@@ -19,9 +19,7 @@ const routes: Routes = [
   {path:'products', component: ProductsComponent },
   {
     path:'product_details/:id', component: ProductDetailComponent,
-    children:[
-      {path: ':id', component: MainImageComponent},
-    ]
+  
    },
   {path:'cart',component: CartComponent},
   {path:'checkout', component: CheckoutComponent},
