@@ -1,8 +1,8 @@
 export interface Cart {
     success: boolean;
     data: [{ 
-        user_id : string;
-        product_id: string;
+        user_id : number;
+        product_id: number;
         quant: number;
         quant_minus?: number;
     }];

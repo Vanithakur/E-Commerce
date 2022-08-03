@@ -40,6 +40,7 @@ export class CartService implements OnInit{
     }
 
     //post api for add to cart
+
     getAddToCart(user_id:number, product_id:string, quant:number){
         console.log(user_id);
         console.log(product_id);
@@ -51,19 +52,29 @@ export class CartService implements OnInit{
                 user_id: user_id,
                 product_id: product_id,
                 quant: quant,
-                // quant_minus?: quant_minus,
+                
             }
-        );
-           
+        )
     }
 
+    // getAddToCart(user_id:number, product_id:string, quant:number){
+    //     this.http.post<Cart>("http://95.111.202.157/mangoproject/public/api/add-to-card-ustora",{
+    //         user_id: user_id,
+    //         product_id: product_id,
+    //         quant: quant,
+    //     }
+    //     ).subscribe();
+    // }
+
     //post api for displaying cart items
-    getDisplayCartItems(user_id:string){
+    getDisplayCartItems(user_id:number){
+        console.log(user_id);
+        
         return this.http.post<Cart>(
             "http://95.111.202.157/mangoproject/public/apicard-display-ustora", {
                 user_id: user_id,
             }
-        )
+        );
     }
 
     //get api to remove cart item

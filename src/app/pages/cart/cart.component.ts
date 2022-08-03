@@ -62,16 +62,19 @@ export class CartComponent implements OnInit {
 			}
 
 		});
+		// this.products = this.cart.getDisplayCartItems(userId);
+		// console.log(this.products);
+		
 
-
- //for displaying items at cart page
+ 		//for displaying items at cart page
+		
 		this.products = this.cart.getDisplayCartItems(userId).subscribe(
 			res => {
 				console.log(res);
 			
 		 		this.products = res.data;
 
-		 		console.log(this.products );
+		 		// console.log(this.products );
 			
 		 });
 
