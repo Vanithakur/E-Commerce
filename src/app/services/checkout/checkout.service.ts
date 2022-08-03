@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { catchError, tap } from "rxjs";
 
 import { Checkout } from "src/app/models/checkout.model";
+import { Payment } from "src/app/models/payment.model";
 
 @Injectable(
     {
@@ -39,5 +40,13 @@ export class CheckoutService {
 
         }
         ).subscribe();
+    }
+    paymentMethod(card_name:string, id:number, total_ammount:number) {
+        this.http.post<Payment>("http://95.111.202.157/mangoproject/public/api/payment-details-ustora",{
+            user_id:id,
+            card_name: card_name,
+            total_amount: total_ammount
+
+        }).subscribe();
     }
 }

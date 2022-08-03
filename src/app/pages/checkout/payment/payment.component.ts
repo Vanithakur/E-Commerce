@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CheckoutService } from 'src/app/services/checkout/checkout.service';
 
 @Component({
   selector: 'app-payment',
@@ -6,10 +9,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-
-  constructor() { }
+  paymentform:any;
+  user_id:any;
+  constructor(
+    private checkoutService: CheckoutService,
+    private router : Router
+    ) { }
 
   ngOnInit(): void {
+    this.user_id = localStorage.getItem('userData');
+    this.paymentform = new FormGroup({    
+        card_name: new FormControl(null, Validators.required),
+    });
+
+  }
+  onSubmit() {
+    let card_name = this.paymentform.value.card_name;
+    const user_id = JSON.parse(this.user_id);
+    const id = user_id.id;   
+    console.log(id);
+    let total_ammount:any = 5000;
+    
+   this.checkoutService.paymentMethod(card_name, id, total_ammount);      
+        this.router.navigate(['/home']);
+
   }
 
 }

@@ -2,31 +2,36 @@
     <div class="container p-0">
         <div class="card px-4">
             <p class="h8 py-3">Payment Details</p>
-           
-                    <div class="row gx-3">
-                        <div class="col-12">
-                            <div class="d-flex flex-column">
-                                <p class="text mb-1">Card Name</p>
-                                <input class="form-control mb-3" type="text" placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex">
-                                <p class="text mb-1">Total Amount</p>
-                                <input class="form-control mb-3 pt-2 " type="text">
-                            </div>
-                        </div>
-                        <div class="col-12">
-                        
-                            <div class="form-row place-order">
-                                <input   type="submit" data-value="Place order" value="Payment"
-                                    id="place_order" name="woocommerce_checkout_place_order" class="button alt">
-                            </div>
-                            <br>
+           <form [formGroup]="paymentform" (ngSubmit)="onSubmit()" >
+            <div class="row gx-3">
+                <div class="col-12">
+                    <div class="d-flex flex-column">
+                        <p class="text mb-1">Card Name</p>
+                        <input class="form-control mb-3" type="text" placeholder="Name" formControlName="card_name"> 
+                        <span *ngIf="
+                        paymentform.get('card_name').touched &&
+                        paymentform.get('card_name').hasError('required')
+                      " class="text-msg">Please enter the card name!</span>
                     </div>
-                
-            <br>
+                </div>
+                <div class="col-6">
+                    <div class="d-flex">
+                        <p class="text mb-1">Total Amount   : </p>
+                       <h5>5000</h5>
+                    </div><br>
+                </div><br>
+            </div>
+            <div class="col-12">
+                        
+                <div class="form-row place-order">
+                    <input   type="submit" [disabled]="!paymentform.valid" data-value="Place order" value="Payment"
+                        id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+                </div>
+                <br>
         </div>
+           </form>
+            <br>
+     </div>
     </div>
 </div>
 <br>

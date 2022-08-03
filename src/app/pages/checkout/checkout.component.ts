@@ -55,17 +55,6 @@ user_id: any;
     onSubmit() {
       this.checkoutform;
        const details = this.checkoutform.value.checkoutInfo
-      console.log(this.checkoutform.value.checkoutInfo.address1);
-      const first_name = this.checkoutform.value.checkoutInfo.first_name
-      const last_name = this.checkoutform.value.checkoutInfo.last_name
-      const company = this.checkoutform.value.checkoutInfo.company
-      const email = this.checkoutform.value.checkoutInfo.email
-      const phone = this.checkoutform.value.checkoutInfo.phone
-      const address1 = this.checkoutform.value.checkoutInfo.address1
-      const address2 = this.checkoutform.value.checkoutInfo.address2
-      const city = this.checkoutform.value.checkoutInfo.city
-      const state = this.checkoutform.value.checkoutInfo.state
-      const country = this.checkoutform.value.checkoutInfo.country
       const id1 = localStorage.getItem('userData');
         const user_id = JSON.parse(this.user_id);
         const id = user_id.id;        
