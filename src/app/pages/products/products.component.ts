@@ -19,6 +19,8 @@ export class ProductsComponent implements OnInit {
 	allproduct: any = [];
 	item: any;
 	userIdData:any;
+	products: any;
+	emitQty: any;
 
 	// productList: any;
 
@@ -38,9 +40,17 @@ export class ProductsComponent implements OnInit {
 			console.log(this.allproduct);
 			
 		})
+
 	}
 
 	addToCart(item:any){
+		console.log(item);
+
+		// this.cart.emitAmount.next(item);
+
+        // this.cart.emitQty.next(item);
+		// this.cart.totalItemsCount(this.products);
+
 
 		let product_id = item.id;
 	
@@ -50,15 +60,7 @@ export class ProductsComponent implements OnInit {
 		const user_id = JSON.parse(this.userIdData)
 		const userId = user_id.id;
 		const userToken = user_id._token;
-
-		// let forms : Observable<Cart>;
-		// let data= this.cart.getAddToCart(userId, product_id, quant);   
-		// console.log(data);
-		   
-		//   this.router.navigate(['/cart']); 
-
-		// let items = this.cart.getAddToCart(userId, product_id, quant);
-		// console.log(items);		
+	
 
 		 this.cart.getAddToCart(userId, product_id, quant).subscribe(
 			res => {
@@ -68,6 +70,14 @@ export class ProductsComponent implements OnInit {
 				console.log(this.item);
 		
 			});
+
+		this.cart.getDisplayCartItems(userId).subscribe(res => {
+
+			this.cart.totalItemsCount(res.data);
+			this.cart.recalculateTotalAmount(res.data);
+		})
+
+
 	}
 	
 	customOptions: OwlOptions = {

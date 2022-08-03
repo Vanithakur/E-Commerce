@@ -25,8 +25,8 @@ export class CartComponent implements OnInit {
 	items: any;
 	total!: number;
 	totalItemNumber: any;
-	userIdData:any;
-	productCount:any = 0;
+	userIdData: any;
+	// productCount:any = 0;
 	user_id: any;
 
 	constructor(private cart: CartService,
@@ -34,63 +34,84 @@ export class CartComponent implements OnInit {
 
 
 	ngOnInit(): void {
+		//  this.productTotalAmount = this.cart.productTotalAmount;
 
-	 this.userIdData = localStorage.getItem('userData');
-	 console.log(this.userIdData);
-	 
-        const user_id = JSON.parse(this.userIdData)
+		this.cart.emitAmount.subscribe(res => {
+			console.log(res);
+			this.productTotalAmount = res;
+		});
+
+
+		this.userIdData = localStorage.getItem('userData');
+		console.log(this.userIdData);
+
+		const user_id = JSON.parse(this.userIdData)
 		const userId = user_id.id;
 		const userToken = user_id._token;
-		
+
 
 		this.cart.getProductData().subscribe(res => {
-			
+
+
+
 			this.products += res;
 			console.log(res);
-			
+
 			this.products = res;
+
 			for (let product of this.products) {
 				this.itemprice = product.price;
 			}
 
 		});
-		
 
- 		//for displaying items at cart page
-		
+
+		//for displaying items at cart page
+
 		this.products = this.cart.getDisplayCartItems(userId).subscribe(
 			res => {
-		 		this.products = res.data;
+				this.products = res.data;
 				console.log(this.products);
-				
-			 });
 
-				
-		// this.totalItemCountInc(this.products);
-		this.totalItemsCount(this.products);
+			});
+
+
+		// this.cart.totalItemsCount(this.products);
+		// this.totalItemsCount(this.products);
+
+		this.cart.totalItemsCount(this.cart.productCount);
+
+		
 	}
-	
-	
+
 
 	removeProduct(item: any) {
+
+		const user_id = JSON.parse(this.userIdData)
+		const userId = user_id.id;
 		console.log(item);
 
 		this.cart.getRemoveCartItem(item).subscribe(
 			res => {
 				// console.log(res);
-				
+
 				this.data = res.data;
 				console.log(this.data);
+
+				this.cart.getDisplayCartItems(userId).subscribe(
+					res => {
+						this.products = res.data;
+						console.log(this.products);
+
+						this.cart.recalculateTotalAmount(this.products);
+					this.cart.totalItemsCount(this.products);
 		
+					});
+
 			});
-		// this.cart.removeCartData(item);
-		
-
-
-		this.totalItemsCount(this.products);
-		this.recalculateTotalAmount();
 
 		
+
 	}
 
 
@@ -99,16 +120,13 @@ export class CartComponent implements OnInit {
 		item.quant = +item.quant + 1;
 		this.validateInput = true;
 
-		this.recalculateTotalAmount();
+		this.cart.recalculateTotalAmount(this.products);
 
-		this.cart.emitAmount.next(this.productTotalAmount);
+		// this.cart.emitAmount.next(this.productTotalAmount);
 
-		this.totalItemsCount(this.products);
-
-		// this.totalItemsCount(this.products);
-		// this.cart.emitQty.next(this.productCount);
-
+		this.cart.totalItemsCount(this.products);
 	}
+
 
 	onDecrement(item: any) {
 
@@ -117,72 +135,34 @@ export class CartComponent implements OnInit {
 			this.validateInput = false;
 		}
 
-		this.recalculateTotalAmount();
-		this.items = this.cart.emitAmount.next(this.productTotalAmount);
-	
-
-		// this.totalItemsCount(this.products);
-
-		this.productCount = this.productCount - 1;
-
-		this.cart.emitQty.next(this.productCount);
-
-		
-	}
-
-	recalculateTotalAmount() {
-
-		let newTotalAmount = 0;
-		this.products.forEach((item: { price: number; quant: number; }) => {
-			newTotalAmount += (item.price * item.quant)
-			// console.log(item.qty);
-			this.items = item.quant;
-
-		});
-		// console.log(this.items);
-
-		this.cart.emitAmount.next(newTotalAmount);
-		
-		return this.productTotalAmount = newTotalAmount;
+		this.cart.recalculateTotalAmount(this.products);
+		// this.items = this.cart.emitAmount.next(this.productTotalAmount);
+		this.cart.totalItemsCount(this.products);
 
 	}
-	
-	// private totalItemCountInc(items:any){
-	// 	console.log(items);
-	// 	this.productCount = 0;
-		
-	// 	const totalCount =
-	// 		items
-	// 		.filter((item: any) => {
-			
 
-	// 			this.productCount = +this.productCount + item.quant;
-	// 			console.log(this.productCount);
-				
-	// 		})
-		
-	// 	this.cart.emitQty.next(this.productCount);
+
+	// recalculateTotalAmount() {
+
+	// 	let newTotalAmount = 0;
+	// 	this.products.forEach((item: { price: number; quant: number; }) => {
+	// 		newTotalAmount += (item.price * item.quant)
+	// 		// console.log(item.qty);
+	// 		this.items = item.quant;
+
+	// 	});
+	// 	// console.log(this.items);
+
+	// 	this.cart.emitAmount.next(newTotalAmount);
+
+	// 	return this.productTotalAmount = newTotalAmount;
+
 	// }
 
-	private totalItemsCount(items: any) {
-				const totalCount =
-					items
-					.filter((item: any) => {
-						// this.productCount = +this.productCount +1;
-		
-						this.productCount = +this.productCount + +item.quant
-						// console.log(this.productCount);
-						// console.log(item);
 
-						
-					})
-					this.cart.emitQty.next(this.productCount);
-
-		
-			}
 
 	onCheckout() {
-	 this.productTotalAmount;
+		this.productTotalAmount;
 		this.router.navigate(["/checkout"]);
 	}
 

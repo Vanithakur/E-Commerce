@@ -51,7 +51,6 @@ export class HeaderSecondComponent implements OnInit {
 			}
 		);
 
-		
 
 		this.cart.emitAmount.subscribe(
 			res=>{
