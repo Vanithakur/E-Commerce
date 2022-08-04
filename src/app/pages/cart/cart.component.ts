@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, filter, map, pipe, Subject } from 'rxjs';
 import { CheckoutService } from 'src/app/services/checkout/checkout.service';
 import { ProductService } from 'src/app/services/products/products.service';
@@ -33,6 +33,7 @@ export class CartComponent implements OnInit {
 	constructor(private cart: CartService,
 		private product: ProductService, 
 		private router: Router,
+		private route: ActivatedRoute,
 		private checkoutService : CheckoutService) { }
 
 
@@ -157,8 +158,8 @@ export class CartComponent implements OnInit {
 
 	onCheckout(amount:any) {
 	 this.checkoutService.totalfinalAmount = amount;
-	 
-		this.router.navigate(["/checkout"]);
+	//  this.router.navigate(['checkout'], {relativeTo: this.route});
+		this.router.navigate(["checkout"]);
 	}
 
 }
