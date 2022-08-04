@@ -27,15 +27,15 @@ export class CartComponent implements OnInit {
 	total!: number;
 	totalItemNumber: any;
 	userIdData: any;
-	productCount:any = 0;
+	productCount: any = 0;
 	user_id: any;
 
 	constructor(private cart: CartService,
 
-		private product: ProductService, 
+		private product: ProductService,
 		private router: Router,
 		private route: ActivatedRoute,
-		private checkoutService : CheckoutService) { }
+		private checkoutService: CheckoutService) { }
 
 
 
@@ -65,11 +65,11 @@ export class CartComponent implements OnInit {
 
 			this.products = res;
 
-			for (let product of this.products) {
-				this.itemprice = product.price;
-			}
+			// for (let product of this.products) {
+			// 	this.itemprice = product.price;
+			// }
 
-			this.cart.getRemoveCartItem(this.products);
+			// this.cart.getRemoveCartItem(this.products);
 		});
 
 
@@ -78,9 +78,6 @@ export class CartComponent implements OnInit {
 			res => {
 				this.products = res.data;
 				console.log(this.products);
-
-			// this.cart.getRemoveCartItem(this.products);
-
 
 			});
 
@@ -91,21 +88,29 @@ export class CartComponent implements OnInit {
 
 	//to remove product from cart
 	removeProduct(item: any) {
-		// console.log(item);=> product_id of product being remoived
+		const user_id = JSON.parse(this.userIdData)
+		const userId = user_id.id;
 
-		this.cart.getRemoveCartItem(item).subscribe(
-			res => {
-				console.log(res);
+		this.cart.getRemoveCartItem(item).subscribe(res => {
+			// console.log(res);
 
-				this.data = res.data;
-				console.log(this.data);
+			this.data = res.data;
 
-				this.cart.recalculateTotalAmount(this.products);
-				this.cart.totalItemsCount(this.products);
 
-			});
-		// this.cart.removeCartData(item);	
-		this.cart.getRemoveCartItem(item.cart_id);
+			this.cart.getDisplayCartItems(userId).subscribe(
+				res => {
+					this.products = res.data;
+					console.log(this.products);
+
+					this.cart.recalculateTotalAmount(this.products);
+					this.cart.totalItemsCount(this.products);
+
+
+				});
+
+
+		});
+
 
 	}
 
@@ -136,27 +141,12 @@ export class CartComponent implements OnInit {
 
 	}
 
-	
-	private totalItemsCount(items: any) {
-				const totalCount =
-					items
-					.filter((item: any) => {
-						// this.productCount = +this.productCount +1;
-		
-						this.productCount = +this.productCount + +item.quant
-						// console.log(this.productCount);
-						// console.log(item);
 
-						
-					})
-					this.cart.emitQty.next(this.productCount);
 
-		
-			}
 
-	onCheckout(amount:any) {
-	 this.checkoutService.totalfinalAmount = amount;
-	//  this.router.navigate(['checkout'], {relativeTo: this.route});
+	onCheckout(amount: any) {
+		this.checkoutService.totalfinalAmount = amount;
+		//  this.router.navigate(['checkout'], {relativeTo: this.route});
 		this.router.navigate(["checkout"]);
 
 	}

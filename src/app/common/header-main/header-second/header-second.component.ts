@@ -35,13 +35,13 @@ export class HeaderSecondComponent implements OnInit {
 			
 			// this.totalItemNumber = res.length;
 
-			this.totalAmount = this.cart.getTotalAmount();
+			// this.totalAmount = this.cart.getTotalAmount();
 			
 		});
 		
 		this.cart.emitQty.subscribe(
 			(res: any)=> {
-				// console.log(res);
+				console.log(res);
 				this.totalItemNumber = res;
 			}
 		);
@@ -52,7 +52,7 @@ export class HeaderSecondComponent implements OnInit {
 				this.totalAmount = res;
 			}
 		);
-		this.GrandTotal = this.total+this.totalAmount;
+
 		console.log(this.totalAmount);
 		
 

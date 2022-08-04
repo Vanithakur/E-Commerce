@@ -73,12 +73,15 @@ export class CartService implements OnInit {
     //post api for displaying cart items
     getDisplayCartItems(user_id: number) {
 
+
         return this.http.post<DisplayCart>(
             "http://95.111.202.157/mangoproject/public/api/card-display-ustora", {
             user_id: user_id,
             }
         );
     }
+
+
 
     //get api to remove cart item
     getRemoveCartItem(product_id: number) {
@@ -148,6 +151,8 @@ export class CartService implements OnInit {
     totalItemsCount(items: any) {
         this.productCount = 0;
 
+        console.log(items);
+        
         const totalCount =
             items
                 .filter((item: any) => {
@@ -157,7 +162,7 @@ export class CartService implements OnInit {
                     // console.log(this.productCount);
 
                 })
-        // console.log(this.productCount);
+        console.log(this.productCount);
 
         this.emitQty.next(this.productCount);
 
