@@ -29,7 +29,6 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { OrdersComponent } from './pages/profile/orders/orders.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoadingSpinnerComponent } from './pages/login/loading-spinner/loading-spinner.component';
@@ -43,6 +42,8 @@ import { RelatedProductComponent } from './pages/product-detail/related-product/
 import { MainImageComponent } from './pages/product-detail/selected-product/main-image/main-image.component';
 import { PaymentComponent } from './pages/checkout/payment/payment.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { DetailsComponent } from './pages/orders/details/details.component';
 
 
 @NgModule({
@@ -61,8 +62,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     ProductDetailComponent,
     CartComponent,
     CheckoutComponent,
-    ProfileComponent,
-    OrdersComponent,
+    ProfileComponent,   
     WishlistComponent,
     LoginComponent,
     LoadingSpinnerComponent,
@@ -75,8 +75,9 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     SelectedProductComponent,
     RelatedProductComponent,
     MainImageComponent,
-    PaymentComponent
-    
+    PaymentComponent,
+    OrdersComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

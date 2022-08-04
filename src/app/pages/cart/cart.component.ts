@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, filter, map, pipe, Subject } from 'rxjs';
+import { CheckoutService } from 'src/app/services/checkout/checkout.service';
 import { ProductService } from 'src/app/services/products/products.service';
 import { LoginComponent } from '../login/login.component';
 import { CartService } from './cart.service';
@@ -26,11 +27,16 @@ export class CartComponent implements OnInit {
 	total!: number;
 	totalItemNumber: any;
 	userIdData: any;
-	// productCount:any = 0;
+	productCount:any = 0;
 	user_id: any;
 
 	constructor(private cart: CartService,
-		private product: ProductService, private router: Router) { }
+
+		private product: ProductService, 
+		private router: Router,
+		private route: ActivatedRoute,
+		private checkoutService : CheckoutService) { }
+
 
 
 	ngOnInit(): void {
@@ -130,11 +136,29 @@ export class CartComponent implements OnInit {
 
 	}
 
+	
+	private totalItemsCount(items: any) {
+				const totalCount =
+					items
+					.filter((item: any) => {
+						// this.productCount = +this.productCount +1;
+		
+						this.productCount = +this.productCount + +item.quant
+						// console.log(this.productCount);
+						// console.log(item);
 
-	//for checkout page
-	onCheckout(amount: any) {
-		this.productTotalAmount;
-		this.router.navigate(["/checkout"]);
+						
+					})
+					this.cart.emitQty.next(this.productCount);
+
+		
+			}
+
+	onCheckout(amount:any) {
+	 this.checkoutService.totalfinalAmount = amount;
+	//  this.router.navigate(['checkout'], {relativeTo: this.route});
+		this.router.navigate(["checkout"]);
+
 	}
 
 

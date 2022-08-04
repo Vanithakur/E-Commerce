@@ -14,7 +14,7 @@
                                     <li *ngIf="isAuthenticated"><a routerLink="/orders">Orders</a></li>
                                 </ul>
                             </li>
-                            <li *ngIf="isAuthenticated"><a  routerLink="/wishlist"><i class="fa fa-heart"></i> Wishlist</a></li>
+                            <li *ngIf="isAuthenticated"><a style="cursor: pointer;color: #999;"  (click)='onOrders()'><i class="fa fa-shopping-cart"></i> Orders</a></li>
                             <li *ngIf="isAuthenticated"><a  routerLink="/cart"><i class="fa fa-user"></i> My Cart</a></li>
                             <li *ngIf="isAuthenticated"><a routerLink="/checkout"><i class="fa fa-user"></i> Checkout</a></li>
                             <li *ngIf="!isAuthenticated"><a routerLink="/login"><i class="fa fa-user"></i> Login</a></li>
