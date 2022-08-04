@@ -25,13 +25,8 @@ export class CartService implements OnInit {
     productTotalAmount: any;
     userIdData: any = 0;
     cartQuantity = new Subject<number>();
-<<<<<<< HEAD
     productCount: any = 0;
-
-   
-=======
 	data: any;
->>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
     emitQty = new Subject<any>();
     removeCart = new Subject<any>();
 
@@ -51,47 +46,27 @@ export class CartService implements OnInit {
         this.products.getProducts().subscribe(res => {
             this.allproducts = res.data;
         })
-<<<<<<< HEAD
 
 
-         this.getDisplayCartItems(userId).subscribe(
-            res => {
-             
-                this.product = res.data;
-                console.log(this.product);
-            });
-=======
-        this.product = this.getDisplayCartItems(userId).subscribe(
+        this.getDisplayCartItems(userId).subscribe(
 			res => {
-				console.log(res);
-			
 		 		this.product = res.data;
+		 		console.log(this.product);
+		});
+        
 
-		 		// console.log(this.products );
-			
-		 });
-         this.getDisplayCartItems(userId).subscribe(
-			res => {
-		 		this.data = res.data;
-				console.log(this.data);
-				
-			 });
->>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
     }
 
     //post api for add to cart
-
     getAddToCart(user_id: number, product_id: string, quant: number) {
-
-
         return this.http.post<Cart>(
             "http://95.111.202.157/mangoproject/public/api/add-to-card-ustora", {
             user_id: user_id,
             product_id: product_id,
             quant: quant,
 
-        }
-        )
+            }
+        );
     }
 
 
@@ -101,20 +76,18 @@ export class CartService implements OnInit {
         return this.http.post<DisplayCart>(
             "http://95.111.202.157/mangoproject/public/api/card-display-ustora", {
             user_id: user_id,
-        }
-        )
+            }
+        );
     }
 
     //get api to remove cart item
     getRemoveCartItem(product_id: number) {
-        console.log(product_id);
-
+        // console.log(product_id);
         return this.http.get<Cart>(
             "http://95.111.202.157/mangoproject/public/api/cart-remove-ustora/" + product_id
         );
     
     }
-
 
     //get product data
     getProductData() {
@@ -127,15 +100,10 @@ export class CartService implements OnInit {
         this.productList.next(product);
         this.getTotalAmount();
     }
-<<<<<<< HEAD
-
 
     //add to cart
     addToCart(product: any) {
-=======
-    
-    addToCart(product: any) {        
->>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
+
         this.cartDataList.push(product);
         this.productList.next(this.cartDataList);
 
@@ -160,23 +128,17 @@ export class CartService implements OnInit {
         for (i = 0; i < this.cartDataList.length; i++) {
             grandTotal += this.cartDataList[i].price;
         }
-<<<<<<< HEAD
-
-=======
-       console.log(grandTotal);
-       
->>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
         return grandTotal;
     }
 
-    removeCartData(product: any) {
+    // removeCartData(product: any) {
 
-        // this.cartDataList.splice(product, 1);
-        // this.productList.next(this.cartDataList.slice());
+    //     // this.cartDataList.splice(product, 1);
+    //     // this.productList.next(this.cartDataList.slice());
 
-        // this.productList.next(this.cartDataList)
-    }
-<<<<<<< HEAD
+    //     // this.productList.next(this.cartDataList)
+    // }
+
 
     gettotal() {
         return this.getTotalAmount();
@@ -186,17 +148,16 @@ export class CartService implements OnInit {
     totalItemsCount(items: any) {
         this.productCount = 0;
 
-
         const totalCount =
             items
                 .filter((item: any) => {
                     // this.productCount = +this.productCount +1;
 
                     this.productCount = +this.productCount + +item.quant
-                    console.log(this.productCount);
+                    // console.log(this.productCount);
 
                 })
-        console.log(this.productCount);
+        // console.log(this.productCount);
 
         this.emitQty.next(this.productCount);
 
@@ -210,19 +171,15 @@ export class CartService implements OnInit {
             newTotalAmount += (item.price * item.quant)
             // console.log(item.qty);
             this.items = item.quant;
-            console.log(this.items);
 
         });
 
         this.emitAmount.next(newTotalAmount);
 
         return this.productTotalAmount = newTotalAmount;
-
+        
     }
 
 
-=======
-    
->>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
 }
 

@@ -24,15 +24,13 @@ export class ProductsComponent implements OnInit {
 
 	// productList: any;
 
-	constructor(private allproducts: ProductService, private cart:CartService, private router:Router) { }
+	constructor(private allproducts: ProductService, private cart:CartService, private router:Router) {}
 
 	ngOnInit(): void {
 
 		this.userIdData = localStorage.getItem('userData');
 		console.log(this.userIdData);
 		
-		
-
 		// this.allproduct = this.allproducts.getProducts();
 		// console.log(this.allproduct);
 		this.allproducts.getProducts().subscribe(res=>{
@@ -44,16 +42,8 @@ export class ProductsComponent implements OnInit {
 	}
 
 	addToCart(item:any){
-		console.log(item);
-
-		// this.cart.emitAmount.next(item);
-
-        // this.cart.emitQty.next(item);
-		// this.cart.totalItemsCount(this.products);
-
 
 		let product_id = item.id;
-	
 		let quant = (item.quantity);
 		// console.log(quant);
 
@@ -61,7 +51,7 @@ export class ProductsComponent implements OnInit {
 		const userId = user_id.id;
 		const userToken = user_id._token;
 	
-
+		//to add to cart 
 		 this.cart.getAddToCart(userId, product_id, quant).subscribe(
 			res => {
 				console.log(res);
@@ -104,8 +94,6 @@ export class ProductsComponent implements OnInit {
 			1200: {
 				items: 5
 			}
-
-
 
 		},
 		nav: true

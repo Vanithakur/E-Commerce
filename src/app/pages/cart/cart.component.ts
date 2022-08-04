@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, filter, map, pipe, Subject } from 'rxjs';
-import { CheckoutService } from 'src/app/services/checkout/checkout.service';
 import { ProductService } from 'src/app/services/products/products.service';
 import { LoginComponent } from '../login/login.component';
 import { CartService } from './cart.service';
@@ -31,20 +30,19 @@ export class CartComponent implements OnInit {
 	user_id: any;
 
 	constructor(private cart: CartService,
-		private product: ProductService, 
-		private router: Router,
-		private checkoutService : CheckoutService) { }
+		private product: ProductService, private router: Router) { }
 
 
 	ngOnInit(): void {
-		//  this.productTotalAmount = this.cart.productTotalAmount;
 
+
+		//to emit amount in the cart totals
 		this.cart.emitAmount.subscribe(res => {
-			console.log(res);
 			this.productTotalAmount = res;
-		});
+		})
 
 
+		//to use user_id, product_id and token from localstorage
 		this.userIdData = localStorage.getItem('userData');
 		console.log(this.userIdData);
 
@@ -53,9 +51,8 @@ export class CartComponent implements OnInit {
 		const userToken = user_id._token;
 
 
+		//to get the data of all products being added
 		this.cart.getProductData().subscribe(res => {
-
-
 
 			this.products += res;
 			console.log(res);
@@ -66,70 +63,43 @@ export class CartComponent implements OnInit {
 				this.itemprice = product.price;
 			}
 
+			this.cart.getRemoveCartItem(this.products);
 		});
 
 
 		//for displaying items at cart page
-
-		this.products = this.cart.getDisplayCartItems(userId).subscribe(
+		this.cart.getDisplayCartItems(userId).subscribe(
 			res => {
 				this.products = res.data;
 				console.log(this.products);
-<<<<<<< HEAD
+
+			// this.cart.getRemoveCartItem(this.products);
+
 
 			});
 
-
-		// this.cart.totalItemsCount(this.products);
-		// this.totalItemsCount(this.products);
-
+		//for displaying total product count in header cart
 		this.cart.totalItemsCount(this.cart.productCount);
 
-		
-=======
-				
-			 });				
-		// this.totalItemCountInc(this.products);
-		this.totalItemsCount(this.products);
->>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
 	}
 
-
+	//to remove product from cart
 	removeProduct(item: any) {
-
-		const user_id = JSON.parse(this.userIdData)
-		const userId = user_id.id;
-		console.log(item);
+		// console.log(item);=> product_id of product being remoived
 
 		this.cart.getRemoveCartItem(item).subscribe(
 			res => {
-				// console.log(res);
+				console.log(res);
 
 				this.data = res.data;
 				console.log(this.data);
-<<<<<<< HEAD
 
-				this.cart.getDisplayCartItems(userId).subscribe(
-					res => {
-						this.products = res.data;
-						console.log(this.products);
-
-						this.cart.recalculateTotalAmount(this.products);
-					this.cart.totalItemsCount(this.products);
-		
-					});
+				this.cart.recalculateTotalAmount(this.products);
+				this.cart.totalItemsCount(this.products);
 
 			});
-
-=======
-		
-			});
-		// this.cart.removeCartData(item);
-
-		this.totalItemsCount(this.products);
-		this.recalculateTotalAmount();
->>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
-		
+		// this.cart.removeCartData(item);	
+		this.cart.getRemoveCartItem(item.cart_id);
 
 	}
 
@@ -141,12 +111,9 @@ export class CartComponent implements OnInit {
 
 		this.cart.recalculateTotalAmount(this.products);
 
-<<<<<<< HEAD
 		// this.cart.emitAmount.next(this.productTotalAmount);
 
 		this.cart.totalItemsCount(this.products);
-=======
->>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
 	}
 
 
@@ -157,66 +124,19 @@ export class CartComponent implements OnInit {
 			this.validateInput = false;
 		}
 
-<<<<<<< HEAD
 		this.cart.recalculateTotalAmount(this.products);
 		// this.items = this.cart.emitAmount.next(this.productTotalAmount);
 		this.cart.totalItemsCount(this.products);
 
 	}
-=======
-		this.recalculateTotalAmount();
-		this.items = this.cart.emitAmount.next(this.productTotalAmount);
-		this.productCount = this.productCount - 1;
->>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
 
 
-	// recalculateTotalAmount() {
-
-	// 	let newTotalAmount = 0;
-	// 	this.products.forEach((item: { price: number; quant: number; }) => {
-	// 		newTotalAmount += (item.price * item.quant)
-	// 		// console.log(item.qty);
-	// 		this.items = item.quant;
-
-	// 	});
-	// 	// console.log(this.items);
-
-	// 	this.cart.emitAmount.next(newTotalAmount);
-
-	// 	return this.productTotalAmount = newTotalAmount;
-
-<<<<<<< HEAD
-	// }
-
-=======
-	}
-	
-	private totalItemsCount(items: any) {
-				const totalCount =
-					items
-					.filter((item: any) => {
-						// this.productCount = +this.productCount +1;
-		
-						this.productCount = +this.productCount + +item.quant
-						// console.log(this.productCount);
-						// console.log(item);
-
-						
-					})
-					this.cart.emitQty.next(this.productCount);
->>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
-
-
-<<<<<<< HEAD
-	onCheckout() {
+	//for checkout page
+	onCheckout(amount: any) {
 		this.productTotalAmount;
-=======
-	onCheckout(amount:any) {
-	 this.checkoutService.totalfinalAmount = amount;
-	 
->>>>>>> a2c09f41973b7a1fa13257e84122d494b7973091
 		this.router.navigate(["/checkout"]);
 	}
+
 
 }
 

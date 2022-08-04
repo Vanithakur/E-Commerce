@@ -21,8 +21,6 @@ export class HeaderSecondComponent implements OnInit {
 	total:number=0;
     cartDataList: any = [];
 
-	
-
 	private userSub: Subscription = new Subscription;
 	items:any = 0;
 	product: any;
@@ -30,11 +28,8 @@ export class HeaderSecondComponent implements OnInit {
 
 	constructor(private authService: AuthService, private cart: CartService) {}
 
-
-	// const totalItemsCount = this.cart.items.map(this.item)=> item.qty * this.products.find(p)
-
 	ngOnInit(): void {
-
+		// this.cart.totalItemsCount(this.cart.productCount);
 	 
 		this.cart.getProductData().subscribe(res => {
 			
@@ -66,5 +61,6 @@ export class HeaderSecondComponent implements OnInit {
 			console.log(this.isAuthenticated);
 		});
 	}
+
 
 }	
