@@ -6,10 +6,12 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { PaymentComponent } from './pages/checkout/payment/payment.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { DetailsComponent } from './pages/orders/details/details.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { MainImageComponent } from './pages/product-detail/selected-product/main-image/main-image.component';
 import { ProductsComponent } from './pages/products/products.component';
-import { OrdersComponent } from './pages/profile/orders/orders.component';
+
 import { ProfileComponent } from './pages/profile/profile.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
@@ -29,6 +31,14 @@ const routes: Routes = [
 
 { path: 'payment',
  component: PaymentComponent ,
+ canActivate: [AuthGuard],
+},
+{ path: 'orders',
+ component: OrdersComponent ,
+ canActivate: [AuthGuard],
+},
+{ path: 'view_details',
+ component: DetailsComponent ,
  canActivate: [AuthGuard],
 },
 {path:'login', component: LoginComponent},
