@@ -44,10 +44,15 @@ const routes: Routes = [
   component: ProfileComponent,
   canActivate: [AuthGuard]
 },
+{
+  path:'product_details/:id', 
+  component: ProductDetailComponent,
+  canActivate: [AuthGuard]
+},
 {path:'login', component: LoginComponent},
 {path: 'home', component: HomeComponent},
 {path:'products', component: ProductsComponent },
-{path:'product_details/:id', component: ProductDetailComponent},
+
 ];
 
 @NgModule({
