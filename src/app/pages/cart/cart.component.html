@@ -69,8 +69,6 @@
                                                 <div class="quantity buttons_added">
                                                     <input type="button" class="input-text qty text" value="-"
                                                         (click)="onDecrement(item)">
-                                                    <!-- <input type="number" size="4" class="input-text qty text"
-                                                        title="Qty" value="1" min="0" step="1"> -->
                                                     <span class="qty" style="padding: 6px;">{{item.quant}}</span>
                                                     <input type="button" class="plus" value="+"
                                                         (click)="onIncrement(item)">
@@ -95,8 +93,9 @@
 
                                                     <!-- <input type="submit" value="Update Cart" name="update_cart" 
                                                         class="button"> &nbsp; -->
-                                                    <input (click)="onCheckout(productTotalAmount)" type="submit" value="Checkout"
-                                                        name="proceed" class="checkout-button button alt wc-forward">
+                                                    <input (click)="onCheckout(productTotalAmount)" type="submit"
+                                                        value="Checkout" name="proceed"
+                                                        class="checkout-button button alt wc-forward">
                                                 </div>
 
 
