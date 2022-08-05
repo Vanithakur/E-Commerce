@@ -15,7 +15,6 @@ import { CartService } from './cart.service';
 export class CartComponent implements OnInit {
 	itemprice: number = 0;
 	itemqty: number = 0;
-	validateInput: boolean = false;
 
 	productTotalAmount: number = 0;
 	products: any = [];
@@ -65,11 +64,6 @@ export class CartComponent implements OnInit {
 			console.log(res);
 
 			this.products = res;
-
-			// for (let product of this.products) {
-			// 	this.itemprice = product.price;
-			// }
-
 			// this.cart.getRemoveCartItem(this.products);
 		});
 
@@ -113,24 +107,22 @@ export class CartComponent implements OnInit {
 
 
 	onIncrement(item: any) {
+
 		const user_id = JSON.parse(this.userIdData)
 		const userId = user_id.id;
 
 		item.quant = +item.quant + 1;
-		this.validateInput = true;
 
 		this.cart.recalculateTotalAmount(this.products);
+		this.cart.totalItemsCount(this.products);
+
 		let quant_minus = '';
 
-		// this.cart.emitAmount.next(this.productTotalAmount);
-
-		this.cart.totalItemsCount(this.products);
 		if (item.cart_id) {
 
 			let quantity = 1;
 			this.cart.getAddToCart(userId, item.id, quantity, quant_minus).subscribe(res => {
 				console.log(res);
-
 
 			})
 		}
@@ -145,12 +137,20 @@ export class CartComponent implements OnInit {
 	}
 
 
-	onDecrement(item: any) {
+	onDecrement(item:any) {
 		const user_id = JSON.parse(this.userIdData)
 		const userId = user_id.id;
-		item.quant = item.quant - 1;
-		if (item.quant <= 1) {
-			this.validateInput = false;
+
+		// if(this.products[index].quant - 1 <1){
+		// 	this.products[index].quant =1
+		// } else { 
+		// 	this.products[index].quant -= 1
+		// }
+
+		if(item.quant - 1 < 1){
+			item.quant = 1
+		} else {
+			item.quant -= 1
 		}
 
 		this.cart.recalculateTotalAmount(this.products);
@@ -166,7 +166,7 @@ export class CartComponent implements OnInit {
 
 			})
 		}
-		// this.items = this.cart.emitAmount.next(this.productTotalAmount);
+		
 		this.cart.totalItemsCount(this.products);
 
 	}

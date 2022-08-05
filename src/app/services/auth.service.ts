@@ -10,6 +10,7 @@ import { BehaviorSubject, Subject, throwError } from "rxjs";
 
 import { Router } from "@angular/router";
 import { User } from "../models/user.model";
+import { CartService } from "../pages/cart/cart.service";
 
 export interface AuthResponseData {
     
@@ -30,10 +31,11 @@ export interface AuthResponseData {
 @Injectable({ providedIn: "root" })
 
 export class AuthService {
+    userIdData:any;
    
     user:any = new BehaviorSubject<User|null>(null);
 
-    constructor(private http: HttpClient, private router: Router) { }
+    constructor(private http: HttpClient, private router: Router, private cart:CartService) { }
 
     signup(first_name: string, last_name: string, email: string, password: string) {
 
@@ -85,6 +87,9 @@ export class AuthService {
         this.user.next(null);
         this.router.navigate(['/login']);
         localStorage.removeItem('userData');
+
+        this.cart.emitQty.next(null);
+        this.cart.emitAmount.next(null);
       
     }
 
