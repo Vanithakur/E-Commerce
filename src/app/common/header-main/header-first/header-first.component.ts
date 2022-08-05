@@ -37,4 +37,7 @@ export class HeaderFirstComponent implements OnInit, OnDestroy {
 		this.router.navigate(["orders"]);
 
 	}
+	onProfile() {
+		this.router.navigate(["profile"]);
+	}
 }

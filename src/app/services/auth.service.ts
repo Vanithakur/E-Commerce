@@ -46,19 +46,16 @@ export class AuthService {
                 password: password,
                 // returnSecureToken: true
             }
-        ) .pipe(
-            catchError(this.handleError),
-            tap((resData) => {})
-          );
-            // .pipe(catchError(this.handleError),
-            //     tap(resData => {
-            //         this.handleAuthentication(
-            //             resData.data.email,
-            //             resData.data.id,
-            //             resData.data.token                      
-            //         );
-            //     })
-            // );
+        ) 
+            .pipe(catchError(this.handleError),
+                tap(resData => {
+                    this.handleAuthentication(
+                        resData.data.email,
+                        resData.data.id,
+                        resData.data.token                      
+                    );
+                })
+            );
     }
 
     login(email2: string, password2: string) {
@@ -69,9 +66,7 @@ export class AuthService {
                 password: password2            
                 // returnSecureToken: true
             }
-        )
-            .pipe
-            (catchError(this.handleError),
+        ).pipe(catchError(this.handleError),
                 tap(resData => {                    
                     this.handleAuthentication(
                         resData.data.email,
@@ -109,8 +104,6 @@ export class AuthService {
     this.user.next(loadedUser);
     
   }
-
-
     private handleAuthentication(email: string, userId: string, token: string) {
         const user = new User(
             email,
@@ -124,8 +117,7 @@ export class AuthService {
     }
 
     private handleError(errorRes: HttpErrorResponse) {
-        let errorMessage = 'An error occured!';
-        
+        let errorMessage = 'An unknown error ouccured!';
         if (!errorRes.error || !errorRes.error.error) {
             return throwError(errorMessage);
         }
@@ -134,14 +126,35 @@ export class AuthService {
                 errorMessage = 'This email exists already!';
                 break;
             case 'EMAIL_NOT_FOUND':
-                errorMessage = 'This email does not exist!';
+                errorMessage = 'This email does not exist.'
                 break;
             case 'INVALID_PASSWORD':
-                errorMessage = 'This password is not correct';
+                errorMessage = 'This password is not correct.'
                 break;
         }
         return throwError(errorMessage);
     }
+
+    // private handleError(errorRes: HttpErrorResponse) {
+    //     let errorMessage = 'An error occured!';
+        
+    //     if (!errorRes.error || !errorRes.error.error) {
+    //         return throwError(errorMessage);
+    //     }
+    //     switch (errorRes.error.error.message) {
+    //         case 'EMAIL_EXISTS':
+    //             errorMessage = 'This email exists already!';
+    //             break;
+    //         case 'EMAIL_NOT_FOUND':
+    //             errorMessage = 'This email does not exist!';
+    //             break;
+    //         case 'INVALID_PASSWORD':
+    //             errorMessage = 'This password is not correct';
+    //             break;
+    //     }
+    
+    //     return throwError(errorMessage);
+    // }
 }
 function getItem(arg0: string): ((this: any, key: string, value: any) => any) | undefined {
     throw new Error("Function not implemented.");

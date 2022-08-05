@@ -16,7 +16,6 @@ import { ProfileComponent } from './pages/profile/profile.component';
 const routes: Routes = [
 
 { path: '', redirectTo: '/home', pathMatch: 'full' },
-// { path: '', component: HomeComponent},
 { 
   path: 'cart',
   component: CartComponent,
@@ -40,10 +39,15 @@ const routes: Routes = [
  component: DetailsComponent ,
  canActivate: [AuthGuard],
 },
+{
+  path: 'profile',
+  component: ProfileComponent,
+  canActivate: [AuthGuard]
+},
 {path:'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent},
-  {path:'products', component: ProductsComponent },
-  {path:'product_details/:id', component: ProductDetailComponent},
+{path: 'home', component: HomeComponent},
+{path:'products', component: ProductsComponent },
+{path:'product_details/:id', component: ProductDetailComponent},
 ];
 
 @NgModule({
