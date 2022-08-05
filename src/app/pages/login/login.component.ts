@@ -70,7 +70,14 @@ export class LoginComponent implements OnInit {
 			resData => {
 				console.log(resData);
 				this.isLoading = false;
-				this.router.navigate(['']);
+				if(this.isLoginMode) {
+					this.router.navigate(['']);
+				}
+				else{
+					alert("You have register successfull. Please login!")
+					// this.router.navigate(['/login']);
+				}
+				
 
 			},
 			errorMessage => {
