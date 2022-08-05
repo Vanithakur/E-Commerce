@@ -48,7 +48,7 @@ export class AuthService {
                 password: password,
                 // returnSecureToken: true
             }
-        )
+        ) 
             .pipe(catchError(this.handleError),
                 tap(resData => {
                     this.handleAuthentication(
@@ -68,12 +68,8 @@ export class AuthService {
                 password: password2            
                 // returnSecureToken: true
             }
-        )
-            .pipe
-            (catchError(this.handleError),
-                tap(resData => {
-                    console.log(resData.data);
-                    
+        ).pipe(catchError(this.handleError),
+                tap(resData => {                    
                     this.handleAuthentication(
                         resData.data.email,
                         resData.data.id,
@@ -86,13 +82,33 @@ export class AuthService {
     logout() {
         this.user.next(null);
         this.router.navigate(['/login']);
-        localStorage.removeItem('userData');
+        localStorage.removeItem('userData');      
 
         this.cart.emitQty.next(null);
         this.cart.emitAmount.next(null);
-      
+
     }
 
+  autoLogin() {
+    let loginUser:any = localStorage.getItem('userData')
+    const userData: {
+      email: string;
+      id: string;
+      _token: string;
+    } = JSON.parse(loginUser);
+    // console.log(loginUser);
+    
+    if (!userData) {
+      return;
+    }
+    const loadedUser = new User(
+      userData.email,
+      userData.id,
+      userData._token,
+    );    
+    this.user.next(loadedUser);
+    
+  }
     private handleAuthentication(email: string, userId: string, token: string) {
         const user = new User(
             email,
@@ -100,16 +116,13 @@ export class AuthService {
             token
         );
 
-        this.user.next(user);        
-      localStorage.setItem('userData', JSON.stringify(user));
-        
-
-        
+       this.user.next(user);              
+       localStorage.setItem('userData', JSON.stringify(user));
+    //   localStorage.setItem('userData', JSON.stringify(user));        
     }
 
     private handleError(errorRes: HttpErrorResponse) {
-        let errorMessage = 'An error occured!';
-        
+        let errorMessage = 'An unknown error ouccured!';
         if (!errorRes.error || !errorRes.error.error) {
             return throwError(errorMessage);
         }
@@ -118,14 +131,35 @@ export class AuthService {
                 errorMessage = 'This email exists already!';
                 break;
             case 'EMAIL_NOT_FOUND':
-                errorMessage = 'This email does not exist!';
+                errorMessage = 'This email does not exist.'
                 break;
             case 'INVALID_PASSWORD':
-                errorMessage = 'This password is not correct';
+                errorMessage = 'This password is not correct.'
                 break;
         }
         return throwError(errorMessage);
     }
+
+    // private handleError(errorRes: HttpErrorResponse) {
+    //     let errorMessage = 'An error occured!';
+        
+    //     if (!errorRes.error || !errorRes.error.error) {
+    //         return throwError(errorMessage);
+    //     }
+    //     switch (errorRes.error.error.message) {
+    //         case 'EMAIL_EXISTS':
+    //             errorMessage = 'This email exists already!';
+    //             break;
+    //         case 'EMAIL_NOT_FOUND':
+    //             errorMessage = 'This email does not exist!';
+    //             break;
+    //         case 'INVALID_PASSWORD':
+    //             errorMessage = 'This password is not correct';
+    //             break;
+    //     }
+    
+    //     return throwError(errorMessage);
+    // }
 }
 function getItem(arg0: string): ((this: any, key: string, value: any) => any) | undefined {
     throw new Error("Function not implemented.");

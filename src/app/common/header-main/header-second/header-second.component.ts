@@ -33,15 +33,11 @@ export class HeaderSecondComponent implements OnInit {
 	 
 		this.cart.getProductData().subscribe(res => {
 			
-			// this.totalItemNumber = res.length;
-
-			// this.totalAmount = this.cart.getTotalAmount();
-			
 		});
 		
 		this.cart.emitQty.subscribe(
 			(res: any)=> {
-				console.log(res);
+	
 				this.totalItemNumber = res;
 			}
 		);
@@ -52,13 +48,11 @@ export class HeaderSecondComponent implements OnInit {
 				this.totalAmount = res;
 			}
 		);
-
-		console.log(this.totalAmount);
 		
 
 		this.userSub = this.authService.user.subscribe((user: any) => {
 			this.isAuthenticated = !!user;
-			console.log(this.isAuthenticated);
+
 		});
 	}
 

@@ -23,7 +23,6 @@ export class LatestProductComponent implements OnInit {
 	ngOnInit(): void {
 		//to use user_id, product_id and token from localstorage
 		this.userIdData = localStorage.getItem('userData');
-		console.log(this.userIdData);
 
 		const user_id = JSON.parse(this.userIdData)
 		const userId = user_id.id;
@@ -32,12 +31,10 @@ export class LatestProductComponent implements OnInit {
 
 		this.latestproduct.getLatestProduct().subscribe(res => {
 			this.latestProducts = res.data;
-			console.log(this.latestProducts);
 
 		})
 		this.latestproduct.getBrands().subscribe(res => {
 			this.brands = res.data
-			console.log(this.brands);
 
 		})
 
@@ -45,8 +42,6 @@ export class LatestProductComponent implements OnInit {
 		this.cart.getDisplayCartItems(userId).subscribe(
 			res => {
 				this.products = res.data;
-				console.log(this.products);
-
 			this.cart.getRemoveCartItem(this.products);
 
 
@@ -71,10 +66,8 @@ export class LatestProductComponent implements OnInit {
 
 		this.cart.getAddToCart(userId, product_id, quant, quant_minus).subscribe(
 			res => {
-				console.log(res);
-
+				
 				item = res.data;
-				console.log(item);
 
 			});
 

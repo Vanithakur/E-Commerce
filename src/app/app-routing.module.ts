@@ -9,11 +9,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { DetailsComponent } from './pages/orders/details/details.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
-import { MainImageComponent } from './pages/product-detail/selected-product/main-image/main-image.component';
 import { ProductsComponent } from './pages/products/products.component';
 
 import { ProfileComponent } from './pages/profile/profile.component';
-import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
 const routes: Routes = [
 
@@ -41,10 +39,15 @@ const routes: Routes = [
  component: DetailsComponent ,
  canActivate: [AuthGuard],
 },
+{
+  path: 'profile',
+  component: ProfileComponent,
+  canActivate: [AuthGuard]
+},
 {path:'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent},
-  {path:'products', component: ProductsComponent },
-  {path:'product_details/:id', component: ProductDetailComponent},
+{path: 'home', component: HomeComponent},
+{path:'products', component: ProductsComponent },
+{path:'product_details/:id', component: ProductDetailComponent},
 ];
 
 @NgModule({
