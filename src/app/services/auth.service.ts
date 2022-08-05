@@ -84,8 +84,8 @@ export class AuthService {
         this.router.navigate(['/login']);
         localStorage.removeItem('userData');      
 
-        this.cart.emitQty.next(null);
-        this.cart.emitAmount.next(null);
+        this.cart.emitQty.next(0);
+        this.cart.emitAmount.next(0);
 
     }
 
