@@ -15,7 +15,6 @@ export class RecentlyProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(res => {
-      console.log(res.data);
       this.products = res.data;
       
      })

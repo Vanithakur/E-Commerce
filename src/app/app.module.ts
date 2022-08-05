@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import { AuthGuard } from './guards/auth.guard';
+
 import { HeaderMainComponent } from './common/header-main/header-main.component';
 import { HeaderFirstComponent } from './common/header-main/header-first/header-first.component';
 import { HeaderSecondComponent } from './common/header-main/header-second/header-second.component';

@@ -9,15 +9,14 @@ import { LoginComponent } from './pages/login/login.component';
 import { DetailsComponent } from './pages/orders/details/details.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
-import { MainImageComponent } from './pages/product-detail/selected-product/main-image/main-image.component';
 import { ProductsComponent } from './pages/products/products.component';
 
 import { ProfileComponent } from './pages/profile/profile.component';
-import { WishlistComponent } from './pages/wishlist/wishlist.component';
 
 const routes: Routes = [
 
 { path: '', redirectTo: '/home', pathMatch: 'full' },
+// { path: '', component: HomeComponent},
 { 
   path: 'cart',
   component: CartComponent,

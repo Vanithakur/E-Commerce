@@ -46,16 +46,19 @@ export class AuthService {
                 password: password,
                 // returnSecureToken: true
             }
-        )
-            .pipe(catchError(this.handleError),
-                tap(resData => {
-                    this.handleAuthentication(
-                        resData.data.email,
-                        resData.data.id,
-                        resData.data.token                      
-                    );
-                })
-            );
+        ) .pipe(
+            catchError(this.handleError),
+            tap((resData) => {})
+          );
+            // .pipe(catchError(this.handleError),
+            //     tap(resData => {
+            //         this.handleAuthentication(
+            //             resData.data.email,
+            //             resData.data.id,
+            //             resData.data.token                      
+            //         );
+            //     })
+            // );
     }
 
     login(email2: string, password2: string) {
@@ -69,9 +72,7 @@ export class AuthService {
         )
             .pipe
             (catchError(this.handleError),
-                tap(resData => {
-                    console.log(resData.data);
-                    
+                tap(resData => {                    
                     this.handleAuthentication(
                         resData.data.email,
                         resData.data.id,
@@ -82,11 +83,33 @@ export class AuthService {
     }
 
     logout() {
-        this.user.next(null);
-        this.router.navigate(['/login']);
+        this.user.next(null);     
         localStorage.removeItem('userData');
+        this.router.navigate(['/login']);
       
     }
+
+  autoLogin() {
+    let loginUser:any = localStorage.getItem('userData')
+    const userData: {
+      email: string;
+      id: string;
+      _token: string;
+    } = JSON.parse(loginUser);
+    // console.log(loginUser);
+    
+    if (!userData) {
+      return;
+    }
+    const loadedUser = new User(
+      userData.email,
+      userData.id,
+      userData._token,
+    );    
+    this.user.next(loadedUser);
+    
+  }
+
 
     private handleAuthentication(email: string, userId: string, token: string) {
         const user = new User(
@@ -95,11 +118,9 @@ export class AuthService {
             token
         );
 
-        this.user.next(user);        
-      localStorage.setItem('userData', JSON.stringify(user));
-        
-
-        
+       this.user.next(user);              
+       localStorage.setItem('userData', JSON.stringify(user));
+    //   localStorage.setItem('userData', JSON.stringify(user));        
     }
 
     private handleError(errorRes: HttpErrorResponse) {

@@ -9,10 +9,8 @@
                                 <a href="#"><i class="fa fa-user"></i> My Account</a>
                             </li> -->
                             <li class="dropdown dropdown-small" *ngIf="isAuthenticated">
-                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle"><i><img src="https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png" height="30px" width="30px" class="rounded" alt="Cinque Terre"></i>Profile</a>
-                                <ul class="dropdown-menu">
-                                    <li *ngIf="isAuthenticated"><a routerLink="/orders">Orders</a></li>
-                                </ul>
+                                <a style="cursor: pointer;color: #999;"><i><img src="https://static.remove.bg/remove-bg-web/5c20d2ecc9ddb1b6c85540a333ec65e2c616dbbd/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png" height="30px" width="30px" class="rounded" alt="Cinque Terre"></i>Profile</a>
+
                             </li>
                             <li *ngIf="isAuthenticated"><a style="cursor: pointer;color: #999;"  (click)='onOrders()'><i class="fa fa-shopping-cart"></i> Orders</a></li>
                             <li *ngIf="isAuthenticated"><a  routerLink="/cart"><i class="fa fa-user"></i> My Cart</a></li>
