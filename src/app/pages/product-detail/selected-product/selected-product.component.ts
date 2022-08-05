@@ -77,9 +77,9 @@ export class SelectedProductComponent implements OnInit {
     const user_id = JSON.parse(this.userIdData)
     const userId = user_id.id;
     const userToken = user_id._token;
+let quant_minus =''
 
-
-    this.cart.getAddToCart(userId, product_id, quant).subscribe(
+    this.cart.getAddToCart(userId, product_id, quant, quant_minus).subscribe(
       res => {
         console.log(res);
 

@@ -58,12 +58,13 @@ export class CartService implements OnInit {
     }
 
     //post api for add to cart
-    getAddToCart(user_id: number, product_id: string, quant: number) {
+    getAddToCart(user_id: number, product_id: string, quant: number, quant_minus:string) {
         return this.http.post<Cart>(
             "http://95.111.202.157/mangoproject/public/api/add-to-card-ustora", {
             user_id: user_id,
             product_id: product_id,
             quant: quant,
+            quant_minus:quant_minus
 
             }
         );
@@ -169,13 +170,15 @@ export class CartService implements OnInit {
     }
 
     recalculateTotalAmount(data:any) {
-        // console.log(this.product);
+        
       
         let newTotalAmount = 0;
         data.forEach((item: { price: number; quant: number; }) => {
             newTotalAmount += (item.price * item.quant)
             // console.log(item.qty);
             this.items = item.quant;
+            console.log(this.items);
+            
 
         });
 

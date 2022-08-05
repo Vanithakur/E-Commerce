@@ -42,28 +42,32 @@ export class ProductsComponent implements OnInit {
 	}
 
 	addToCart(item:any){
+	console.log(item);
 
 		let product_id = item.id;
+		console.log(product_id);
+		
 		let quant = (item.quantity);
 		// console.log(quant);
 
 		const user_id = JSON.parse(this.userIdData)
 		const userId = user_id.id;
 		const userToken = user_id._token;
+		let quant_minus = '';
 	
 		//to add to cart 
-		 this.cart.getAddToCart(userId, product_id, quant).subscribe(
+		 this.cart.getAddToCart(userId, product_id, quant,quant_minus).subscribe(
 			res => {
 				this.item = res.data;
 				console.log(this.item);
 		
 			});
 
-		this.cart.getDisplayCartItems(userId).subscribe(res => {
+		// this.cart.getDisplayCartItems(userId).subscribe(res => {
 
-			this.cart.totalItemsCount(res.data);
-			this.cart.recalculateTotalAmount(res.data);
-		})
+		// 	this.cart.totalItemsCount(res.data);
+		// 	this.cart.recalculateTotalAmount(res.data);
+		// })
 
 
 	}

@@ -1,3 +1,4 @@
+import { IfStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, filter, map, pipe, Subject } from 'rxjs';
@@ -88,6 +89,7 @@ export class CartComponent implements OnInit {
 
 	//to remove product from cart
 	removeProduct(item: any) {
+
 		const user_id = JSON.parse(this.userIdData)
 		const userId = user_id.id;
 
@@ -104,38 +106,66 @@ export class CartComponent implements OnInit {
 
 					this.cart.recalculateTotalAmount(this.products);
 					this.cart.totalItemsCount(this.products);
-
-
 				});
-
-
 		});
-
 
 	}
 
 
 	onIncrement(item: any) {
+		const user_id = JSON.parse(this.userIdData)
+		const userId = user_id.id;
 
 		item.quant = +item.quant + 1;
 		this.validateInput = true;
 
 		this.cart.recalculateTotalAmount(this.products);
+		let quant_minus = '';
 
 		// this.cart.emitAmount.next(this.productTotalAmount);
 
 		this.cart.totalItemsCount(this.products);
+		if (item.cart_id) {
+
+			let quantity = 1;
+			this.cart.getAddToCart(userId, item.id, quantity, quant_minus).subscribe(res => {
+				console.log(res);
+
+
+			})
+		}
+
+		this.cart.getDisplayCartItems(userId).subscribe(
+			res => {
+				this.products = res.data;
+				console.log(this.products);
+
+			});
+
 	}
 
 
 	onDecrement(item: any) {
-
+		const user_id = JSON.parse(this.userIdData)
+		const userId = user_id.id;
 		item.quant = item.quant - 1;
 		if (item.quant <= 1) {
 			this.validateInput = false;
 		}
 
 		this.cart.recalculateTotalAmount(this.products);
+		let quant_minus = 'mahak';
+		// this.cart.emitAmount.next(this.productTotalAmount);
+
+		this.cart.totalItemsCount(this.products);
+		if (item.cart_id) {
+			let quantity = 1;
+			this.cart.getAddToCart(userId, item.id, quantity, quant_minus).subscribe(res => {
+				console.log(res);
+
+
+			})
+		}
 		// this.items = this.cart.emitAmount.next(this.productTotalAmount);
 		this.cart.totalItemsCount(this.products);
 
